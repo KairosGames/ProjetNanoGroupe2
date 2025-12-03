@@ -390,8 +390,8 @@ MonoBehaviour:
   switchSettingsMigration: 1
   HasSourceProject: 1
   HasPlatforms: 1
-  sourceProjectPath: E:/nano projet/Fmod/Fmod_Nano/Fmod_Nano.fspro
-  sourceBankPath: E:/nano projet/Fmod/Fmod_Nano/Build
+  sourceProjectPath: Fmod_Project/Nano_Fmod/Nano_Fmod.fspro
+  sourceBankPath: Fmod_Project/Nano_Fmod/Build
   sourceBankPathUnformatted: 
   BankRefreshCooldown: 5
   ShowBankRefreshWindow: 1
