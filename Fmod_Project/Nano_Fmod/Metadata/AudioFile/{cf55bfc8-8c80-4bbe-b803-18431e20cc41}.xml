@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="AudioFile" id="{cf55bfc8-8c80-4bbe-b803-18431e20cc41}">
+		<property name="assetPath">
+			<value>refrain.wav</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>65.08475</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{d3c576f0-bd83-4c2e-91b5-c34c74c18f7e}</destination>
+		</relationship>
+	</object>
+</objects>
