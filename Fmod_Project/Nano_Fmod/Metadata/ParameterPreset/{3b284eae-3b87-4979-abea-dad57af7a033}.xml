@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="ParameterPreset" id="{3b284eae-3b87-4979-abea-dad57af7a033}">
+		<property name="name">
+			<value>Phase_musique</value>
+		</property>
+		<relationship name="folder">
+			<destination>{bcd8ae77-6468-423e-ab3b-85a594e87da9}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{46fea93d-9e48-4008-b3aa-2ebae24094e8}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{46fea93d-9e48-4008-b3aa-2ebae24094e8}">
+		<property name="parameterType">
+			<value>2</value>
+		</property>
+		<property name="maximum">
+			<value>4</value>
+		</property>
+		<property name="enumerationLabels">
+			<value>Tuto</value>
+			<value>Theme</value>
+			<value>Twist</value>
+			<value>Fin</value>
+		</property>
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+	</object>
+</objects>
