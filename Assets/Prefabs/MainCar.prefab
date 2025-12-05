@@ -125,6 +125,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab92481eb1b52c74a9b93e4ca7cc09b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
+  playerId: 0
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  fallingSpeed: 5
 --- !u!1 &3941548498504720322
 GameObject:
   m_ObjectHideFlags: 0
@@ -172,7 +177,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SplineMoving
   spline: {fileID: 0}
-  maxSpeed: 100
+  speed: 3
 --- !u!1 &8412729020081730795
 GameObject:
   m_ObjectHideFlags: 0
