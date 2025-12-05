@@ -1,4 +1,3 @@
-using SplineMeshTools.Colliders;
 using UnityEngine;
 using UnityEngine.Splines;
 
