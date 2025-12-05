@@ -242,7 +242,7 @@ MonoBehaviour:
   StringsBanks:
   - {fileID: 7165354384997087733}
   cacheVersion: 131857
-  cacheTime: 639005489695603315
+  cacheTime: 639005487537550334
   SerializableEventsDict:
   - key: event:/Avatar/mooving
     index: 0
@@ -254,6 +254,22 @@ MonoBehaviour:
     index: 3
   - key: event:/Avatar/Speed_Sound
     index: 4
+  - key: event:/Avatar/Combot/Barre_combot_2
+    index: 5
+  - key: event:/Avatar/Jump
+    index: 6
+  - key: event:/UI/Button
+    index: 7
+  - key: event:/Avatar/Combot/Barre_combot_3
+    index: 8
+  - key: event:/Avatar/Combot/Barre_combot_1
+    index: 9
+  - key: event:/Avatar/Boost
+    index: 10
+  - key: event:/UI/Score
+    index: 11
+  - key: event:/Avatar/land
+    index: 12
 --- !u!114 &1120030550244326709
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -269,7 +285,7 @@ MonoBehaviour:
   Path: Fmod_Project/Nano_Fmod/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639005489695593298
+  lastModified: 639005487537540285
   FileSizes:
   - Name: Desktop
     Value: 6241024
@@ -483,7 +499,7 @@ MonoBehaviour:
   Path: Fmod_Project/Nano_Fmod/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639005489695603315
+  lastModified: 639005487537550334
   FileSizes:
   - Name: Desktop
     Value: 1750
