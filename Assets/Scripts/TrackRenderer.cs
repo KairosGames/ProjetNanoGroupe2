@@ -11,87 +11,59 @@ public class TrackRenderer : MonoBehaviour
         public float offset;
     }
 
-    [SerializeField] NewSplineParameters[] newSplines;
+    [SerializeField] NewSplineParameters[] splinesData;
     [SerializeField] GameObject mainTrack;
     [SerializeField] float radius;
     [SerializeField] float segmentsPerUnit;
-    [SerializeField] Material material;  
+    [SerializeField] Material material;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    Spline mainSpline;
+
     void Start()    
     {
-        for (int i = 0; i < newSplines.Length; i++)
-        {
-            NewSplineParameters newSpline = newSplines[i];
-            CreateSpline(mainTrack, newSpline.startingKnot, newSpline.endingKnot, newSpline.offset);
-            //MeshRenderer mesh = leftTrack.GetComponent<MeshRenderer>();
-            //mesh.materials[0].color = Color.white;
-        }
+        mainSpline = mainTrack.GetComponent<SplineContainer>().Spline;
 
+        for (int i = 0; i < splinesData.Length; i++)
+        {
+            SplineContainer newSplineContainer = CreateSpline(mainTrack, splinesData[i]);
+            newSplineContainer.GetComponent<MeshRenderer>().material = material;
+        }
     }
 
-    void CreateSpline(GameObject mainTrack, int start, int end, float offset)
+    SplineContainer CreateSpline(GameObject mainTrack, NewSplineParameters data)
     {
-        Spline mainSpline = mainTrack.GetComponent<SplineContainer>().Spline;
-
         GameObject newTrack = new GameObject();
-        SplineContainer newSpline = newTrack.AddComponent<SplineContainer>();
+        SplineContainer newSplineContainer = newTrack.AddComponent<SplineContainer>();
         SplineExtrude extrude = newTrack.AddComponent<SplineExtrude>();
         extrude.Radius = radius;
         extrude.SegmentsPerUnit = segmentsPerUnit;
-        extrude.Container = newSpline;
+        extrude.Container = newSplineContainer;
        
-        newSpline.AddSpline();
+        newSplineContainer.AddSpline();
 
-        for (int i = start; i < end; i++)
+        for (int i = data.startingKnot; i < data.endingKnot; i++)
         {
             BezierKnot knot = mainSpline[i];
-            float t = GetKnotRatio(mainSpline, i);
+            float t = mainSpline.ConvertIndexUnit(i, PathIndexUnit.Knot, PathIndexUnit.Normalized);
 
             Vector3 tangent = mainSpline.EvaluateTangent(t);
             tangent.Normalize();
-            Debug.Log(tangent);
 
             Vector3 up = mainSpline.CalculateUpVector(t);
             up.Normalize();
-            Debug.Log(up);
 
             Vector3 right = Vector3.Cross(tangent, up).normalized;
 
-            knot.Position.x += right[0] * offset;
-            knot.Position.y += right[1] * offset;
-            knot.Position.z += right[2] * offset;
+            knot.Position.x += right[0] * data.offset;
+            knot.Position.y += right[1] * data.offset;
+            knot.Position.z += right[2] * data.offset;
 
-            newSpline.Splines[0].Add(knot);
-        }
-    }
-    float GetKnotRatio(Spline spline, int knotIndex)
-    {
-        // Si c’est le premier knot -> t = 0
-        if (knotIndex <= 0)
-            return 0f;
-
-        // Si c’est le dernier knot -> t = 1
-        if (knotIndex >= spline.Count - 1)
-            return 1f;
-
-        // Longueur totale de la spline
-        float totalLength = spline.GetLength();
-
-        // Longueur cumulée jusqu’au knot
-        float accumulated = 0f;
-
-        // Additionner la longueur des courbes précédant le knot
-        for (int curve = 0; curve < knotIndex; curve++)
-        {
-            accumulated += spline.GetCurveLength(curve);
+            newSplineContainer.Splines[0].Add(knot);
         }
 
-        // Ratio normalisé
-        return accumulated / totalLength;
+        return newSplineContainer;
     }
 
-    // Update is called once per frame
     void Update()
     {
         
