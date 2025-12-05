@@ -1,3 +1,4 @@
+using SplineMeshTools.Colliders;
 using UnityEngine;
 using UnityEngine.Splines;
 
@@ -31,6 +32,7 @@ public class TrackRenderer : MonoBehaviour
         GameObject middleSplineContainer = SplineContainerInit("middleSplineContainer");
         GameObject rightSplineContainer = SplineContainerInit("rightSplineContainer");
         GameObject farRightSplineContainer = SplineContainerInit("farRightSplineContainer");
+
         foreach (NewSplineParameters data in farLeftSplinesData)
             CreateSpline(farLeftSplineContainer, data, -2);
         foreach (NewSplineParameters data in leftSplinesData)
@@ -41,17 +43,31 @@ public class TrackRenderer : MonoBehaviour
             CreateSpline(rightSplineContainer, data, 1);
         foreach (NewSplineParameters data in farRightSplinesData)
             CreateSpline(farRightSplineContainer, data, 2);
+
+        AddColliderAndMaterial(farLeftSplineContainer);
+        AddColliderAndMaterial(leftSplineContainer);
+        AddColliderAndMaterial(middleSplineContainer);
+        AddColliderAndMaterial(rightSplineContainer);
+        AddColliderAndMaterial(farRightSplineContainer);
+    }
+
+    void AddColliderAndMaterial(GameObject track)
+    {
+        MeshCollider collider = track.AddComponent<MeshCollider>();
+        collider.sharedMesh = track.GetComponent<MeshFilter>().sharedMesh;
+        track.GetComponent<MeshRenderer>().material = material;
     }
 
     GameObject SplineContainerInit(string name)
     {
         GameObject newTrack = new GameObject();
-        SplineContainer newSplineContainer = newTrack.AddComponent<SplineContainer>();
-        newSplineContainer.RemoveSpline(newSplineContainer.Spline);
+        newTrack.layer = LayerMask.NameToLayer("Ground");
+        SplineContainer splineContainer = newTrack.AddComponent<SplineContainer>();
+        splineContainer.RemoveSpline(splineContainer.Spline);
         SplineExtrude extrude = newTrack.AddComponent<SplineExtrude>();
         extrude.Radius = radius;
         extrude.SegmentsPerUnit = segmentsPerUnit;
-        extrude.Container = newSplineContainer;
+        extrude.Container = splineContainer;
         newTrack.name = name;
         return newTrack;
     }
@@ -80,8 +96,6 @@ public class TrackRenderer : MonoBehaviour
 
             spline.Add(knot);
         }
-
-        splineContainer.GetComponent<MeshRenderer>().material = material;
     }
 
     void Update()
