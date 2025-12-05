@@ -1,5 +1,59 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-9114608108036459152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Avatar/Combot/Barre_combot_2
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Avatar/Combot/Barre_combot_2
+  Guid:
+    Data1: 2108864601
+    Data2: 1322413790
+    Data3: -114442312
+    Data4: -1280427864
+  Banks:
+  - {fileID: 1120030550244326709}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 8000
+--- !u!114 &-8586291386888449806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Avatar/Combot/Barre_combot_3
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Avatar/Combot/Barre_combot_3
+  Guid:
+    Data1: 1590343828
+    Data2: 1323348380
+    Data3: -482722886
+    Data4: -784510119
+  Banks:
+  - {fileID: 1120030550244326709}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 8000
 --- !u!114 &-4355194850391751762
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24,6 +78,57 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 1
+--- !u!114 &-3795397285902536000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Score/score_finish
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
+  Name: score_finish
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 4290085416
+    data2: 3706909244
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
+--- !u!114 &-2847664771017583873
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Avatar/land
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Avatar/land
+  Guid:
+    Data1: -416305424
+    Data2: 1135742443
+    Data3: -1885924222
+    Data4: -637750580
+  Banks:
+  - {fileID: 1120030550244326709}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 8000
 --- !u!114 &-2142683843667116446
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -51,6 +156,30 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 47758
+--- !u!114 &-1046921446199846983
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Boost/is_boosting
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
+  Name: is_boosting
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 3638942785
+    data2: 3244474014
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
 --- !u!114 &-909076741752406751
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -99,13 +228,21 @@ MonoBehaviour:
   - {fileID: -909076741752406751}
   - {fileID: -2142683843667116446}
   - {fileID: 1786989775475216835}
+  - {fileID: -9114608108036459152}
+  - {fileID: 7618211463458784923}
+  - {fileID: 6256837047013209687}
+  - {fileID: -8586291386888449806}
+  - {fileID: 4426406021345511412}
+  - {fileID: 4319324440523669181}
+  - {fileID: 3585867271708589901}
+  - {fileID: -2847664771017583873}
   EditorParameters: []
   MasterBanks:
   - {fileID: 1120030550244326709}
   StringsBanks:
   - {fileID: 7165354384997087733}
   cacheVersion: 131857
-  cacheTime: 639005439455419953
+  cacheTime: 639005489695603315
   SerializableEventsDict:
   - key: event:/Avatar/mooving
     index: 0
@@ -132,10 +269,10 @@ MonoBehaviour:
   Path: Fmod_Project/Nano_Fmod/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639005439455409859
+  lastModified: 639005489695593298
   FileSizes:
   - Name: Desktop
-    Value: 4619072
+    Value: 6241024
   Exists: 1
 --- !u!114 &1786989775475216835
 MonoBehaviour:
@@ -165,6 +302,89 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 26215
+--- !u!114 &3585867271708589901
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/UI/Score
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/UI/Score
+  Guid:
+    Data1: -691199264
+    Data2: 1163787409
+    Data3: -291443286
+    Data4: 1426064496
+  Banks:
+  - {fileID: 1120030550244326709}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 0
+  Parameters:
+  - {fileID: -3795397285902536000}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 15932
+--- !u!114 &4319324440523669181
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Avatar/Boost
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Avatar/Boost
+  Guid:
+    Data1: 1716289468
+    Data2: 1124574535
+    Data3: -934602088
+    Data4: -1400002747
+  Banks:
+  - {fileID: 1120030550244326709}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 0
+  Parameters:
+  - {fileID: -1046921446199846983}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 9453
+--- !u!114 &4426406021345511412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Avatar/Combot/Barre_combot_1
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Avatar/Combot/Barre_combot_1
+  Guid:
+    Data1: -1663865948
+    Data2: 1341458859
+    Data3: -420735071
+    Data4: 1626646509
+  Banks:
+  - {fileID: 1120030550244326709}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 8000
 --- !u!114 &5212487584752757042
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -217,9 +437,37 @@ MonoBehaviour:
   IsOneShot: 0
   Parameters:
   - {fileID: -4355194850391751762}
+  - {fileID: 8630577183696207530}
   MinDistance: 1
   MaxDistance: 20
-  Length: 166440
+  Length: 150178
+--- !u!114 &6256837047013209687
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/UI/Button
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/UI/Button
+  Guid:
+    Data1: -1628343184
+    Data2: 1341372723
+    Data3: -62937445
+    Data4: -1341674768
+  Banks:
+  - {fileID: 1120030550244326709}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 984
 --- !u!114 &7165354384997087733
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -235,10 +483,10 @@ MonoBehaviour:
   Path: Fmod_Project/Nano_Fmod/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639005439455419953
+  lastModified: 639005489695603315
   FileSizes:
   - Name: Desktop
-    Value: 1096
+    Value: 1750
   Exists: 1
 --- !u!114 &7402025417936205027
 MonoBehaviour:
@@ -260,6 +508,57 @@ MonoBehaviour:
   ID:
     data1: 3410022642
     data2: 3832448680
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
+--- !u!114 &7618211463458784923
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Avatar/Jump
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Avatar/Jump
+  Guid:
+    Data1: 1330567518
+    Data2: 1186839636
+    Data3: 1090027650
+    Data4: -92347521
+  Banks:
+  - {fileID: 1120030550244326709}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 8000
+--- !u!114 &8630577183696207530
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Music_main/Fin_musique
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
+  Name: Fin_musique
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 4142508564
+    data2: 2804827388
   Type: 0
   IsGlobal: 0
   Labels: []
