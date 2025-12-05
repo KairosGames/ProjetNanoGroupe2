@@ -125,23 +125,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd00dc901307d1e4e8f08c0c09ef7868, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TrackRenderer
-  splinesData:
+  farLeftSplinesData: []
+  leftSplinesData:
   - startingKnot: 0
-    endingKnot: 2
-    offset: 0
+    endingKnot: 1
+  middleSplinesData:
   - startingKnot: 0
-    endingKnot: 2
-    offset: 1.3
+    endingKnot: 1
+  rightSplinesData:
   - startingKnot: 0
-    endingKnot: 2
-    offset: -1.3
-  - startingKnot: 0
-    endingKnot: 2
-    offset: 2.6
-  - startingKnot: 0
-    endingKnot: 3
-    offset: -2.6
-  mainTrack: {fileID: 7701855086910108231}
+    endingKnot: 1
+  farRightSplinesData: []
+  layer:
+    serializedVersion: 2
+    m_Bits: 0
+  offset: 1.3
   radius: 0.08
   segmentsPerUnit: 10
   material: {fileID: 2100000, guid: e3fb3841a697f42f18609c8864d87886, type: 2}
