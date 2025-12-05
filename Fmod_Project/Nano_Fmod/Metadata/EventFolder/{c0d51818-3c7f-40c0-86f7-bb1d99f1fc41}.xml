@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="EventFolder" id="{c0d51818-3c7f-40c0-86f7-bb1d99f1fc41}">
+		<property name="name">
+			<value>Combot</value>
+		</property>
+		<relationship name="folder">
+			<destination>{81f5f017-dd9a-41ad-aa1e-5bd6663b9c44}</destination>
+		</relationship>
+	</object>
+</objects>
