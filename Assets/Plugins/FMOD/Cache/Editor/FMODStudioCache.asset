@@ -23,7 +23,7 @@ MonoBehaviour:
   StringsBanks:
   - {fileID: 7165354384997087733}
   cacheVersion: 131857
-  cacheTime: 639003701907997061
+  cacheTime: 639003784641559256
   SerializableEventsDict:
   - key: event:/New Event
     index: 0
@@ -42,7 +42,7 @@ MonoBehaviour:
   Path: Fmod_Project/Nano_Fmod/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639003701907997061
+  lastModified: 639003784641559256
   FileSizes:
   - Name: Desktop
     Value: 593408
@@ -89,7 +89,7 @@ MonoBehaviour:
   Path: Fmod_Project/Nano_Fmod/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639003701907997061
+  lastModified: 639003784641559256
   FileSizes:
   - Name: Desktop
     Value: 770
