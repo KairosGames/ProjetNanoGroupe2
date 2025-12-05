@@ -70,7 +70,7 @@ public class Player : MonoBehaviour
         Tween.LocalPositionX(
             transform,
             transform.localPosition.x,
-            transform.localPosition.x + dir,
+            transform.localPosition.x + (offsetLen * dir),
             0.25f,
             ease: Ease.OutQuart);
 
