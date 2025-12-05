@@ -5,10 +5,15 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    [Header("References")]
+    [SerializeField] TrackRenderer trackRenderer;
+
+    [Header("Settings")]
     [SerializeField] int playerId = 0;
     [SerializeField] LayerMask groundLayer;
     [SerializeField] float fallingSpeed = 5.0f;
 
+    float offsetLen;
     int maxOffset = 1;
     int actualOffset = 0;
     bool isDectingGround = false;
@@ -17,7 +22,11 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
+        offsetLen = trackRenderer.offset;
         StartCoroutine(LauchGroundDetectionTimer());
+
+        foreach (var name in Input.GetJoystickNames())
+            Debug.Log("Joystick détecté : " + name);
     }
 
     void Update()

@@ -16,7 +16,7 @@ public class TrackRenderer : MonoBehaviour
     [SerializeField] NewSplineParameters[] middleSplinesData;
     [SerializeField] NewSplineParameters[] rightSplinesData;
     [SerializeField] NewSplineParameters[] farRightSplinesData;
-    [SerializeField] float offset;
+    [SerializeField] public float offset;
     [SerializeField] float radius;
     [SerializeField] float segmentsPerUnit;
     [SerializeField] Material material;
