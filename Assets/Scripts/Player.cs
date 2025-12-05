@@ -1,4 +1,5 @@
 using PrimeTween;
+using System.Collections;
 using TreeEditor;
 using UnityEngine;
 
@@ -10,18 +11,37 @@ public class Player : MonoBehaviour
 
     int maxOffset = 1;
     int actualOffset = 0;
+    bool isDectingGround = false;
     bool isJumping = false;
     bool isFalling = false;
 
+    private void Start()
+    {
+        StartCoroutine(LauchGroundDetectionTimer());
+    }
+
     void Update()
     {
+
+        /*if (Input.GetKey(KeyCode.Joystick1Button0))
+            Debug.Log("Player 1!");
+
+        if (Input.GetKey(KeyCode.Joystick2Button0))
+            Debug.Log("Player 2 !");
+
+        if (Mathf.Abs(Input.GetAxis("Horizontal_P1")) >= 0.2f)
+            Debug.Log(Input.GetAxis("Horizontal_P1"));
+
+        if (Mathf.Abs(Input.GetAxis("Horizontal_P2")) >= 0.2f)
+            Debug.Log(Input.GetAxis("Horizontal_P2"));*/
+
         if (!isJumping && !isFalling && Input.GetKeyDown(KeyCode.LeftArrow))
             LaunchJump(false);
 
         if (!isJumping && !isFalling && Input.GetKeyDown(KeyCode.RightArrow))
             LaunchJump(true);
 
-        if (!isJumping && !isFalling)
+        if (!isJumping && !isFalling && isDectingGround)
             CheckGround();
 
         if (isFalling)
@@ -68,11 +88,17 @@ public class Player : MonoBehaviour
         if (Physics.Raycast(transform.position, -transform.up, out RaycastHit hit, 1.0f, groundLayer))
             return;
 
-        //isFalling = true;
+        isFalling = true;
     }
 
     void Fall()
     {
-        //transform.localPosition -= new Vector3(0.0f, fallingSpeed, 0.0f) * Time.deltaTime;
+        transform.localPosition -= new Vector3(0.0f, fallingSpeed, 0.0f) * Time.deltaTime;
+    }
+
+    IEnumerator LauchGroundDetectionTimer()
+    {
+        yield return new WaitForSeconds(0.1f);
+        isDectingGround = true;
     }
 }
