@@ -8,11 +8,14 @@ public class TrackRenderer : MonoBehaviour
     {
         public int startingKnot;
         public int endingKnot;
-        public float offset;
     }
 
-    [SerializeField] NewSplineParameters[] splinesData;
-    [SerializeField] GameObject mainTrack;
+    [SerializeField] NewSplineParameters[] farLeftSplinesData;
+    [SerializeField] NewSplineParameters[] leftSplinesData;
+    [SerializeField] NewSplineParameters[] middleSplinesData;
+    [SerializeField] NewSplineParameters[] rightSplinesData;
+    [SerializeField] NewSplineParameters[] farRightSplinesData;
+    [SerializeField] float offset;
     [SerializeField] float radius;
     [SerializeField] float segmentsPerUnit;
     [SerializeField] Material material;
@@ -21,27 +24,44 @@ public class TrackRenderer : MonoBehaviour
 
     void Start()    
     {
-        mainSpline = mainTrack.GetComponent<SplineContainer>().Spline;
+        mainSpline = this.GetComponent<SplineContainer>().Spline;
 
-        for (int i = 0; i < splinesData.Length; i++)
-        {
-            SplineContainer newSplineContainer = CreateSpline(mainTrack, splinesData[i]);
-            newSplineContainer.GetComponent<MeshRenderer>().material = material;
-        }
+        GameObject farLeftSplineContainer = SplineContainerInit("farLeftSplineContainer");
+        GameObject leftSplineContainer = SplineContainerInit("leftSplineContainer");
+        GameObject middleSplineContainer = SplineContainerInit("middleSplineContainer");
+        GameObject rightSplineContainer = SplineContainerInit("rightSplineContainer");
+        GameObject farRightSplineContainer = SplineContainerInit("farRightSplineContainer");
+        foreach (NewSplineParameters data in farLeftSplinesData)
+            CreateSpline(farLeftSplineContainer, data, -2);
+        foreach (NewSplineParameters data in leftSplinesData)
+            CreateSpline(leftSplineContainer, data, -1);
+        foreach (NewSplineParameters data in middleSplinesData)
+            CreateSpline(middleSplineContainer, data, 0);
+        foreach (NewSplineParameters data in rightSplinesData)
+            CreateSpline(rightSplineContainer, data, 1);
+        foreach (NewSplineParameters data in farRightSplinesData)
+            CreateSpline(farRightSplineContainer, data, 2);
     }
 
-    SplineContainer CreateSpline(GameObject mainTrack, NewSplineParameters data)
+    GameObject SplineContainerInit(string name)
     {
         GameObject newTrack = new GameObject();
         SplineContainer newSplineContainer = newTrack.AddComponent<SplineContainer>();
+        newSplineContainer.RemoveSpline(newSplineContainer.Spline);
         SplineExtrude extrude = newTrack.AddComponent<SplineExtrude>();
         extrude.Radius = radius;
         extrude.SegmentsPerUnit = segmentsPerUnit;
         extrude.Container = newSplineContainer;
-       
-        newSplineContainer.AddSpline();
+        newTrack.name = name;
+        return newTrack;
+    }
+    void CreateSpline(GameObject track, NewSplineParameters data, int offsetMultiplier)
+    {
 
-        for (int i = data.startingKnot; i < data.endingKnot; i++)
+        SplineContainer splineContainer = track.GetComponent<SplineContainer>();
+        Spline spline = splineContainer.AddSpline();
+
+        for (int i = data.startingKnot; i < data.endingKnot + 1; i++)
         {
             BezierKnot knot = mainSpline[i];
             float t = mainSpline.ConvertIndexUnit(i, PathIndexUnit.Knot, PathIndexUnit.Normalized);
@@ -54,14 +74,14 @@ public class TrackRenderer : MonoBehaviour
 
             Vector3 right = Vector3.Cross(tangent, up).normalized;
 
-            knot.Position.x += right[0] * data.offset;
-            knot.Position.y += right[1] * data.offset;
-            knot.Position.z += right[2] * data.offset;
+            knot.Position.x += right[0] * offsetMultiplier * offset;
+            knot.Position.y += right[1] * offsetMultiplier * offset;
+            knot.Position.z += right[2] * offsetMultiplier * offset;
 
-            newSplineContainer.Splines[0].Add(knot);
+            spline.Add(knot);
         }
 
-        return newSplineContainer;
+        splineContainer.GetComponent<MeshRenderer>().material = material;
     }
 
     void Update()
