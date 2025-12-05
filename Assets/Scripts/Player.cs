@@ -23,7 +23,7 @@ public class Player : MonoBehaviour
     void Update()
     {
 
-        /*if (Input.GetKey(KeyCode.Joystick1Button0))
+        if (Input.GetKey(KeyCode.Joystick1Button0))
             Debug.Log("Player 1!");
 
         if (Input.GetKey(KeyCode.Joystick2Button0))
@@ -33,7 +33,7 @@ public class Player : MonoBehaviour
             Debug.Log(Input.GetAxis("Horizontal_P1"));
 
         if (Mathf.Abs(Input.GetAxis("Horizontal_P2")) >= 0.2f)
-            Debug.Log(Input.GetAxis("Horizontal_P2"));*/
+            Debug.Log(Input.GetAxis("Horizontal_P2"));
 
         if (!isJumping && !isFalling && Input.GetKeyDown(KeyCode.LeftArrow))
             LaunchJump(false);
