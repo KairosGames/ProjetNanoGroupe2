@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="AudioFile" id="{85b2d418-c020-4524-8287-d4338773e540}">
+		<property name="assetPath">
+			<value>solo_M.wav</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>48.813541666666666</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{d3c576f0-bd83-4c2e-91b5-c34c74c18f7e}</destination>
+		</relationship>
+	</object>
+</objects>
