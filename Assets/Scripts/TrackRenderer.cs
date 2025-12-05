@@ -16,6 +16,7 @@ public class TrackRenderer : MonoBehaviour
     [SerializeField] NewSplineParameters[] middleSplinesData;
     [SerializeField] NewSplineParameters[] rightSplinesData;
     [SerializeField] NewSplineParameters[] farRightSplinesData;
+    [SerializeField] LayerMask layer;
     [SerializeField] public float offset;
     [SerializeField] float radius;
     [SerializeField] float segmentsPerUnit;
@@ -61,7 +62,7 @@ public class TrackRenderer : MonoBehaviour
     GameObject SplineContainerInit(string name)
     {
         GameObject newTrack = new GameObject();
-        newTrack.layer = LayerMask.NameToLayer("Ground");
+        newTrack.layer = layer;
         SplineContainer splineContainer = newTrack.AddComponent<SplineContainer>();
         splineContainer.RemoveSpline(splineContainer.Spline);
         SplineExtrude extrude = newTrack.AddComponent<SplineExtrude>();
