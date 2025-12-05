@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="ParameterPreset" id="{dac33d5d-e61d-4315-bbee-bf0aef66acea}">
+		<property name="name">
+			<value>Fin_musique</value>
+		</property>
+		<relationship name="folder">
+			<destination>{bcd8ae77-6468-423e-ab3b-85a594e87da9}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{94ba3dc6-466b-427e-9c7e-7faa60317b30}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{94ba3dc6-466b-427e-9c7e-7faa60317b30}">
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+	</object>
+</objects>
