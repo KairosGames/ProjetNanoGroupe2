@@ -18,18 +18,12 @@ public class SplineMoving : MonoBehaviour
     private void UpdatePosOnSpline()
     {
         var splineLength = spline.Spline.GetLength();
-        var currentSpeed = GetMoveSpeed();
+        var currentSpeed = maxSpeed;
         // make sure on spline
         currentPos = Mathf.Clamp(currentPos + currentSpeed * Time.deltaTime, 0f, splineLength);
         // most important part: evaluate currentPos on spline
         var normalizedPos = currentPos / splineLength;
         spline.Spline.Evaluate(normalizedPos, out var pos, out var dir, out var up);
         transform.SetPositionAndRotation(pos, Quaternion.LookRotation(dir));
-    }
-
-    private float GetMoveSpeed()
-    {
-        // put your evaluating logic here (keyboard or arduino)
-        return Input.GetAxis("Vertical") * maxSpeed;
     }
 }
