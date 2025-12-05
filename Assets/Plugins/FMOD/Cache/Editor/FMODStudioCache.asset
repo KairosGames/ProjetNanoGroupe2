@@ -1,5 +1,83 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-4355194850391751762
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Music_main/Tuto
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
+  Name: Tuto
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 2082637978
+    data2: 2903542173
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
+--- !u!114 &-2142683843667116446
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Atmo/Night
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Atmo/Night
+  Guid:
+    Data1: -573750160
+    Data2: 1260943032
+    Data3: -1374901083
+    Data4: 659075755
+  Banks:
+  - {fileID: 1120030550244326709}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 47758
+--- !u!114 &-909076741752406751
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: "event:/Atmo/SFX \xE9toile"
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: "event:/Atmo/SFX \xE9toile"
+  Guid:
+    Data1: -1727153574
+    Data2: 1106917585
+    Data3: -150464119
+    Data4: -1891644005
+  Banks:
+  - {fileID: 1120030550244326709}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 8000
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16,17 +94,29 @@ MonoBehaviour:
   - {fileID: 7165354384997087733}
   - {fileID: 1120030550244326709}
   EditorEvents:
-  - {fileID: 2302218424101155605}
+  - {fileID: 5212487584752757042}
+  - {fileID: 6063948163791788126}
+  - {fileID: -909076741752406751}
+  - {fileID: -2142683843667116446}
+  - {fileID: 1786989775475216835}
   EditorParameters: []
   MasterBanks:
   - {fileID: 1120030550244326709}
   StringsBanks:
   - {fileID: 7165354384997087733}
   cacheVersion: 131857
-  cacheTime: 639003784641559256
+  cacheTime: 639005299598497991
   SerializableEventsDict:
-  - key: event:/New Event
+  - key: event:/Avatar/mooving
     index: 0
+  - key: event:/Music/Music_main
+    index: 1
+  - key: "event:/Atmo/SFX \xE9toile"
+    index: 2
+  - key: event:/Atmo/Night
+    index: 3
+  - key: event:/Avatar/Speed_Sound
+    index: 4
 --- !u!114 &1120030550244326709
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -42,12 +132,12 @@ MonoBehaviour:
   Path: Fmod_Project/Nano_Fmod/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639003784641559256
+  lastModified: 639005299598482415
   FileSizes:
   - Name: Desktop
-    Value: 593408
+    Value: 4619072
   Exists: 1
---- !u!114 &2302218424101155605
+--- !u!114 &1786989775475216835
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -57,23 +147,79 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/New Event
+  m_Name: event:/Avatar/Speed_Sound
   m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
-  Path: event:/New Event
+  Path: event:/Avatar/Speed_Sound
   Guid:
-    Data1: 934144760
-    Data2: 1235721772
-    Data3: -1012564805
-    Data4: 618060793
+    Data1: 176440052
+    Data2: 1134935001
+    Data3: 1123054763
+    Data4: 1790085834
   Banks:
   - {fileID: 1120030550244326709}
   IsStream: 1
   Is3D: 0
-  IsOneShot: 1
+  IsOneShot: 0
+  Parameters:
+  - {fileID: 7402025417936205027}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 26215
+--- !u!114 &5212487584752757042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Avatar/mooving
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Avatar/mooving
+  Guid:
+    Data1: 1747039755
+    Data2: 1237780870
+    Data3: -20652101
+    Data4: -768698625
+  Banks:
+  - {fileID: 1120030550244326709}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 0
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 40677
+  Length: 8426
+--- !u!114 &6063948163791788126
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Music/Music_main
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Music/Music_main
+  Guid:
+    Data1: -1899512784
+    Data2: 1078576619
+    Data3: -116018037
+    Data4: 46090918
+  Banks:
+  - {fileID: 1120030550244326709}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters:
+  - {fileID: -4355194850391751762}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 166440
 --- !u!114 &7165354384997087733
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -89,8 +235,32 @@ MonoBehaviour:
   Path: Fmod_Project/Nano_Fmod/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639003784641559256
+  lastModified: 639005299598497991
   FileSizes:
   - Name: Desktop
-    Value: 770
+    Value: 1096
+  Exists: 1
+--- !u!114 &7402025417936205027
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Speed_Sound/Speed_player
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
+  Name: Speed_player
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 3410022642
+    data2: 3832448680
+  Type: 0
+  IsGlobal: 0
+  Labels: []
   Exists: 1
