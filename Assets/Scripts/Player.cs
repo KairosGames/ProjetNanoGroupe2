@@ -95,14 +95,9 @@ public class Player : MonoBehaviour
     void CheckGround()
     {
         if (Physics.Raycast(transform.position, -transform.up, out RaycastHit hit, 1.0f, groundLayer))
-        {
-            Debug.Log("FULL");
             return;
-        }
 
-        Debug.Log("EMPTY");
-
-        //isFalling = true;
+        isFalling = true;
     }
 
     void Fall()
