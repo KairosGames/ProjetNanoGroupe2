@@ -9,78 +9,106 @@ public class Player : MonoBehaviour
     [SerializeField] TrackRenderer trackRenderer;
 
     [Header("Settings")]
-    [SerializeField] int playerId = 0;
+    [Tooltip("Must be 0 or 1")]
+    [SerializeField, Range(0, 1)] int playerId = 0;
     [SerializeField] LayerMask groundLayer;
+    [SerializeField] LayerMask boostLayer;
     [SerializeField] float fallingSpeed = 5.0f;
+    [SerializeField] float jumpTime = 0.25f;
 
+
+    [HideInInspector] public bool isBoosting = false;
+
+    Vector3 resettLocalPos;
+    Vector3 checkBoxCenter;
+    Vector3 checkBoxExtents = new Vector3(0.25f, 0.5f, 0.05f);
     float offsetLen;
+    float inputDir = 0.0f;
     int maxOffset = 1;
     int actualOffset = 0;
-    bool isDectingGround = false;
+    bool isReady = false;
     bool isJumping = false;
     bool isFalling = false;
 
+
     private void Start()
     {
+        resettLocalPos = transform.localPosition;
         offsetLen = trackRenderer.offset;
-        StartCoroutine(LauchGroundDetectionTimer());
-
-        foreach (var name in Input.GetJoystickNames())
-            Debug.Log("Joystick détecté : " + name);
+        StartCoroutine(LauchReadyTimer());
     }
+
 
     void Update()
     {
+        if (!isReady)
+            return;
 
-        if (Input.GetKey(KeyCode.Joystick1Button0))
-            Debug.Log("Player 1!");
+        bool isBoostActionPressed = playerId == 0 ? Input.GetKey(KeyCode.Joystick1Button0) : Input.GetKey(KeyCode.Joystick2Button0);
+        bool isJumpActionReleased = playerId == 0 ? Input.GetKeyUp(KeyCode.Joystick1Button0) : Input.GetKeyUp(KeyCode.Joystick2Button0);
+        inputDir = Input.GetAxis($"Horizontal_P{playerId + 1}");
+        inputDir = Mathf.Abs(inputDir) >= 0.6f ? Mathf.Sign(inputDir) : 0.0f;
+        checkBoxCenter = transform.position - (transform.up * transform.localPosition.y);
 
-        if (Input.GetKey(KeyCode.Joystick2Button0))
-            Debug.Log("Player 2 !");
-
-        if (Mathf.Abs(Input.GetAxis("Horizontal_P1")) >= 0.2f)
-            Debug.Log(Input.GetAxis("Horizontal_P1"));
-
-        if (Mathf.Abs(Input.GetAxis("Horizontal_P2")) >= 0.2f)
-            Debug.Log(Input.GetAxis("Horizontal_P2"));
-
-        if (!isJumping && !isFalling && Input.GetKeyDown(KeyCode.LeftArrow))
-            LaunchJump(false);
-
-        if (!isJumping && !isFalling && Input.GetKeyDown(KeyCode.RightArrow))
-            LaunchJump(true);
-
-        if (!isJumping && !isFalling && isDectingGround)
+        if (!isJumping && !isFalling)
             CheckGround();
 
         if (isFalling)
             Fall();
+
+        if (isBoostActionPressed)
+            CheckBooster();
+
+        if (!isJumping && !isFalling && isJumpActionReleased)
+            LaunchJump(); 
     }
 
-    void LaunchJump(bool isRight)
-    {
-        float dir = isRight ? 1.0f : -1.0f;
 
-        if (Mathf.Abs(actualOffset + dir) > maxOffset)
+    void CheckGround()
+    {
+        if (Physics.CheckBox(checkBoxCenter, checkBoxExtents, transform.rotation, groundLayer))
             return;
 
-        isJumping = true;
-        actualOffset += (int)dir;
+        isFalling = true;
+    }
 
-        Tween.LocalPositionX(
-            transform,
-            transform.localPosition.x,
-            transform.localPosition.x + (offsetLen * dir),
-            0.25f,
-            ease: Ease.OutQuart);
+
+    void Fall()
+    {
+        transform.localPosition -= new Vector3(0.0f, fallingSpeed, 0.0f) * Time.deltaTime;
+    }
+
+
+    void LaunchJump()
+    {
+        if (inputDir != 0)
+            LaunchSideStep();
+
+        isJumping = true;
 
         Tween.LocalPositionY(
             transform,
             transform.localPosition.y,
             transform.localPosition.y + 1.0f,
-            0.125f,
+            jumpTime / 2.0f,
             ease: Ease.OutQuart).OnComplete(() => { DownFromJump(); });
     }
+
+
+    void CheckBooster()
+    {
+        if (isFalling || isJumping)
+            return;
+
+        if (Physics.CheckBox(checkBoxCenter, checkBoxExtents, transform.rotation, boostLayer))
+        {
+            isBoosting = true;
+            return;
+        }
+
+        isBoosting = false;
+    }
+
 
     void DownFromJump()
     {
@@ -88,26 +116,30 @@ public class Player : MonoBehaviour
             transform,
             transform.localPosition.y,
             transform.localPosition.y - 1.0f,
-            0.125f,
+            jumpTime / 2.0f,
             ease: Ease.InQuart).OnComplete(() => { isJumping = false; });
     }
 
-    void CheckGround()
+
+    void LaunchSideStep()
     {
-        if (Physics.Raycast(transform.position, -transform.up, out RaycastHit hit, 1.0f, groundLayer))
+        if (Mathf.Abs(actualOffset + inputDir) > maxOffset)
             return;
 
-        isFalling = true;
+        actualOffset += (int)inputDir;
+
+        Tween.LocalPositionX(
+            transform,
+            transform.localPosition.x,
+            transform.localPosition.x + (offsetLen * inputDir),
+            jumpTime,
+            ease: Ease.OutQuart);
     }
 
-    void Fall()
-    {
-        transform.localPosition -= new Vector3(0.0f, fallingSpeed, 0.0f) * Time.deltaTime;
-    }
 
-    IEnumerator LauchGroundDetectionTimer()
+    IEnumerator LauchReadyTimer()
     {
         yield return new WaitForSeconds(0.1f);
-        isDectingGround = true;
+        isReady = true;
     }
 }
