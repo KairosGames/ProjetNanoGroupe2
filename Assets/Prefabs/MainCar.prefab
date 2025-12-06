@@ -47,7 +47,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SplineMoving
   spline: {fileID: 0}
-  speed: 100
+  player: {fileID: 0}
+  baseSpeed: 100
+  topSpeed: 5
+  acceleration: 0.05
+  deceleration: 0.05
 --- !u!1 &8412729020081730795
 GameObject:
   m_ObjectHideFlags: 0
