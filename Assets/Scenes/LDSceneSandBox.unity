@@ -1642,17 +1642,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 268676869}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &550845520 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3515929844252415247, guid: 5292b86400f617047885cfac1ced1f78, type: 3}
-  m_PrefabInstance: {fileID: 899957111}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd00dc901307d1e4e8f08c0c09ef7868, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::TrackRenderer
 --- !u!114 &550845521 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1298891389938041627, guid: 5292b86400f617047885cfac1ced1f78, type: 3}
@@ -2094,10 +2083,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3515929844252415247, guid: 5292b86400f617047885cfac1ced1f78, type: 3}
-      propertyPath: layer.m_Bits
-      value: 8
-      objectReference: {fileID: 0}
     - target: {fileID: 7701855086910108231, guid: 5292b86400f617047885cfac1ced1f78, type: 3}
       propertyPath: m_Name
       value: Spline (1)
@@ -2440,6 +2425,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 268676869}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &992513024 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3515929844252415247, guid: 5292b86400f617047885cfac1ced1f78, type: 3}
+  m_PrefabInstance: {fileID: 899957111}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd00dc901307d1e4e8f08c0c09ef7868, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TrackRenderer
 --- !u!1 &1028323341
 GameObject:
   m_ObjectHideFlags: 0
@@ -2886,44 +2882,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 268676869}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
---- !u!1 &1200166771 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1886874856818610349, guid: ca155248a8a370f4bbbfe0477ae3782d, type: 3}
-  m_PrefabInstance: {fileID: 1540265021}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1200166774
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1200166771}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: FMODUnity::FMODUnity.StudioEventEmitter
-  CollisionTag: 
-  EventReference:
-    Guid:
-      Data1: -1899512784
-      Data2: 1078576619
-      Data3: -116018037
-      Data4: 46090918
-    Path: event:/Music/Music_main
-  Event: 
-  EventPlayTrigger: 0
-  EventStopTrigger: 0
-  AllowFadeout: 1
-  TriggerOnce: 0
-  Preload: 0
-  NonRigidbodyVelocity: 0
-  Params:
-  - Name: Phase_musique
-    Value: 0
-  OverrideAttenuation: 0
-  OverrideMinDistance: 1
-  OverrideMaxDistance: 20
 --- !u!1 &1274893897
 GameObject:
   m_ObjectHideFlags: 0
@@ -3379,7 +3337,7 @@ PrefabInstance:
     - target: {fileID: 545709394311971752, guid: ca155248a8a370f4bbbfe0477ae3782d, type: 3}
       propertyPath: trackRenderer
       value: 
-      objectReference: {fileID: 550845520}
+      objectReference: {fileID: 992513024}
     - target: {fileID: 2964611715907798263, guid: ca155248a8a370f4bbbfe0477ae3782d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -3431,10 +3389,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1886874856818610349, guid: ca155248a8a370f4bbbfe0477ae3782d, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1200166774}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ca155248a8a370f4bbbfe0477ae3782d, type: 3}
 --- !u!1 &1559437889
 GameObject:

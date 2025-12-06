@@ -136,9 +136,7 @@ MonoBehaviour:
   - startingKnot: 0
     endingKnot: 1
   farRightSplinesData: []
-  layer:
-    serializedVersion: 2
-    m_Bits: 0
+  layerName: Ground
   offset: 1.3
   radius: 0.08
   segmentsPerUnit: 10
