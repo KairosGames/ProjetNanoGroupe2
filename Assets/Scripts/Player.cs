@@ -16,15 +16,14 @@ public class Player : MonoBehaviour
     [SerializeField] float fallingSpeed = 5.0f;
     [SerializeField] float jumpTime = 0.25f;
 
-
     [HideInInspector] public bool isBoosting = false;
+    [HideInInspector] public int maxOffset = 1;
 
     Vector3 resettLocalPos;
     Vector3 checkBoxCenter;
     Vector3 checkBoxExtents = new Vector3(0.25f, 0.5f, 0.05f);
     float offsetLen;
     float inputDir = 0.0f;
-    int maxOffset = 1;
     int actualOffset = 0;
     bool isReady = false;
     bool isJumping = false;
