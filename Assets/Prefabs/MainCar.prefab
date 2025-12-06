@@ -337,6 +337,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Trail
       objectReference: {fileID: 0}
+    - target: {fileID: 4759535599801405445, guid: 2f2748dd489480d4b9ea7ad743424158, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6109625353847363694, guid: 2f2748dd489480d4b9ea7ad743424158, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
