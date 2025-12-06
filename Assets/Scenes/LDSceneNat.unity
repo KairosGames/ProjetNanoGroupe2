@@ -4858,6 +4858,10 @@ PrefabInstance:
       propertyPath: trackRenderer
       value: 
       objectReference: {fileID: 1821058100}
+    - target: {fileID: 2896818288897168687, guid: ca155248a8a370f4bbbfe0477ae3782d, type: 3}
+      propertyPath: Params.Array.data[0].Value
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2964611715907798263, guid: ca155248a8a370f4bbbfe0477ae3782d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
