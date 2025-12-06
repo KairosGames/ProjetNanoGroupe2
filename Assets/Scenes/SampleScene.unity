@@ -488,6 +488,7 @@ MonoBehaviour:
   farRightSplinesData:
   - startingKnot: 0
     endingKnot: 15
+  layerName: Ground
   offset: 1
   radius: 0.1
   segmentsPerUnit: 10
@@ -966,6 +967,10 @@ PrefabInstance:
     - target: {fileID: 3043286233244981746, guid: 02468199641053a45b0a43b99a09513b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4255555330207885694, guid: 02468199641053a45b0a43b99a09513b, type: 3}
+      propertyPath: playerId
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4255555330207885694, guid: 02468199641053a45b0a43b99a09513b, type: 3}
       propertyPath: trackRenderer
