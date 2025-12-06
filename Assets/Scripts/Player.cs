@@ -17,47 +17,67 @@ public class Player : MonoBehaviour
     [SerializeField] float jumpTime = 0.25f;
 
 
-    bool isInBoost = false;
     [HideInInspector] public bool isBoosting = false;
 
+    Vector3 resettLocalPos;
+    Vector3 checkBoxCenter;
+    Vector3 checkBoxExtents = new Vector3(0.25f, 0.5f, 0.05f);
     float offsetLen;
     float inputDir = 0.0f;
     int maxOffset = 1;
     int actualOffset = 0;
-    bool isDectingGround = false;
+    bool isReady = false;
     bool isJumping = false;
     bool isFalling = false;
 
+
     private void Start()
     {
+        resettLocalPos = transform.localPosition;
         offsetLen = trackRenderer.offset;
-        StartCoroutine(LauchGroundDetectionTimer());
-
-        foreach (var name in Input.GetJoystickNames())
-            Debug.Log("Joystick détecté : " + name);
+        StartCoroutine(LauchReadyTimer());
     }
+
 
     void Update()
     {
-        bool isJumpActionPressed = playerId == 0 ? Input.GetKey(KeyCode.Joystick1Button0) : Input.GetKey(KeyCode.Joystick2Button0);
+        if (!isReady)
+            return;
+
+        bool isBoostActionPressed = playerId == 0 ? Input.GetKey(KeyCode.Joystick1Button0) : Input.GetKey(KeyCode.Joystick2Button0);
         bool isJumpActionReleased = playerId == 0 ? Input.GetKeyUp(KeyCode.Joystick1Button0) : Input.GetKeyUp(KeyCode.Joystick2Button0);
         inputDir = Input.GetAxis($"Horizontal_P{playerId + 1}");
         inputDir = Mathf.Abs(inputDir) >= 0.6f ? Mathf.Sign(inputDir) : 0.0f;
+        checkBoxCenter = transform.position - (transform.up * transform.localPosition.y);
 
-        if (!isJumping && !isFalling && isJumpActionReleased)
-            LaunchJump();
-
-        if (!isJumping && !isFalling && isDectingGround)
-        {
+        if (!isJumping && !isFalling)
             CheckGround();
-
-            CheckInBoost();
-            CheckIsBoosting();
-        }
 
         if (isFalling)
             Fall();
+
+        if (isBoostActionPressed)
+            CheckBooster();
+
+        if (!isJumping && !isFalling && isJumpActionReleased)
+            LaunchJump(); 
     }
+
+
+    void CheckGround()
+    {
+        if (Physics.CheckBox(checkBoxCenter, checkBoxExtents, transform.rotation, groundLayer))
+            return;
+
+        isFalling = true;
+    }
+
+
+    void Fall()
+    {
+        transform.localPosition -= new Vector3(0.0f, fallingSpeed, 0.0f) * Time.deltaTime;
+    }
+
 
     void LaunchJump()
     {
@@ -74,6 +94,22 @@ public class Player : MonoBehaviour
             ease: Ease.OutQuart).OnComplete(() => { DownFromJump(); });
     }
 
+
+    void CheckBooster()
+    {
+        if (isFalling || isJumping)
+            return;
+
+        if (Physics.CheckBox(checkBoxCenter, checkBoxExtents, transform.rotation, boostLayer))
+        {
+            isBoosting = true;
+            return;
+        }
+
+        isBoosting = false;
+    }
+
+
     void DownFromJump()
     {
         Tween.LocalPositionY(
@@ -83,6 +119,7 @@ public class Player : MonoBehaviour
             jumpTime / 2.0f,
             ease: Ease.InQuart).OnComplete(() => { isJumping = false; });
     }
+
 
     void LaunchSideStep()
     {
@@ -99,45 +136,10 @@ public class Player : MonoBehaviour
             ease: Ease.OutQuart);
     }
 
-    void CheckGround()
-    {
-        if (Physics.Raycast(transform.position, -transform.up, out RaycastHit hit, 1.0f, groundLayer))
-            return;
 
-        isFalling = true;
-    }
-
-    void Fall()
-    {
-        transform.localPosition -= new Vector3(0.0f, fallingSpeed, 0.0f) * Time.deltaTime;
-    }
-
-    IEnumerator LauchGroundDetectionTimer()
+    IEnumerator LauchReadyTimer()
     {
         yield return new WaitForSeconds(0.1f);
-        isDectingGround = true;
-    }
-
-
-
-
-    void CheckInBoost()
-    {
-        if (Physics.Raycast(transform.position, -transform.up, out RaycastHit hit, 1.0f, boostLayer))
-            isInBoost = true;
-        else
-        {
-            isInBoost = false;
-            isBoosting = false;
-        }
-    }
-
-    void CheckIsBoosting()
-    {
-        if (isInBoost && Input.GetKey(KeyCode.Space))
-            isBoosting = true;
-        else
-            isBoosting = false;
-
+        isReady = true;
     }
 }

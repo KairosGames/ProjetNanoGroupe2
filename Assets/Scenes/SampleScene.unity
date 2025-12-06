@@ -443,6 +443,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &988515993 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4255555330207885694, guid: 02468199641053a45b0a43b99a09513b, type: 3}
+  m_PrefabInstance: {fileID: 1918446853571116245}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab92481eb1b52c74a9b93e4ca7cc09b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Player
 --- !u!1 &1197271599
 GameObject:
   m_ObjectHideFlags: 0
@@ -915,7 +926,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SplineMoving
   spline: {fileID: 1197271601}
-  speed: 3
+  player: {fileID: 988515993}
+  baseSpeed: 5
+  topSpeed: 5
+  acceleration: 0.05
+  deceleration: 0.05
 --- !u!1001 &1918446853571116245
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -970,7 +985,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4255555330207885694, guid: 02468199641053a45b0a43b99a09513b, type: 3}
       propertyPath: playerId
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4255555330207885694, guid: 02468199641053a45b0a43b99a09513b, type: 3}
       propertyPath: trackRenderer

@@ -24,9 +24,9 @@ public class TrackRenderer : MonoBehaviour
 
     Spline mainSpline;
 
-    void Start()    
+    void Awake()    
     {
-        mainSpline = this.GetComponent<SplineContainer>().Spline;
+        mainSpline = GetComponent<SplineContainer>().Spline;
 
         GameObject farLeftSplineContainer = SplineContainerInit("farLeftSplineContainer");
         GameObject leftSplineContainer = SplineContainerInit("leftSplineContainer");
@@ -97,10 +97,5 @@ public class TrackRenderer : MonoBehaviour
 
             spline.Add(knot);
         }
-    }
-
-    void Update()
-    {
-        
     }
 }

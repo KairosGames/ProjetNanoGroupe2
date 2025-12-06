@@ -45,11 +45,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab92481eb1b52c74a9b93e4ca7cc09b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
+  trackRenderer: {fileID: 0}
   playerId: 0
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
+  boostLayer:
+    serializedVersion: 2
+    m_Bits: 64
   fallingSpeed: 5
+  jumpTime: 0.25
+  isBoosting: 0
 --- !u!1 &6207279594944648216
 GameObject:
   m_ObjectHideFlags: 0
