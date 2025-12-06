@@ -6,11 +6,6 @@ using UnityEngine.Splines;
 
 public class FollowingSpline : MonoBehaviour
 {
-    [Header("Debugging")]
-    [SerializeField] bool isDebugPosActive = false;
-    [SerializeField] int startingNode = 0;
-    [SerializeField] bool areFarsActives = false;
-
     [Header("References")]
     [SerializeField] private SplineContainer spline;
     [SerializeField] private Player player;
@@ -20,6 +15,11 @@ public class FollowingSpline : MonoBehaviour
     [SerializeField] float topSpeed = 5.0f;
     [SerializeField] float acceleration = 0.05f;
     [SerializeField] float deceleration = 0.05f;
+
+    [Header("Debugging")]
+    [SerializeField] bool isDebugPosActive = false;
+    [SerializeField] int startingNode = 0;
+    [SerializeField] bool areFarsActives = false;
 
     private float speed;
     private float currentPos;
