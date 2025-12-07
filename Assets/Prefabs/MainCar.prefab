@@ -46,15 +46,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4027954e944153d4696a35ae90e24cde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SplineMoving
-  isDebugPosActive: 0
-  startingNode: 0
-  areFarsActives: 0
   spline: {fileID: 0}
   player: {fileID: 545709394311971752}
-  baseSpeed: 100
+  baseSpeed: 10
   topSpeed: 5
   acceleration: 0.05
   deceleration: 0.05
+  isDebugPosActive: 0
+  startingNode: 0
+  areFarsActives: 0
 --- !u!1 &8412729020081730795
 GameObject:
   m_ObjectHideFlags: 0
