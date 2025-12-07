@@ -355,6 +355,14 @@ PrefabInstance:
       propertyPath: spline
       value: 
       objectReference: {fileID: 1197271601}
+    - target: {fileID: 5778851161427359816, guid: ca155248a8a370f4bbbfe0477ae3782d, type: 3}
+      propertyPath: baseSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5778851161427359816, guid: ca155248a8a370f4bbbfe0477ae3782d, type: 3}
+      propertyPath: isDebugPosActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -392,7 +400,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TrackRenderer
   farLeftSplinesData:
   - startingKnot: 0
-    endingKnot: 15
+    endingKnot: 2
+  - startingKnot: 4
+    endingKnot: 6
+  - startingKnot: 8
+    endingKnot: 10
+  - startingKnot: 12
+    endingKnot: 14
   leftSplinesData:
   - startingKnot: 0
     endingKnot: 15
@@ -410,6 +424,7 @@ MonoBehaviour:
   radius: 0.1
   segmentsPerUnit: 10
   material: {fileID: 2100000, guid: 6a9ee62226ec3614e99f871ba9494eec, type: 2}
+  entireSplines: []
 --- !u!114 &1197271601
 MonoBehaviour:
   m_ObjectHideFlags: 0

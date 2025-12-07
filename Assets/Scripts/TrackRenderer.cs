@@ -1,16 +1,10 @@
+using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Splines;
 
 public class TrackRenderer : MonoBehaviour
 {
-    [System.Serializable]
-    struct NewSplineParameters
-    {
-        public int startingKnot;
-        public int endingKnot;
-    }
-
     [SerializeField] NewSplineParameters[] farLeftSplinesData;
     [SerializeField] NewSplineParameters[] leftSplinesData;
     [SerializeField] NewSplineParameters[] middleSplinesData;
@@ -23,8 +17,11 @@ public class TrackRenderer : MonoBehaviour
     [SerializeField] Material material;
 
     Spline mainSpline;
+    
+    [HideInInspector] public List<SplineContainer> entireSplines;
 
-    void Awake()    
+
+    void Awake()
     {
         mainSpline = GetComponent<SplineContainer>().Spline;
 
@@ -62,6 +59,7 @@ public class TrackRenderer : MonoBehaviour
     GameObject SplineContainerInit(string name)
     {
         GameObject newTrack = new GameObject();
+        newTrack.transform.parent = transform;
         newTrack.layer = LayerMask.NameToLayer(layerName);
         SplineContainer splineContainer = newTrack.AddComponent<SplineContainer>();
         splineContainer.RemoveSpline(splineContainer.Spline);
@@ -72,6 +70,7 @@ public class TrackRenderer : MonoBehaviour
         newTrack.name = name;
         return newTrack;
     }
+
     void CreateSpline(GameObject track, NewSplineParameters data, int offsetMultiplier)
     {
 
@@ -97,5 +96,12 @@ public class TrackRenderer : MonoBehaviour
 
             spline.Add(knot);
         }
+    }
+
+
+    [System.Serializable] struct NewSplineParameters
+    {
+        public int startingKnot;
+        public int endingKnot;
     }
 }

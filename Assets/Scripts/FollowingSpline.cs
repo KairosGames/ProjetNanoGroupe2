@@ -29,6 +29,7 @@ public class FollowingSpline : MonoBehaviour
     private bool decelerating = true;
     private float decelerationTime = 1.0f;
 
+
     private void Awake()
     {
         speed = baseSpeed;
