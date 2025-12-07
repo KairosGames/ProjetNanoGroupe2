@@ -8,7 +8,8 @@ public class FollowingSpline : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private SplineContainer spline;
-    [SerializeField] private Player player;
+    [SerializeField] private Player player1;
+    [SerializeField] private Player player2;
 
     [Header("Settings")]
     [SerializeField] float baseSpeed = 5.0f;
@@ -44,8 +45,9 @@ public class FollowingSpline : MonoBehaviour
     {
         UpdatePosOnSpline();
 
-        if (player.isBoosting)
+        if (player1.isBoosting || player2.isBoosting)
         {
+            
             if (!accelerating)
             {
                 if (decelerationTime < 1.0f)
@@ -96,6 +98,7 @@ public class FollowingSpline : MonoBehaviour
         currentPos = currentLength * t;
 
         if (areFarsActives)
-            player.maxOffset++;
+            player1.maxOffset++;
+            player2.maxOffset++;
     }
 }
