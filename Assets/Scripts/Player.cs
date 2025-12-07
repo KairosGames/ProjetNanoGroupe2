@@ -2,6 +2,7 @@ using PrimeTween;
 using System.Collections;
 using TreeEditor;
 using UnityEngine;
+using UnityEngine.Splines;
 using UnityEngine.UI;
 
 public class Player : MonoBehaviour
@@ -15,6 +16,7 @@ public class Player : MonoBehaviour
     [SerializeField] LayerMask groundLayer;
     [SerializeField] LayerMask boostLayer1;
     [SerializeField] LayerMask boostLayer2;
+    [SerializeField] LayerMask boostLayerBoth;
     [SerializeField] float fallingSpeed = 5.0f;
     [SerializeField] float jumpTime = 0.25f;
 
@@ -53,6 +55,8 @@ public class Player : MonoBehaviour
         inputDir = Mathf.Abs(inputDir) >= 0.6f ? Mathf.Sign(inputDir) : 0.0f;
         checkBoxCenter = transform.position - (transform.up * transform.localPosition.y);
 
+        SetPosition();
+
         if (!isJumping && !isFalling)
             CheckGround();
 
@@ -64,6 +68,12 @@ public class Player : MonoBehaviour
 
         if (!isJumping && !isFalling && isJumpActionReleased)
             LaunchJump(); 
+    }
+
+
+    void SetPosition()
+    {
+        //spline.Evaluate(actualRatio, out var pos, out var dir, out var up); FollowingSpline.actualRatio
     }
 
 
