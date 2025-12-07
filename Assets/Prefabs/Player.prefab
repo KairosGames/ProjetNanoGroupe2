@@ -51,12 +51,19 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
-  boostLayer:
+  boostLayer1:
     serializedVersion: 2
     m_Bits: 64
+  boostLayer2:
+    serializedVersion: 2
+    m_Bits: 128
+  boostLayerBoth:
+    serializedVersion: 2
+    m_Bits: 256
   fallingSpeed: 5
   jumpTime: 0.25
   isBoosting: 0
+  maxOffset: 1
 --- !u!1 &6207279594944648216
 GameObject:
   m_ObjectHideFlags: 0
