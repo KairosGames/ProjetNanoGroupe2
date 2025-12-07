@@ -25,28 +25,36 @@ public class TrackRenderer : MonoBehaviour
     {
         mainSpline = GetComponent<SplineContainer>().Spline;
 
-        GameObject farLeftSplineContainer = SplineContainerInit("farLeftSplineContainer");
-        GameObject leftSplineContainer = SplineContainerInit("leftSplineContainer");
-        GameObject middleSplineContainer = SplineContainerInit("middleSplineContainer");
-        GameObject rightSplineContainer = SplineContainerInit("rightSplineContainer");
-        GameObject farRightSplineContainer = SplineContainerInit("farRightSplineContainer");
-
         foreach (NewSplineParameters data in farLeftSplinesData)
-            CreateSpline(farLeftSplineContainer, data, -2);
+        {
+            GameObject newTrack = SplineContainerInit();
+            CreateSpline(newTrack, data, -2);
+            AddColliderAndMaterial(newTrack);
+        }
         foreach (NewSplineParameters data in leftSplinesData)
-            CreateSpline(leftSplineContainer, data, -1);
+        {
+            GameObject newTrack = SplineContainerInit();
+            CreateSpline(newTrack, data, -1);
+            AddColliderAndMaterial(newTrack);
+        }
         foreach (NewSplineParameters data in middleSplinesData)
-            CreateSpline(middleSplineContainer, data, 0);
+        {
+            GameObject newTrack = SplineContainerInit();
+            CreateSpline(newTrack, data, -0);
+            AddColliderAndMaterial(newTrack);
+        }
         foreach (NewSplineParameters data in rightSplinesData)
-            CreateSpline(rightSplineContainer, data, 1);
+        {
+            GameObject newTrack = SplineContainerInit();
+            CreateSpline(newTrack, data, 1);
+            AddColliderAndMaterial(newTrack);
+        }
         foreach (NewSplineParameters data in farRightSplinesData)
-            CreateSpline(farRightSplineContainer, data, 2);
-
-        AddColliderAndMaterial(farLeftSplineContainer);
-        AddColliderAndMaterial(leftSplineContainer);
-        AddColliderAndMaterial(middleSplineContainer);
-        AddColliderAndMaterial(rightSplineContainer);
-        AddColliderAndMaterial(farRightSplineContainer);
+        {
+            GameObject newTrack = SplineContainerInit();
+            CreateSpline(newTrack, data, 2);
+            AddColliderAndMaterial(newTrack);
+        }
     }
 
     void AddColliderAndMaterial(GameObject track)
@@ -56,7 +64,7 @@ public class TrackRenderer : MonoBehaviour
         track.GetComponent<MeshRenderer>().material = material;
     }
 
-    GameObject SplineContainerInit(string name)
+    GameObject SplineContainerInit()
     {
         GameObject newTrack = new GameObject();
         newTrack.transform.parent = transform;
@@ -67,7 +75,6 @@ public class TrackRenderer : MonoBehaviour
         extrude.Radius = radius;
         extrude.SegmentsPerUnit = segmentsPerUnit;
         extrude.Container = splineContainer;
-        newTrack.name = name;
         return newTrack;
     }
 
