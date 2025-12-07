@@ -16,6 +16,7 @@ public class TrackRenderer : MonoBehaviour
     [SerializeField] float segmentsPerUnit;
     [SerializeField] Material material;
 
+    List<GameObject> trackParents = new();
     Spline mainSpline;
     
     [HideInInspector] public List<SplineContainer> entireSplines;
@@ -25,49 +26,63 @@ public class TrackRenderer : MonoBehaviour
     {
         mainSpline = GetComponent<SplineContainer>().Spline;
 
+        GenerateAllTracks();
+    }
+
+
+    void GenerateAllTracks()
+    {
+        for (int i = 0; i <= 4; i++)
+        {
+            GameObject trackParent = new GameObject();
+            trackParent.transform.parent = transform;
+            trackParent.name = $"{((TrackType)i)}Track";
+            trackParents.Add(trackParent);
+        }
+
+        int index = 0;
         foreach (NewSplineParameters data in farLeftSplinesData)
         {
-            GameObject newTrack = SplineContainerInit();
+            GameObject newTrack = SplineContainerInit(index);
             CreateSpline(newTrack, data, -2);
             AddColliderAndMaterial(newTrack);
         }
+        index++;
         foreach (NewSplineParameters data in leftSplinesData)
         {
-            GameObject newTrack = SplineContainerInit();
+            GameObject newTrack = SplineContainerInit(index);
             CreateSpline(newTrack, data, -1);
             AddColliderAndMaterial(newTrack);
         }
+        index++;
         foreach (NewSplineParameters data in middleSplinesData)
         {
-            GameObject newTrack = SplineContainerInit();
+            GameObject newTrack = SplineContainerInit(index);
             CreateSpline(newTrack, data, -0);
             AddColliderAndMaterial(newTrack);
         }
+        index++;
         foreach (NewSplineParameters data in rightSplinesData)
         {
-            GameObject newTrack = SplineContainerInit();
+            GameObject newTrack = SplineContainerInit(index);
             CreateSpline(newTrack, data, 1);
             AddColliderAndMaterial(newTrack);
         }
+        index++;
         foreach (NewSplineParameters data in farRightSplinesData)
         {
-            GameObject newTrack = SplineContainerInit();
+            GameObject newTrack = SplineContainerInit(index);
             CreateSpline(newTrack, data, 2);
             AddColliderAndMaterial(newTrack);
         }
     }
 
-    void AddColliderAndMaterial(GameObject track)
-    {
-        MeshCollider collider = track.AddComponent<MeshCollider>();
-        collider.sharedMesh = track.GetComponent<MeshFilter>().sharedMesh;
-        track.GetComponent<MeshRenderer>().material = material;
-    }
 
-    GameObject SplineContainerInit()
+    GameObject SplineContainerInit(int parentIndex)
     {
         GameObject newTrack = new GameObject();
-        newTrack.transform.parent = transform;
+        newTrack.transform.parent = trackParents[parentIndex].transform;
+        newTrack.name = $"{((TrackType)parentIndex)}Chunk";
         newTrack.layer = LayerMask.NameToLayer(layerName);
         SplineContainer splineContainer = newTrack.AddComponent<SplineContainer>();
         splineContainer.RemoveSpline(splineContainer.Spline);
@@ -77,6 +92,7 @@ public class TrackRenderer : MonoBehaviour
         extrude.Container = splineContainer;
         return newTrack;
     }
+
 
     void CreateSpline(GameObject track, NewSplineParameters data, int offsetMultiplier)
     {
@@ -97,12 +113,20 @@ public class TrackRenderer : MonoBehaviour
 
             Vector3 right = Vector3.Cross(tangent, up).normalized;
 
-            knot.Position.x += right[0] * offsetMultiplier * offset;
-            knot.Position.y += right[1] * offsetMultiplier * offset;
-            knot.Position.z += right[2] * offsetMultiplier * offset;
+            knot.Position.x -= right[0] * offsetMultiplier * offset;
+            knot.Position.y -= right[1] * offsetMultiplier * offset;
+            knot.Position.z -= right[2] * offsetMultiplier * offset;
 
             spline.Add(knot);
         }
+    }
+
+
+    void AddColliderAndMaterial(GameObject track)
+    {
+        MeshCollider collider = track.AddComponent<MeshCollider>();
+        collider.sharedMesh = track.GetComponent<MeshFilter>().sharedMesh;
+        track.GetComponent<MeshRenderer>().material = material;
     }
 
 
@@ -110,5 +134,15 @@ public class TrackRenderer : MonoBehaviour
     {
         public int startingKnot;
         public int endingKnot;
+    }
+
+
+    public enum TrackType
+    {
+        FarLeft,
+        Left,
+        Middle,
+        Right,
+        FarRight
     }
 }
