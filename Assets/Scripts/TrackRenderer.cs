@@ -5,15 +5,20 @@ using UnityEngine.Splines;
 
 public class TrackRenderer : MonoBehaviour
 {
+    [Header("Track Data")]
     [SerializeField] NewSplineParameters[] farLeftSplinesData;
     [SerializeField] NewSplineParameters[] leftSplinesData;
     [SerializeField] NewSplineParameters[] middleSplinesData;
     [SerializeField] NewSplineParameters[] rightSplinesData;
     [SerializeField] NewSplineParameters[] farRightSplinesData;
+
+    [Header("Settings")]
     [SerializeField] string layerName;
     [SerializeField] public float offset;
     [SerializeField] float radius;
     [SerializeField] float segmentsPerUnit;
+
+    [Header("Dependencies")]
     [SerializeField] Material material;
 
     List<GameObject> trackParents = new();
@@ -27,62 +32,37 @@ public class TrackRenderer : MonoBehaviour
         mainSpline = GetComponent<SplineContainer>().Spline;
 
         GenerateAllTracks();
+
+        if (layerName == "Ground")
+            GenerateEntireSplines();
     }
 
 
     void GenerateAllTracks()
     {
-        for (int i = 0; i <= 4; i++)
+        NewSplineParameters[][] data = { farLeftSplinesData, leftSplinesData, middleSplinesData, rightSplinesData, farRightSplinesData };
+        for (int iType = 0; iType <= 4; iType++)
         {
             GameObject trackParent = new GameObject();
             trackParent.transform.parent = transform;
-            trackParent.name = $"{((TrackType)i)}Track";
+            trackParent.name = $"{((TrackType)iType)}Track" + "_" + layerName + "Layer";
             trackParents.Add(trackParent);
-        }
 
-        int index = 0;
-        foreach (NewSplineParameters data in farLeftSplinesData)
-        {
-            GameObject newTrack = SplineContainerInit(index);
-            CreateSpline(newTrack, data, -2);
-            AddColliderAndMaterial(newTrack);
-        }
-        index++;
-        foreach (NewSplineParameters data in leftSplinesData)
-        {
-            GameObject newTrack = SplineContainerInit(index);
-            CreateSpline(newTrack, data, -1);
-            AddColliderAndMaterial(newTrack);
-        }
-        index++;
-        foreach (NewSplineParameters data in middleSplinesData)
-        {
-            GameObject newTrack = SplineContainerInit(index);
-            CreateSpline(newTrack, data, -0);
-            AddColliderAndMaterial(newTrack);
-        }
-        index++;
-        foreach (NewSplineParameters data in rightSplinesData)
-        {
-            GameObject newTrack = SplineContainerInit(index);
-            CreateSpline(newTrack, data, 1);
-            AddColliderAndMaterial(newTrack);
-        }
-        index++;
-        foreach (NewSplineParameters data in farRightSplinesData)
-        {
-            GameObject newTrack = SplineContainerInit(index);
-            CreateSpline(newTrack, data, 2);
-            AddColliderAndMaterial(newTrack);
+            for (int i = 0; i < data[iType].Length; i++)
+            {
+                GameObject newTrack = SplineContainerInit(iType, i);
+                CreateSpline(newTrack, data[iType][i], iType - 2);
+                AddColliderAndMaterial(newTrack);
+            }
         }
     }
 
 
-    GameObject SplineContainerInit(int parentIndex)
+    GameObject SplineContainerInit(int parentIndex, int indexOnTrack)
     {
         GameObject newTrack = new GameObject();
         newTrack.transform.parent = trackParents[parentIndex].transform;
-        newTrack.name = $"{((TrackType)parentIndex)}Chunk";
+        newTrack.name = $"{((TrackType)parentIndex)}Chunk{indexOnTrack}" + "_" + layerName;
         newTrack.layer = LayerMask.NameToLayer(layerName);
         SplineContainer splineContainer = newTrack.AddComponent<SplineContainer>();
         splineContainer.RemoveSpline(splineContainer.Spline);
@@ -127,6 +107,29 @@ public class TrackRenderer : MonoBehaviour
         MeshCollider collider = track.AddComponent<MeshCollider>();
         collider.sharedMesh = track.GetComponent<MeshFilter>().sharedMesh;
         track.GetComponent<MeshRenderer>().material = material;
+    }
+
+
+    void GenerateEntireSplines()
+    {
+        GameObject parent = new GameObject();
+        parent.transform.parent = transform;
+        parent.name = "EntireSplines";
+
+        for(int i = 0; i <= 4; i++)
+        {
+            GameObject newTrack = new GameObject();
+            newTrack.transform.parent = parent.transform;
+            newTrack.name = $"{((TrackType)i)}TrackReference";
+            SplineContainer splineContainer = newTrack.AddComponent<SplineContainer>();
+            splineContainer.RemoveSpline(splineContainer.Spline);
+
+            NewSplineParameters data = new NewSplineParameters();
+            data.startingKnot = 0;
+            data.endingKnot = mainSpline.Count - 1;
+
+            CreateSpline(newTrack, data, i - 2);
+        }
     }
 
 
