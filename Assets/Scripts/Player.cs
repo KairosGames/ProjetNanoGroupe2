@@ -2,6 +2,7 @@ using PrimeTween;
 using System.Collections;
 using TreeEditor;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -12,13 +13,15 @@ public class Player : MonoBehaviour
     [Tooltip("Must be 0 or 1")]
     [SerializeField, Range(0, 1)] int playerId = 0;
     [SerializeField] LayerMask groundLayer;
-    [SerializeField] LayerMask boostLayer;
+    [SerializeField] LayerMask boostLayer1;
+    [SerializeField] LayerMask boostLayer2;
     [SerializeField] float fallingSpeed = 5.0f;
     [SerializeField] float jumpTime = 0.25f;
 
     [HideInInspector] public bool isBoosting = false;
     [HideInInspector] public int maxOffset = 1;
 
+    LayerMask boostLayerChecked;
     Vector3 resettLocalPos;
     Vector3 checkBoxCenter;
     Vector3 checkBoxExtents = new Vector3(0.25f, 0.5f, 0.05f);
@@ -32,6 +35,7 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
+        boostLayerChecked = playerId == 0 ? boostLayer1 : boostLayer2;
         resettLocalPos = transform.localPosition;
         offsetLen = trackRenderer.offset;
         StartCoroutine(LauchReadyTimer());
@@ -98,8 +102,8 @@ public class Player : MonoBehaviour
     {
         if (isFalling || isJumping)
             return;
-
-        if (Physics.CheckBox(checkBoxCenter, checkBoxExtents, transform.rotation, boostLayer))
+            
+        if (Physics.CheckBox(checkBoxCenter, checkBoxExtents, transform.rotation, boostLayerChecked))
         {
             isBoosting = true;
             return;
