@@ -935,6 +935,10 @@ PrefabInstance:
       value: 256
       objectReference: {fileID: 0}
     - target: {fileID: 1885190193278648408, guid: ca155248a8a370f4bbbfe0477ae3782d, type: 3}
+      propertyPath: manager
+      value: 
+      objectReference: {fileID: 304195378}
+    - target: {fileID: 1885190193278648408, guid: ca155248a8a370f4bbbfe0477ae3782d, type: 3}
       propertyPath: roughness
       value: 1
       objectReference: {fileID: 0}

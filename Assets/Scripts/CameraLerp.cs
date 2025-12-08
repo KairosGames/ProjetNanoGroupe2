@@ -42,6 +42,8 @@ public class CameraLerp : MonoBehaviour
 
     void Update()
     {
+        isFollowingAnchor = !manager.finished;
+
         if (isFollowingAnchor)
         {
             SetSpeedEfect();
@@ -51,6 +53,7 @@ public class CameraLerp : MonoBehaviour
         else
         {
             windParticles.Stop();
+            starsParticles.gameObject.SetActive(true);
         }
     }
 
