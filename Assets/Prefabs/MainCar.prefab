@@ -50,7 +50,7 @@ MonoBehaviour:
   spline: {fileID: 0}
   player1: {fileID: 545709394311971752}
   player2: {fileID: 0}
-  tSmooth: 0.3
+  tSmooth: 0.1
   baseSpeed: 10
   topSpeed: 15
   acceleration: 0.05
