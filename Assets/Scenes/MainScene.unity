@@ -414,6 +414,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Boost1
       objectReference: {fileID: 0}
+    - target: {fileID: 5560670203733588002, guid: a0998bcc3180cb3448335891f2ead785, type: 3}
+      propertyPath: layerName
+      value: Boost2
+      objectReference: {fileID: 0}
     - target: {fileID: 8598287062996236851, guid: a0998bcc3180cb3448335891f2ead785, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -944,7 +948,7 @@ PrefabInstance:
     - target: {fileID: 5778851161427359816, guid: ca155248a8a370f4bbbfe0477ae3782d, type: 3}
       propertyPath: player2
       value: 
-      objectReference: {fileID: 1599295399}
+      objectReference: {fileID: 37945762}
     - target: {fileID: 5778851161427359816, guid: ca155248a8a370f4bbbfe0477ae3782d, type: 3}
       propertyPath: tSmooth
       value: 0.1
