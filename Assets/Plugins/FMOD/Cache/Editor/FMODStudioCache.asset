@@ -351,7 +351,7 @@ MonoBehaviour:
   StringsBanks:
   - {fileID: 7165354384997087733}
   cacheVersion: 131857
-  cacheTime: 639007967710950324
+  cacheTime: 639007972082149750
   SerializableEventsDict:
   - key: event:/Avatar/mooving
     index: 0
@@ -418,7 +418,7 @@ MonoBehaviour:
   Path: Fmod_Project/Nano_Fmod/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639007967710919763
+  lastModified: 639007972082119199
   FileSizes:
   - Name: Desktop
     Value: 6269312
@@ -632,7 +632,7 @@ MonoBehaviour:
   Path: Fmod_Project/Nano_Fmod/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639007967710950324
+  lastModified: 639007972082149750
   FileSizes:
   - Name: Desktop
     Value: 1758
