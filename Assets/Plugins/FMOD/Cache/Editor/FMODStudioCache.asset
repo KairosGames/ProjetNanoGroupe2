@@ -54,7 +54,7 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 8000
---- !u!114 &-4355194850391751762
+--- !u!114 &-5940858628341830376
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -64,18 +64,46 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Music_main/Tuto
+  m_Name: parameter:/Phase_musique
   m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
-  Name: Tuto
-  StudioPath: 
+  Name: Phase_musique
+  StudioPath: parameter:/Phase_musique
+  Min: 0
+  Max: 3
+  Default: 0
+  ID:
+    data1: 565341277
+    data2: 99627347
+  Type: 2
+  IsGlobal: 1
+  Labels:
+  - Tuto
+  - Theme
+  - Twist
+  - Fin
+  Exists: 1
+--- !u!114 &-3799675434011685538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Speed_player
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
+  Name: Speed_player
+  StudioPath: parameter:/Speed_player
   Min: 0
   Max: 1
   Default: 0
   ID:
-    data1: 2082637978
-    data2: 2903542173
+    data1: 3410022642
+    data2: 3832448680
   Type: 0
-  IsGlobal: 0
+  IsGlobal: 1
   Labels: []
   Exists: 1
 --- !u!114 &-3795397285902536000
@@ -99,7 +127,7 @@ MonoBehaviour:
     data1: 4290085416
     data2: 3706909244
   Type: 0
-  IsGlobal: 0
+  IsGlobal: 1
   Labels: []
   Exists: 1
 --- !u!114 &-2847664771017583873
@@ -156,6 +184,34 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 47758
+--- !u!114 &-1630421449379316009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Music_main/Phase_musique
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
+  Name: Phase_musique
+  StudioPath: 
+  Min: 0
+  Max: 3
+  Default: 0
+  ID:
+    data1: 565341277
+    data2: 99627347
+  Type: 2
+  IsGlobal: 1
+  Labels:
+  - Tuto
+  - Theme
+  - Twist
+  - Fin
+  Exists: 1
 --- !u!114 &-1046921446199846983
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -177,7 +233,7 @@ MonoBehaviour:
     data1: 3638942785
     data2: 3244474014
   Type: 0
-  IsGlobal: 0
+  IsGlobal: 1
   Labels: []
   Exists: 1
 --- !u!114 &-909076741752406751
@@ -207,6 +263,54 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 8000
+--- !u!114 &-506820740402499169
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/score_finish
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
+  Name: score_finish
+  StudioPath: parameter:/Score_finish
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 4290085416
+    data2: 3706909244
+  Type: 0
+  IsGlobal: 1
+  Labels: []
+  Exists: 1
+--- !u!114 &-464077977508678002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Fin_musique
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
+  Name: Fin_musique
+  StudioPath: parameter:/Fin_musique
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 4142508564
+    data2: 2804827388
+  Type: 0
+  IsGlobal: 1
+  Labels: []
+  Exists: 1
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -236,13 +340,18 @@ MonoBehaviour:
   - {fileID: 4319324440523669181}
   - {fileID: 3585867271708589901}
   - {fileID: -2847664771017583873}
-  EditorParameters: []
+  EditorParameters:
+  - {fileID: 111122648057387241}
+  - {fileID: -5940858628341830376}
+  - {fileID: -3799675434011685538}
+  - {fileID: -506820740402499169}
+  - {fileID: -464077977508678002}
   MasterBanks:
   - {fileID: 1120030550244326709}
   StringsBanks:
   - {fileID: 7165354384997087733}
   cacheVersion: 131857
-  cacheTime: 639005487537550334
+  cacheTime: 639007870532898543
   SerializableEventsDict:
   - key: event:/Avatar/mooving
     index: 0
@@ -270,6 +379,30 @@ MonoBehaviour:
     index: 11
   - key: event:/Avatar/land
     index: 12
+--- !u!114 &111122648057387241
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/is_boosting
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
+  Name: is_boosting
+  StudioPath: parameter:/is_boosting
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 3638942785
+    data2: 3244474014
+  Type: 0
+  IsGlobal: 1
+  Labels: []
+  Exists: 1
 --- !u!114 &1120030550244326709
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -285,10 +418,10 @@ MonoBehaviour:
   Path: Fmod_Project/Nano_Fmod/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639005487537540285
+  lastModified: 639007870532898543
   FileSizes:
   - Name: Desktop
-    Value: 6241024
+    Value: 6267968
   Exists: 1
 --- !u!114 &1786989775475216835
 MonoBehaviour:
@@ -452,11 +585,11 @@ MonoBehaviour:
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: -4355194850391751762}
   - {fileID: 8630577183696207530}
+  - {fileID: -1630421449379316009}
   MinDistance: 1
   MaxDistance: 20
-  Length: 150178
+  Length: 162720
 --- !u!114 &6256837047013209687
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -499,10 +632,10 @@ MonoBehaviour:
   Path: Fmod_Project/Nano_Fmod/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639005487537550334
+  lastModified: 639005513371675682
   FileSizes:
   - Name: Desktop
-    Value: 1750
+    Value: 1758
   Exists: 1
 --- !u!114 &7402025417936205027
 MonoBehaviour:
@@ -525,7 +658,7 @@ MonoBehaviour:
     data1: 3410022642
     data2: 3832448680
   Type: 0
-  IsGlobal: 0
+  IsGlobal: 1
   Labels: []
   Exists: 1
 --- !u!114 &7618211463458784923
@@ -576,6 +709,6 @@ MonoBehaviour:
     data1: 4142508564
     data2: 2804827388
   Type: 0
-  IsGlobal: 0
+  IsGlobal: 1
   Labels: []
   Exists: 1
