@@ -20,6 +20,7 @@ public class CameraLerp : MonoBehaviour
     FollowingSpline mainCar;
     Camera mainCam;
 
+
     void Awake()
     {
         mainCar = anchor.parent.GetComponent<FollowingSpline>();
@@ -32,16 +33,18 @@ public class CameraLerp : MonoBehaviour
         starsParticles.gameObject.SetActive(false);
     }
     
+
     void Start()
     {
         LauchRoughnessTwean();
     }
 
+
     void Update()
     {
         if (isFollowingAnchor)
         {
-            
+            SetSpeedEfect();
             transform.position = Vector3.Lerp(transform.position, anchor.position, roughness * Time.deltaTime);
             transform.rotation = Quaternion.Slerp(transform.rotation, anchor.rotation, roughness * Time.deltaTime);
         }
@@ -51,8 +54,19 @@ public class CameraLerp : MonoBehaviour
         }
     }
 
+
     void LauchRoughnessTwean()
     {
         Tween.Custom(roughness, 6.0f, duration : 5.0f, onValueChange: v => roughness = v);
+    }
+
+
+    void SetSpeedEfect()
+    {
+        float t = Mathf.InverseLerp(mainCar.baseSpeed, mainCar.topSpeed, mainCar.speed);
+        mainCam.fieldOfView = Mathf.Lerp(80.0f, 110.0f, t);
+        windParticles.startSpeed= Mathf.Lerp(30.0f, 60.0f, t);
+        var main = windParticles.main;
+        main.simulationSpeed = Mathf.Lerp(0.4f, 2.0f, t);
     }
 }
