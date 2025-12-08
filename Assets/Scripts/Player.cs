@@ -1,17 +1,17 @@
 using PrimeTween;
 using System.Collections;
-using TreeEditor;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Splines;
-using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] TrackRenderer trackRenderer;
-    [SerializeField] GameObject childVisual;
     [SerializeField] Player otherPlayer;
+
+    [Header("InterReferences")]
+    [SerializeField] GameObject[] activeOnTrack;
+    [SerializeField] GameObject childVisual;
 
     [Header("Settings")]
     [Tooltip("Must be 0 or 1")]
@@ -22,60 +22,118 @@ public class Player : MonoBehaviour
     [SerializeField] LayerMask boostLayerBoth;
     [SerializeField] float fallingSpeed = 5.0f;
     [SerializeField] float jumpTime = 0.25f;
+    [SerializeField] float respawnTime = 1.0f;
 
     [System.NonSerialized] public int maxOffset = 1;
     [HideInInspector] public bool isBoosting = false;
-    
+    [HideInInspector] public bool isBoostActionPressed = false;
 
+    FollowingSpline carParent;
     LayerMask boostLayerChecked;
     Vector3 resettLocalPos;
     Vector3 checkBoxExtents = new Vector3(0.25f, 0.5f, 0.05f);
     float offsetLen;
     float inputDir = 0.0f;
+    float localYResetSpawn = 2.0f;
+    float lastT = 0.0f;
+    float tVel = 0.0f;
     int actualOffset = 0;
     bool isReady = false;
     bool isJumping = false;
     bool isFalling = false;
+    bool isRespawning = false;
+    bool canChoose = false;
 
 
-    [Header("MovementSmoothness")]
-    [SerializeField] float tWeight = 0.08f;
-    float lastT = 0.0f;
-    float tVel = 0.0f;
+    FMOD.Studio.EventInstance movingSound;
+    FMOD.Studio.EventInstance movingBoostSound;
+    FMOD.Studio.EventInstance boostingSound;
+    FMOD.Studio.EventInstance boostingBothSound;
+    string boostParamName;
 
     private void Awake()
     {
+        carParent = transform.parent.GetComponent<FollowingSpline>();
         boostLayerChecked = playerId == 0 ? boostLayer1 : boostLayer2;
         resettLocalPos = transform.localPosition;
         offsetLen = trackRenderer.offset;
+        actualOffset = playerId == 0 ? -1 : 1;
+
+        LoadAllSounds();
         StartCoroutine(LauchReadyTimer());
     }
 
 
     void Update()
     {
+        SetActiveOnTrack();
+
         if (!isReady)
             return;
 
-        bool isBoostActionPressed = playerId == 0 ? Input.GetKey(KeyCode.Joystick1Button0) : Input.GetKey(KeyCode.Joystick2Button0);
+        isBoostActionPressed = playerId == 0 ? Input.GetKey(KeyCode.Joystick1Button0) : Input.GetKey(KeyCode.Joystick2Button0);
+        bool isChooseActionJustPressed = playerId == 0 ? Input.GetKeyDown(KeyCode.Joystick1Button0) : Input.GetKeyDown(KeyCode.Joystick2Button0);
         bool isJumpActionReleased = playerId == 0 ? Input.GetKeyUp(KeyCode.Joystick1Button0) : Input.GetKeyUp(KeyCode.Joystick2Button0);
         inputDir = Input.GetAxis($"Horizontal_P{playerId + 1}");
         inputDir = Mathf.Abs(inputDir) >= 0.6f ? Mathf.Sign(inputDir) : 0.0f;
 
-        if (!isFalling)
-            SetPosition();
+        if (isRespawning)
+        {
+            ChooseLane(isChooseActionJustPressed);
+            return;
+        }
 
         if (!isJumping && !isFalling)
+        {
+            SetPosition();
             CheckGround();
+        }
 
         if (isFalling)
             Fall();
 
         if (isBoostActionPressed)
             CheckBooster();
+        else
+            isBoosting = false;
 
         if (!isJumping && !isFalling && isJumpActionReleased)
             LaunchJump(); 
+    }
+
+    void LoadAllSounds()
+    {
+        movingSound = FMODUnity.RuntimeManager.CreateInstance("event:/Avatar/moving");
+        movingBoostSound = FMODUnity.RuntimeManager.CreateInstance("event:/Avatar/Boost");
+        string boostPath = playerId == 0 ? "event:/Avatar/Combot/Barre_combot_1" : "event:/Avatar/Combot/Barre_combot_2";
+        boostParamName = playerId == 0 ? "is_boosting_1" : "is_boosting_2";
+        boostingSound = FMODUnity.RuntimeManager.CreateInstance(boostPath);
+        boostingBothSound = FMODUnity.RuntimeManager.CreateInstance("event:/Avatar/Combot/Barre_combot_3");
+    }
+
+
+    void SetActiveOnTrack()
+    {
+        bool isActive = !isJumping && !isFalling && !isRespawning;
+        float movParam = isActive ? 1.0f : 0.0f;
+
+        foreach (GameObject go in activeOnTrack)
+            go.SetActive(isActive);
+
+        FMODUnity.RuntimeManager.StudioSystem.setParameterByName("is_moving", movParam);
+        if (!IsSoundPlaying(movingSound) && isActive)
+            movingSound.start();
+
+        float boostParam = isBoosting ? 1.0f : 0.0f;
+        FMODUnity.RuntimeManager.StudioSystem.setParameterByName(boostParamName, boostParam);
+        if (!IsSoundPlaying(boostingSound) && isBoosting)
+            boostingSound.start();
+
+        bool isBothBoost = isBoosting && otherPlayer.isBoosting && otherPlayer.actualOffset == actualOffset;
+        if (!IsSoundPlaying(boostingBothSound) && isBothBoost)
+            boostingBothSound.start();
+        else if (IsSoundPlaying(boostingBothSound) && !isBothBoost)
+            boostingBothSound.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
     }
 
 
@@ -86,7 +144,7 @@ public class Player : MonoBehaviour
         Vector3 carLocalPos = actualSpline.transform.InverseTransformPoint(carPos);
         SplineUtility.GetNearestPoint(actualSpline.Spline, carLocalPos, out var nearestLocal, out float t);
         if (lastT == 0.0f) lastT = t;
-        lastT = Mathf.SmoothDamp(lastT, t, ref tVel, tWeight);
+        lastT = Mathf.SmoothDamp(lastT, t, ref tVel, carParent.tSmooth);
         actualSpline.Evaluate(lastT, out var localPosFromSpline, out var dir, out var up);
         Vector3 globalPosTarget = actualSpline.transform.TransformPoint(localPosFromSpline);
         Vector3 localPosTarget = transform.parent.InverseTransformPoint(globalPosTarget);
@@ -100,6 +158,7 @@ public class Player : MonoBehaviour
             return;
 
         isFalling = true;
+        StartCoroutine(LaunchRespawnTimer());
     }
 
 
@@ -115,6 +174,7 @@ public class Player : MonoBehaviour
             LaunchSideStep();
 
         isJumping = true;
+        FMODUnity.RuntimeManager.PlayOneShot("event:/Avatar/Jump");
 
         Tween.LocalPositionY(
             transform,
@@ -133,6 +193,20 @@ public class Player : MonoBehaviour
         if (Physics.CheckBox(transform.position, checkBoxExtents, transform.rotation, boostLayerChecked))
         {
             isBoosting = true;
+            Debug.Log($"Player{playerId} is boosting !");
+            return;
+        }
+
+        if (playerId == 0)
+            Debug.Log($"P1 : for other : {otherPlayer.isBoostActionPressed}");
+        else
+            Debug.Log($"P2 : for other : {otherPlayer.isBoostActionPressed}");
+
+
+        if (Physics.CheckBox(transform.position, checkBoxExtents, transform.rotation, boostLayerBoth) && otherPlayer.actualOffset == actualOffset && otherPlayer.isBoostActionPressed)
+        {
+            isBoosting = true;
+            Debug.Log($"Players are boosting !");
             return;
         }
 
@@ -142,6 +216,8 @@ public class Player : MonoBehaviour
 
     void DownFromJump()
     {
+        FMODUnity.RuntimeManager.PlayOneShot("event:/Avatar/land");
+
         Tween.LocalPositionY(
             transform,
             transform.localPosition.y,
@@ -159,12 +235,54 @@ public class Player : MonoBehaviour
         actualOffset += (int)inputDir;
         lastT = 0.0f;
 
-        /*Tween.LocalPositionX(
+        Tween.LocalPositionX(
             transform,
             transform.localPosition.x,
             transform.localPosition.x + (offsetLen * inputDir),
             jumpTime,
-            ease: Ease.OutQuart);*/
+            ease: Ease.OutQuart);
+    }
+
+
+    void ChooseLane(bool isChooseActionJustPressed)
+    {
+        if (isChooseActionJustPressed && canChoose)
+        {
+            canChoose = false;
+
+            Tween.LocalPositionY(
+            transform,
+            transform.localPosition.y,
+            0.0f,
+            0.4f,
+            ease: Ease.InQuart
+            ).OnComplete(() => { isRespawning = false; });
+
+            return;
+        }
+
+        if (canChoose && inputDir != 0.0f)
+        {
+            if (Mathf.Abs(actualOffset + inputDir) > maxOffset)
+                return;
+
+            actualOffset += (int)inputDir;
+            canChoose = false;
+
+            Tween.LocalPositionX(
+            transform,
+            transform.localPosition.x,
+            transform.localPosition.x + (offsetLen * inputDir),
+            jumpTime,
+            ease: Ease.OutQuart).OnComplete(() => { canChoose = true; });
+        }
+    }
+
+
+    bool IsSoundPlaying(FMOD.Studio.EventInstance fmodEventInstance)
+    {
+        fmodEventInstance.getPlaybackState(out var state);
+        return state == FMOD.Studio.PLAYBACK_STATE.PLAYING;
     }
 
 
@@ -172,5 +290,25 @@ public class Player : MonoBehaviour
     {
         yield return new WaitForSeconds(0.1f);
         isReady = true;
+    }
+
+
+    IEnumerator LaunchRespawnTimer()
+    {
+        yield return new WaitForSeconds(respawnTime);
+        isFalling = false;
+        isBoosting = false;
+        isRespawning = true;
+        actualOffset = 0;
+        lastT = 0.0f;
+        transform.localPosition = new Vector3(0.0f, 6.0f, 0.0f);
+
+        Tween.LocalPositionY(
+            transform,
+            transform.localPosition.y,
+            localYResetSpawn,
+            0.5f,
+            ease: Ease.OutQuint
+            ).OnComplete(() => { canChoose = true; });
     }
 }

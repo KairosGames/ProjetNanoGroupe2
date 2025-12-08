@@ -95,6 +95,9 @@
 		<property name="length">
 			<value>8</value>
 		</property>
+		<relationship name="modulators">
+			<destination>{065ed1c9-7ad6-4106-99ab-9dfca7c85fb0}</destination>
+		</relationship>
 		<relationship name="fadeOutCurve">
 			<destination>{dfbd1a59-3e71-48b8-94e2-7ad7eecc99c4}</destination>
 		</relationship>
@@ -125,6 +128,14 @@
 	</object>
 	<object class="MixerBusPanner" id="{e84e9e53-3e0a-48a6-9991-5e98a684e27d}" />
 	<object class="MixerBusFader" id="{3b5c8655-fafe-491c-95d8-b7967e8d39a2}" />
+	<object class="RandomizerModulator" id="{065ed1c9-7ad6-4106-99ab-9dfca7c85fb0}">
+		<property name="nameOfPropertyBeingModulated">
+			<value>pitch</value>
+		</property>
+		<property name="amount">
+			<value>1.5</value>
+		</property>
+	</object>
 	<object class="FadeCurve" id="{dfbd1a59-3e71-48b8-94e2-7ad7eecc99c4}">
 		<relationship name="startPoint">
 			<destination>{85a498dd-8bf5-418e-9f95-a7328377b34c}</destination>
@@ -134,16 +145,25 @@
 		</relationship>
 	</object>
 	<object class="SingleSound" id="{b1d5b662-3b7c-4d71-a85e-c1f17b78927f}">
+		<property name="startOffset">
+			<value>3.5</value>
+		</property>
 		<relationship name="audioFile">
 			<destination>{64485d39-e694-4c8d-98a6-97f26b0dc56e}</destination>
 		</relationship>
 	</object>
 	<object class="SingleSound" id="{cc2d61a4-5dba-48b1-b026-0ecc24894569}">
+		<property name="startOffset">
+			<value>4</value>
+		</property>
 		<relationship name="audioFile">
 			<destination>{796513b3-240a-4f57-b8a5-7efd5a612832}</destination>
 		</relationship>
 	</object>
 	<object class="SingleSound" id="{4f8ff862-b7b1-4036-8f41-c6592193135c}">
+		<property name="startOffset">
+			<value>4</value>
+		</property>
 		<relationship name="audioFile">
 			<destination>{dd173c66-cd8c-443b-8593-8185fd34e498}</destination>
 		</relationship>

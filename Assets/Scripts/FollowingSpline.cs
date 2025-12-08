@@ -12,6 +12,7 @@ public class FollowingSpline : MonoBehaviour
     [SerializeField] private Player player2;
 
     [Header("Settings")]
+    [SerializeField] public float tSmooth = 0.3f;
     [SerializeField] float baseSpeed = 5.0f;
     [SerializeField] float topSpeed = 5.0f;
     [SerializeField] float acceleration = 0.05f;
