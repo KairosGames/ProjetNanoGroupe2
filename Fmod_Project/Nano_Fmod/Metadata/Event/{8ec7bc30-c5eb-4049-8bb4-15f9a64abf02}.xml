@@ -298,7 +298,7 @@
 	</object>
 	<object class="TransitionDestinationSound" id="{efafec1d-1283-42ce-8572-5b6e6709740b}">
 		<property name="start">
-			<value>1.9764942194439326</value>
+			<value>1.9764942194439321</value>
 		</property>
 		<property name="length">
 			<value>0.057404085640813118</value>
@@ -821,7 +821,7 @@
 	</object>
 	<object class="AutomationPoint" id="{869b23e1-6f67-4116-b289-ea1c19c2d957}">
 		<property name="position">
-			<value>1.9764942194439326</value>
+			<value>1.9764942194439321</value>
 		</property>
 		<property name="value">
 			<value>0</value>
@@ -832,7 +832,7 @@
 	</object>
 	<object class="AutomationPoint" id="{459fadec-8ab5-4587-9816-2af24a24d6b6}">
 		<property name="position">
-			<value>2.0338983050847457</value>
+			<value>2.0338983050847452</value>
 		</property>
 		<property name="value">
 			<value>1</value>
