@@ -26,7 +26,8 @@ public class Player : MonoBehaviour
 
     [System.NonSerialized] public int maxOffset = 1;
     [HideInInspector] public bool isBoosting = false;
-    
+    [HideInInspector] public bool isBoostActionPressed = false;
+
 
     FollowingSpline carParent;
     LayerMask boostLayerChecked;
@@ -157,6 +158,12 @@ public class Player : MonoBehaviour
             return;
         }
 
+        if (Physics.CheckBox(transform.position, checkBoxExtents, transform.rotation, boostLayerBoth) && otherPlayer.actualOffset == actualOffset && otherPlayer.isBoostActionPressed)
+        {
+            isBoosting = true;
+            return;
+        }
+
         isBoosting = false;
     }
 
@@ -235,6 +242,7 @@ public class Player : MonoBehaviour
     {
         yield return new WaitForSeconds(respawnTime);
         isFalling = false;
+        isBoosting = false;
         isRespawning = true;
         actualOffset = 0;
         lastT = 0.0f;
