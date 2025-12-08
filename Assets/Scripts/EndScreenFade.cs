@@ -24,7 +24,6 @@ public class EndScreenFade : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(canvasGroup.alpha);
         if (gameManager.finished)
         {
             canvasGroup.alpha = Mathf.Lerp(canvasGroup.alpha, 1.0f, (fadeSpeed * Time.deltaTime)/2);

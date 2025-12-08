@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.03.00">
 	<object class="MixerGroup" id="{6695a37a-4174-497a-a96a-d7c983de1ff5}">
 		<property name="name">
-			<value>combot</value>
+			<value>Power_Speed</value>
 		</property>
 		<relationship name="effectChain">
 			<destination>{b212dc73-1d80-4f21-a5c5-555c2d0320b0}</destination>

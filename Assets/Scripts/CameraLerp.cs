@@ -20,11 +20,17 @@ public class CameraLerp : MonoBehaviour
     FollowingSpline mainCar;
     Camera mainCam;
 
+    FMOD.Studio.EventInstance speedSound;
+    string speedSoundParam;
 
     void Awake()
     {
         mainCar = anchor.parent.GetComponent<FollowingSpline>();
         mainCam = GetComponent<Camera>();
+
+        speedSound = FMODUnity.RuntimeManager.CreateInstance("event:/Avatar/Speed_Sound");
+        speedSoundParam = "Speed_player";
+        FMODUnity.RuntimeManager.StudioSystem.setParameterByName(speedSoundParam, 0.0f);
 
         transform.SetParent(null, true);
         transform.position = anchor.position;
@@ -42,6 +48,8 @@ public class CameraLerp : MonoBehaviour
 
     void Update()
     {
+        isFollowingAnchor = !manager.finished;
+
         if (isFollowingAnchor)
         {
             SetSpeedEfect();
@@ -51,6 +59,7 @@ public class CameraLerp : MonoBehaviour
         else
         {
             windParticles.Stop();
+            starsParticles.gameObject.SetActive(true);
         }
     }
 
@@ -68,5 +77,6 @@ public class CameraLerp : MonoBehaviour
         windParticles.startSpeed= Mathf.Lerp(30.0f, 60.0f, t);
         var main = windParticles.main;
         main.simulationSpeed = Mathf.Lerp(0.4f, 2.0f, t);
+        FMODUnity.RuntimeManager.StudioSystem.setParameterByName(speedSoundParam, t);
     }
 }

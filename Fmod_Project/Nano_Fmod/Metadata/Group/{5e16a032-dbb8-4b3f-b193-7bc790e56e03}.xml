@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="MixerGroup" id="{5e16a032-dbb8-4b3f-b193-7bc790e56e03}">
+		<property name="name">
+			<value>Barre_Boost</value>
+		</property>
+		<relationship name="effectChain">
+			<destination>{79a81bcb-cc45-49e0-844e-df40f8ebebcb}</destination>
+		</relationship>
+		<relationship name="panner">
+			<destination>{86a1b651-e0ea-47a7-a89e-7c4d4c3f202e}</destination>
+		</relationship>
+		<relationship name="output">
+			<destination>{40123051-d0a3-409c-a6c4-80c5297abb53}</destination>
+		</relationship>
+	</object>
+	<object class="MixerBusEffectChain" id="{79a81bcb-cc45-49e0-844e-df40f8ebebcb}">
+		<relationship name="effects">
+			<destination>{f8811b13-8f6c-433d-9d58-871235e4e631}</destination>
+			<destination>{3403cadb-14d2-4b14-9883-e5e2cc9b005b}</destination>
+		</relationship>
+	</object>
+	<object class="MixerBusPanner" id="{86a1b651-e0ea-47a7-a89e-7c4d4c3f202e}" />
+	<object class="MixerBusFader" id="{f8811b13-8f6c-433d-9d58-871235e4e631}" />
+	<object class="Sidechain" id="{3403cadb-14d2-4b14-9883-e5e2cc9b005b}" />
+</objects>
