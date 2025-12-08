@@ -71,7 +71,7 @@ public class Player : MonoBehaviour
         if (!isReady)
             return;
 
-        bool isBoostActionPressed = playerId == 0 ? Input.GetKey(KeyCode.Joystick1Button0) : Input.GetKey(KeyCode.Joystick2Button0);
+        isBoostActionPressed = playerId == 0 ? Input.GetKey(KeyCode.Joystick1Button0) : Input.GetKey(KeyCode.Joystick2Button0);
         bool isChooseActionJustPressed = playerId == 0 ? Input.GetKeyDown(KeyCode.Joystick1Button0) : Input.GetKeyDown(KeyCode.Joystick2Button0);
         bool isJumpActionReleased = playerId == 0 ? Input.GetKeyUp(KeyCode.Joystick1Button0) : Input.GetKeyUp(KeyCode.Joystick2Button0);
         inputDir = Input.GetAxis($"Horizontal_P{playerId + 1}");
@@ -94,6 +94,8 @@ public class Player : MonoBehaviour
 
         if (isBoostActionPressed)
             CheckBooster();
+        else
+            isBoosting = false;
 
         if (!isJumping && !isFalling && isJumpActionReleased)
             LaunchJump(); 
@@ -191,12 +193,20 @@ public class Player : MonoBehaviour
         if (Physics.CheckBox(transform.position, checkBoxExtents, transform.rotation, boostLayerChecked))
         {
             isBoosting = true;
+            Debug.Log($"Player{playerId} is boosting !");
             return;
         }
+
+        if (playerId == 0)
+            Debug.Log($"P1 : for other : {otherPlayer.isBoostActionPressed}");
+        else
+            Debug.Log($"P2 : for other : {otherPlayer.isBoostActionPressed}");
+
 
         if (Physics.CheckBox(transform.position, checkBoxExtents, transform.rotation, boostLayerBoth) && otherPlayer.actualOffset == actualOffset && otherPlayer.isBoostActionPressed)
         {
             isBoosting = true;
+            Debug.Log($"Players are boosting !");
             return;
         }
 
