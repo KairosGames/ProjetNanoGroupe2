@@ -28,7 +28,6 @@ public class Player : MonoBehaviour
     [HideInInspector] public bool isBoosting = false;
     [HideInInspector] public bool isBoostActionPressed = false;
 
-
     FollowingSpline carParent;
     LayerMask boostLayerChecked;
     Vector3 resettLocalPos;
@@ -46,6 +45,10 @@ public class Player : MonoBehaviour
     bool canChoose = false;
 
 
+    FMOD.Studio.EventInstance movingSound;
+    bool lastMovingSoundState = false;
+    bool actualMovingSoundState = false;
+
     private void Awake()
     {
         carParent = transform.parent.GetComponent<FollowingSpline>();
@@ -53,6 +56,9 @@ public class Player : MonoBehaviour
         resettLocalPos = transform.localPosition;
         offsetLen = trackRenderer.offset;
         actualOffset = playerId == 0 ? -1 : 1;
+
+        movingSound = FMODUnity.RuntimeManager.CreateInstance("event:/Avatar/mooving");
+
         StartCoroutine(LauchReadyTimer());
     }
 
@@ -97,6 +103,18 @@ public class Player : MonoBehaviour
     {
         foreach (GameObject go in activeOnTrack)
             go.SetActive(!isJumping && !isFalling && !isRespawning);
+
+        if (lastMovingSoundState != actualMovingSoundState)
+        {
+            if (lastMovingSoundState)
+                movingSound.start();
+            else
+                movingSound.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+
+            actualMovingSoundState = lastMovingSoundState;
+        }
+
+        lastMovingSoundState = !isJumping && !isFalling && !isRespawning;
     }
 
 
@@ -137,6 +155,7 @@ public class Player : MonoBehaviour
             LaunchSideStep();
 
         isJumping = true;
+        FMODUnity.RuntimeManager.PlayOneShot("event:/Avatar/Jump");
 
         Tween.LocalPositionY(
             transform,
@@ -170,6 +189,8 @@ public class Player : MonoBehaviour
 
     void DownFromJump()
     {
+        FMODUnity.RuntimeManager.PlayOneShot("event:/Avatar/land");
+
         Tween.LocalPositionY(
             transform,
             transform.localPosition.y,
