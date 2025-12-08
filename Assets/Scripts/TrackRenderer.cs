@@ -123,6 +123,7 @@ public class TrackRenderer : MonoBehaviour
             newTrack.name = $"{((TrackType)i)}TrackReference";
             SplineContainer splineContainer = newTrack.AddComponent<SplineContainer>();
             splineContainer.RemoveSpline(splineContainer.Spline);
+            entireSplines.Add(splineContainer);
 
             NewSplineParameters data = new NewSplineParameters();
             data.startingKnot = 0;

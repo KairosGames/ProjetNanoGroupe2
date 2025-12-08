@@ -1,6 +1,7 @@
 using PrimeTween;
 using System.Collections;
 using TreeEditor;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Splines;
 using UnityEngine.UI;
@@ -9,6 +10,8 @@ public class Player : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] TrackRenderer trackRenderer;
+    [SerializeField] GameObject childVisual;
+    [SerializeField] Player otherPlayer;
 
     [Header("Settings")]
     [Tooltip("Must be 0 or 1")]
@@ -20,12 +23,12 @@ public class Player : MonoBehaviour
     [SerializeField] float fallingSpeed = 5.0f;
     [SerializeField] float jumpTime = 0.25f;
 
+    [System.NonSerialized] public int maxOffset = 2;
     [HideInInspector] public bool isBoosting = false;
-    [HideInInspector] public int maxOffset = 1;
+    
 
     LayerMask boostLayerChecked;
     Vector3 resettLocalPos;
-    Vector3 checkBoxCenter;
     Vector3 checkBoxExtents = new Vector3(0.25f, 0.5f, 0.05f);
     float offsetLen;
     float inputDir = 0.0f;
@@ -35,7 +38,12 @@ public class Player : MonoBehaviour
     bool isFalling = false;
 
 
-    private void Start()
+    [Header("MovmentSmoothness")]
+    [SerializeField] float tWeight = 0.08f;
+    float lastT = 0.0f;
+    float tVel = 0.0f;
+
+    private void Awake()
     {
         boostLayerChecked = playerId == 0 ? boostLayer1 : boostLayer2;
         resettLocalPos = transform.localPosition;
@@ -53,9 +61,9 @@ public class Player : MonoBehaviour
         bool isJumpActionReleased = playerId == 0 ? Input.GetKeyUp(KeyCode.Joystick1Button0) : Input.GetKeyUp(KeyCode.Joystick2Button0);
         inputDir = Input.GetAxis($"Horizontal_P{playerId + 1}");
         inputDir = Mathf.Abs(inputDir) >= 0.6f ? Mathf.Sign(inputDir) : 0.0f;
-        checkBoxCenter = transform.position - (transform.up * transform.localPosition.y);
 
-        SetPosition();
+        if (!isFalling)
+            SetPosition();
 
         if (!isJumping && !isFalling)
             CheckGround();
@@ -73,13 +81,22 @@ public class Player : MonoBehaviour
 
     void SetPosition()
     {
-        //spline.Evaluate(actualRatio, out var pos, out var dir, out var up); FollowingSpline.actualRatio
+        Vector3 carPos = transform.parent.position;
+        SplineContainer actualSpline = trackRenderer.entireSplines[actualOffset + 2];
+        Vector3 carLocalPos = actualSpline.transform.InverseTransformPoint(carPos);
+        SplineUtility.GetNearestPoint(actualSpline.Spline, carLocalPos, out var nearestLocal, out float t);
+        if (lastT == 0.0f) lastT = t;
+        lastT = Mathf.SmoothDamp(lastT, t, ref tVel, tWeight);
+        actualSpline.Evaluate(lastT, out var localPosFromSpline, out var dir, out var up);
+        Vector3 globalPosTarget = actualSpline.transform.TransformPoint(localPosFromSpline);
+        Vector3 localPosTarget = transform.parent.InverseTransformPoint(globalPosTarget);
+        transform.localPosition = Vector3.Lerp(transform.localPosition, localPosTarget, 0.05f);
     }
 
 
     void CheckGround()
     {
-        if (Physics.CheckBox(checkBoxCenter, checkBoxExtents, transform.rotation, groundLayer))
+        if (Physics.CheckBox(transform.position, checkBoxExtents, transform.rotation, groundLayer))
             return;
 
         isFalling = true;
@@ -113,7 +130,7 @@ public class Player : MonoBehaviour
         if (isFalling || isJumping)
             return;
             
-        if (Physics.CheckBox(checkBoxCenter, checkBoxExtents, transform.rotation, boostLayerChecked))
+        if (Physics.CheckBox(transform.position, checkBoxExtents, transform.rotation, boostLayerChecked))
         {
             isBoosting = true;
             return;
@@ -140,13 +157,14 @@ public class Player : MonoBehaviour
             return;
 
         actualOffset += (int)inputDir;
+        //lastT = 0.0f;
 
-        Tween.LocalPositionX(
+        /*Tween.LocalPositionX(
             transform,
             transform.localPosition.x,
             transform.localPosition.x + (offsetLen * inputDir),
             jumpTime,
-            ease: Ease.OutQuart);
+            ease: Ease.OutQuart);*/
     }
 
 

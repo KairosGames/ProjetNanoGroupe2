@@ -30,6 +30,8 @@ public class FollowingSpline : MonoBehaviour
     private bool decelerating = true;
     private float decelerationTime = 1.0f;
 
+    [HideInInspector] static public float actualRatio = 0.0f;
+
 
     private void Awake()
     {
@@ -82,8 +84,9 @@ public class FollowingSpline : MonoBehaviour
     private void UpdatePosOnSpline()
     {
         currentPos = currentPos + (speed * Time.deltaTime);
-        var normalizedPos = currentPos / currentLength;
-        spline.Evaluate(normalizedPos, out var pos, out var dir, out var up);
+        actualRatio = currentPos / currentLength;
+        spline.Evaluate(actualRatio, out var localPos, out var dir, out var up);
+        Vector3 pos = spline.transform.TransformPoint(localPos);
         var rotation = Quaternion.LookRotation(dir, up);
         transform.SetPositionAndRotation(pos, rotation);
     }
