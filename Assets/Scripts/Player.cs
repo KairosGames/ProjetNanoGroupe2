@@ -57,7 +57,8 @@ public class Player : MonoBehaviour
         offsetLen = trackRenderer.offset;
         actualOffset = playerId == 0 ? -1 : 1;
 
-        movingSound = FMODUnity.RuntimeManager.CreateInstance("event:/Avatar/mooving");
+        movingSound = FMODUnity.RuntimeManager.CreateInstance("event:/Avatar/moving");
+        movingSound.start();
 
         StartCoroutine(LauchReadyTimer());
     }
@@ -101,10 +102,15 @@ public class Player : MonoBehaviour
 
     void SetActiveOnTrack()
     {
-        foreach (GameObject go in activeOnTrack)
-            go.SetActive(!isJumping && !isFalling && !isRespawning);
+        bool is_active = !isJumping && !isFalling && !isRespawning;
+        float parameter = is_active ? 1.0f : 0.0f;
 
-        if (lastMovingSoundState != actualMovingSoundState)
+        foreach (GameObject go in activeOnTrack)
+            go.SetActive(is_active);
+
+        movingSound.setParameterByName("is_moving", 0.0f);
+
+        /*if (lastMovingSoundState != actualMovingSoundState)
         {
             if (lastMovingSoundState)
                 movingSound.start();
@@ -114,7 +120,7 @@ public class Player : MonoBehaviour
             actualMovingSoundState = lastMovingSoundState;
         }
 
-        lastMovingSoundState = !isJumping && !isFalling && !isRespawning;
+        lastMovingSoundState = !isJumping && !isFalling && !isRespawning;*/
     }
 
 

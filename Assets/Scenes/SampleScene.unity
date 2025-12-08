@@ -308,6 +308,10 @@ PrefabInstance:
       value: 0.03
       objectReference: {fileID: 0}
     - target: {fileID: 545709394311971752, guid: ca155248a8a370f4bbbfe0477ae3782d, type: 3}
+      propertyPath: jumpTime
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 545709394311971752, guid: ca155248a8a370f4bbbfe0477ae3782d, type: 3}
       propertyPath: fallingSpeed
       value: 10
       objectReference: {fileID: 0}
@@ -386,6 +390,10 @@ PrefabInstance:
     - target: {fileID: 5778851161427359816, guid: ca155248a8a370f4bbbfe0477ae3782d, type: 3}
       propertyPath: isDebugPosActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6432719622235687024, guid: ca155248a8a370f4bbbfe0477ae3782d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7328769297636591966, guid: ca155248a8a370f4bbbfe0477ae3782d, type: 3}
       propertyPath: m_LocalPosition.x
