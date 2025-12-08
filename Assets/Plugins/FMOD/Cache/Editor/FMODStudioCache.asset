@@ -23,7 +23,8 @@ MonoBehaviour:
   IsStream: 0
   Is3D: 0
   IsOneShot: 0
-  Parameters: []
+  Parameters:
+  - {fileID: 183978928654890357}
   MinDistance: 1
   MaxDistance: 20
   Length: 8000
@@ -50,10 +51,83 @@ MonoBehaviour:
   IsStream: 0
   Is3D: 0
   IsOneShot: 0
-  Parameters: []
+  Parameters:
+  - {fileID: 8410045028326008943}
   MinDistance: 1
   MaxDistance: 20
   Length: 8000
+--- !u!114 &-7848904548987324604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/is_moving
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
+  Name: is_moving
+  StudioPath: parameter:/is_moving
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 1688531212
+    data2: 4155094054
+  Type: 0
+  IsGlobal: 1
+  Labels: []
+  Exists: 1
+--- !u!114 &-6130578028495058738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/is_boosting_2
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
+  Name: is_boosting_2
+  StudioPath: parameter:/is_boosting_2
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 298534469
+    data2: 1832865114
+  Type: 0
+  IsGlobal: 1
+  Labels: []
+  Exists: 1
+--- !u!114 &-6086029170301198308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/moving/is_moving
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
+  Name: is_moving
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 1688531212
+    data2: 4155094054
+  Type: 0
+  IsGlobal: 1
+  Labels: []
+  Exists: 1
 --- !u!114 &-5940858628341830376
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -81,6 +155,30 @@ MonoBehaviour:
   - Theme
   - Twist
   - Fin
+  Exists: 1
+--- !u!114 &-5531679551710466809
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Barre_combot_1/is_boosting_1
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
+  Name: is_boosting_1
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 730273226
+    data2: 3197926729
+  Type: 0
+  IsGlobal: 1
+  Labels: []
   Exists: 1
 --- !u!114 &-3799675434011685538
 MonoBehaviour:
@@ -126,6 +224,30 @@ MonoBehaviour:
   ID:
     data1: 4290085416
     data2: 3706909244
+  Type: 0
+  IsGlobal: 1
+  Labels: []
+  Exists: 1
+--- !u!114 &-3093400521066894693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/is_boosting_1
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
+  Name: is_boosting_1
+  StudioPath: parameter:/is_boosting_1
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 730273226
+    data2: 3197926729
   Type: 0
   IsGlobal: 1
   Labels: []
@@ -212,6 +334,34 @@ MonoBehaviour:
   - Twist
   - Fin
   Exists: 1
+--- !u!114 &-1346894930968158422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Avatar/moving
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Avatar/moving
+  Guid:
+    Data1: 1747039755
+    Data2: 1237780870
+    Data3: -20652101
+    Data4: -768698625
+  Banks:
+  - {fileID: 1120030550244326709}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 0
+  Parameters:
+  - {fileID: -6086029170301198308}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 8426
 --- !u!114 &-1046921446199846983
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -327,7 +477,6 @@ MonoBehaviour:
   - {fileID: 7165354384997087733}
   - {fileID: 1120030550244326709}
   EditorEvents:
-  - {fileID: 5212487584752757042}
   - {fileID: 6063948163791788126}
   - {fileID: -909076741752406751}
   - {fileID: -2142683843667116446}
@@ -340,18 +489,22 @@ MonoBehaviour:
   - {fileID: 4319324440523669181}
   - {fileID: 3585867271708589901}
   - {fileID: -2847664771017583873}
+  - {fileID: -1346894930968158422}
   EditorParameters:
   - {fileID: 111122648057387241}
   - {fileID: -5940858628341830376}
   - {fileID: -3799675434011685538}
   - {fileID: -506820740402499169}
   - {fileID: -464077977508678002}
+  - {fileID: -6130578028495058738}
+  - {fileID: -3093400521066894693}
+  - {fileID: -7848904548987324604}
   MasterBanks:
   - {fileID: 1120030550244326709}
   StringsBanks:
   - {fileID: 7165354384997087733}
   cacheVersion: 131857
-  cacheTime: 639007894705959835
+  cacheTime: 639008068086768820
   SerializableEventsDict:
   - key: event:/Avatar/mooving
     index: 0
@@ -403,6 +556,30 @@ MonoBehaviour:
   IsGlobal: 1
   Labels: []
   Exists: 1
+--- !u!114 &183978928654890357
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Barre_combot_2/is_boosting_2
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
+  Name: is_boosting_2
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 298534469
+    data2: 1832865114
+  Type: 0
+  IsGlobal: 1
+  Labels: []
+  Exists: 1
 --- !u!114 &1120030550244326709
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -418,10 +595,10 @@ MonoBehaviour:
   Path: Fmod_Project/Nano_Fmod/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639007894705959835
+  lastModified: 639008068086748819
   FileSizes:
   - Name: Desktop
-    Value: 6268160
+    Value: 6272672
   Exists: 1
 --- !u!114 &1786989775475216835
 MonoBehaviour:
@@ -530,37 +707,11 @@ MonoBehaviour:
   IsStream: 0
   Is3D: 0
   IsOneShot: 0
-  Parameters: []
+  Parameters:
+  - {fileID: -5531679551710466809}
   MinDistance: 1
   MaxDistance: 20
   Length: 8000
---- !u!114 &5212487584752757042
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Avatar/mooving
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
-  Path: event:/Avatar/mooving
-  Guid:
-    Data1: 1747039755
-    Data2: 1237780870
-    Data3: -20652101
-    Data4: -768698625
-  Banks:
-  - {fileID: 1120030550244326709}
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 0
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 8426
 --- !u!114 &6063948163791788126
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -589,7 +740,7 @@ MonoBehaviour:
   - {fileID: -1630421449379316009}
   MinDistance: 1
   MaxDistance: 20
-  Length: 162720
+  Length: 219669
 --- !u!114 &6256837047013209687
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -632,10 +783,10 @@ MonoBehaviour:
   Path: Fmod_Project/Nano_Fmod/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639005498252906429
+  lastModified: 639008068086768820
   FileSizes:
   - Name: Desktop
-    Value: 1758
+    Value: 1894
   Exists: 1
 --- !u!114 &7402025417936205027
 MonoBehaviour:
@@ -688,6 +839,30 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 8000
+--- !u!114 &8410045028326008943
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Barre_combot_3/is_boosting
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
+  Name: is_boosting
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 3638942785
+    data2: 3244474014
+  Type: 0
+  IsGlobal: 1
+  Labels: []
+  Exists: 1
 --- !u!114 &8630577183696207530
 MonoBehaviour:
   m_ObjectHideFlags: 0
