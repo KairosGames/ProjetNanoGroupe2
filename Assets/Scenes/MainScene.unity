@@ -237,10 +237,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3515929844252415247, guid: e28871e3cd62c304cbb22b98af567e3d, type: 3}
-      propertyPath: material
-      value: 
-      objectReference: {fileID: 2100000, guid: a2003ccad28939946beafe19a8f3cf33, type: 2}
     - target: {fileID: 7701855086910108231, guid: e28871e3cd62c304cbb22b98af567e3d, type: 3}
       propertyPath: m_Name
       value: ScaleDownBoostSpline
