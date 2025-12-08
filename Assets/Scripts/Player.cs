@@ -46,8 +46,9 @@ public class Player : MonoBehaviour
 
 
     FMOD.Studio.EventInstance movingSound;
-    bool lastMovingSoundState = false;
-    bool actualMovingSoundState = false;
+    FMOD.Studio.EventInstance movingBoostSound;
+    FMOD.Studio.EventInstance boostingSound;
+    FMOD.Studio.EventInstance boostingBothSound;
 
     private void Awake()
     {
@@ -57,9 +58,7 @@ public class Player : MonoBehaviour
         offsetLen = trackRenderer.offset;
         actualOffset = playerId == 0 ? -1 : 1;
 
-        movingSound = FMODUnity.RuntimeManager.CreateInstance("event:/Avatar/moving");
-        movingSound.start();
-
+        LoadAllSounds();
         StartCoroutine(LauchReadyTimer());
     }
 
@@ -99,28 +98,38 @@ public class Player : MonoBehaviour
             LaunchJump(); 
     }
 
+    void LoadAllSounds()
+    {
+        movingSound = FMODUnity.RuntimeManager.CreateInstance("event:/Avatar/moving");
+        movingBoostSound = FMODUnity.RuntimeManager.CreateInstance("event:/Avatar/Boost");
+        string boostPath = playerId == 0 ? "event:/Avatar/Combot/Barre_combot_1" : "event:/Avatar/Combot/Barre_combot_2";
+        boostingSound = FMODUnity.RuntimeManager.CreateInstance(boostPath);
+        boostingBothSound = FMODUnity.RuntimeManager.CreateInstance("event:/Avatar/Combot/Barre_combot_3");
+    }
+
 
     void SetActiveOnTrack()
     {
-        bool is_active = !isJumping && !isFalling && !isRespawning;
-        float parameter = is_active ? 1.0f : 0.0f;
+        bool isActive = !isJumping && !isFalling && !isRespawning;
+        float movParam = isActive ? 1.0f : 0.0f;
 
         foreach (GameObject go in activeOnTrack)
-            go.SetActive(is_active);
+            go.SetActive(isActive);
 
-        movingSound.setParameterByName("is_moving", 0.0f);
+        FMODUnity.RuntimeManager.StudioSystem.setParameterByName("is_moving", movParam);
+        if (!IsSoundPlaying(movingSound) && isActive)
+            movingSound.start();
 
-        /*if (lastMovingSoundState != actualMovingSoundState)
-        {
-            if (lastMovingSoundState)
-                movingSound.start();
-            else
-                movingSound.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+        float boostParam = isBoosting ? 1.0f : 0.0f;
+        FMODUnity.RuntimeManager.StudioSystem.setParameterByName("is_boosting", boostParam);
+        if (!IsSoundPlaying(boostingSound) && isBoosting)
+            boostingSound.start();
 
-            actualMovingSoundState = lastMovingSoundState;
-        }
-
-        lastMovingSoundState = !isJumping && !isFalling && !isRespawning;*/
+        bool isBothBoost = isBoosting && otherPlayer.isBoosting && otherPlayer.actualOffset == actualOffset;
+        if (!IsSoundPlaying(boostingBothSound) && isBothBoost)
+            boostingBothSound.start();
+        else if (IsSoundPlaying(boostingBothSound) && !isBothBoost)
+            boostingBothSound.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
     }
 
 
@@ -255,6 +264,13 @@ public class Player : MonoBehaviour
             jumpTime,
             ease: Ease.OutQuart).OnComplete(() => { canChoose = true; });
         }
+    }
+
+
+    bool IsSoundPlaying(FMOD.Studio.EventInstance fmodEventInstance)
+    {
+        fmodEventInstance.getPlaybackState(out var state);
+        return state == FMOD.Studio.PLAYBACK_STATE.PLAYING;
     }
 
 
