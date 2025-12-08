@@ -73,7 +73,7 @@ public class CameraLerp : MonoBehaviour
     void SetSpeedEfect()
     {
         float t = Mathf.InverseLerp(mainCar.baseSpeed, mainCar.topSpeed, mainCar.speed);
-        mainCam.fieldOfView = Mathf.Lerp(80.0f, 110.0f, t);
+        mainCam.fieldOfView = Mathf.Lerp(80.0f, 120.0f, t);
         windParticles.startSpeed= Mathf.Lerp(30.0f, 60.0f, t);
         var main = windParticles.main;
         main.simulationSpeed = Mathf.Lerp(0.4f, 2.0f, t);

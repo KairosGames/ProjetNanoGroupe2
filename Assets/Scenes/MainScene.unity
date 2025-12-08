@@ -639,7 +639,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5560670203733588002, guid: a0998bcc3180cb3448335891f2ead785, type: 3}
       propertyPath: layerName
-      value: Boost2
+      value: Boost1
       objectReference: {fileID: 0}
     - target: {fileID: 8598287062996236851, guid: a0998bcc3180cb3448335891f2ead785, type: 3}
       propertyPath: m_LocalPosition.x
@@ -933,10 +933,6 @@ PrefabInstance:
     - target: {fileID: 545709394311971752, guid: ca155248a8a370f4bbbfe0477ae3782d, type: 3}
       propertyPath: boostLayerBoth.m_Bits
       value: 256
-      objectReference: {fileID: 0}
-    - target: {fileID: 545709394311971752, guid: ca155248a8a370f4bbbfe0477ae3782d, type: 3}
-      propertyPath: 'activeOnTrack.Array.data[0]'
-      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 742560975732342838, guid: ca155248a8a370f4bbbfe0477ae3782d, type: 3}
       propertyPath: m_IsActive
