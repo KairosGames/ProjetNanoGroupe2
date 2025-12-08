@@ -359,6 +359,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MainCar
       objectReference: {fileID: 0}
+    - target: {fileID: 4969903646772697973, guid: ca155248a8a370f4bbbfe0477ae3782d, type: 3}
+      propertyPath: trackRenderer
+      value: 
+      objectReference: {fileID: 1197271600}
     - target: {fileID: 5778851161427359816, guid: ca155248a8a370f4bbbfe0477ae3782d, type: 3}
       propertyPath: spline
       value: 
