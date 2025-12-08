@@ -272,7 +272,7 @@ public class Player : MonoBehaviour
             childVisual.transform,
             transform.localScale,
             resetVisualScale,
-            0.3f,
+            0.5f,
             ease: Ease.OutElastic
             );
     }
