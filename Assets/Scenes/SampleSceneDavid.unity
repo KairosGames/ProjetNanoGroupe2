@@ -2570,6 +2570,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1669243288}
     - target: {fileID: 848042318933854376, guid: eb8409aa12be8c04d82ce13950b80d2d, type: 3}
+      propertyPath: fadeSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 848042318933854376, guid: eb8409aa12be8c04d82ce13950b80d2d, type: 3}
       propertyPath: textFinal
       value: 
       objectReference: {fileID: 584285017}
@@ -2673,6 +2677,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   timerText: {fileID: 198245545}
   timer: 0
+  finished: 0
 --- !u!4 &1920314399
 Transform:
   m_ObjectHideFlags: 0
