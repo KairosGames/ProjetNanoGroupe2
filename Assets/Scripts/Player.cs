@@ -48,9 +48,9 @@ public class Player : MonoBehaviour
 
 
     FMOD.Studio.EventInstance movingSound;
-    FMOD.Studio.EventInstance movingBoostSound;
     FMOD.Studio.EventInstance boostingSound;
     FMOD.Studio.EventInstance boostingBothSound;
+    string movingParamName;
     string boostParamName;
 
     private void Awake()
@@ -113,11 +113,14 @@ public class Player : MonoBehaviour
 
     void LoadAllSounds()
     {
-        movingSound = FMODUnity.RuntimeManager.CreateInstance("event:/Avatar/moving");
-        movingBoostSound = FMODUnity.RuntimeManager.CreateInstance("event:/Avatar/Boost");
+        string movingPath = playerId == 0 ? "event:/Avatar/moving_1" : "event:/Avatar/moving_2";
+        movingSound = FMODUnity.RuntimeManager.CreateInstance(movingPath);
+        movingParamName = playerId == 0 ? "is_moving_1" : "is_moving_2";
+
         string boostPath = playerId == 0 ? "event:/Avatar/Combot/Barre_combot_1" : "event:/Avatar/Combot/Barre_combot_2";
-        boostParamName = playerId == 0 ? "is_boosting_1" : "is_boosting_2";
         boostingSound = FMODUnity.RuntimeManager.CreateInstance(boostPath);
+        boostParamName = playerId == 0 ? "is_boosting_1" : "is_boosting_2";
+
         boostingBothSound = FMODUnity.RuntimeManager.CreateInstance("event:/Avatar/Combot/Barre_combot_3");
     }
 
@@ -130,13 +133,13 @@ public class Player : MonoBehaviour
         foreach (GameObject go in activeOnTrack)
             go.SetActive(isActive);
 
-        /*FMODUnity.RuntimeManager.StudioSystem.setParameterByName("is_moving", movParam);
+        FMODUnity.RuntimeManager.StudioSystem.setParameterByName(movingParamName, movParam);
         Debug.Log(movParam);
         if (!IsSoundPlaying(movingSound) && isActive)
         {
             movingSound.start();
             Debug.Log("OUUUI !");
-        }*/
+        }
 
         bool isBothBoost = isBoosting && otherPlayer.isBoosting && otherPlayer.actualOffset == actualOffset;
         float boostParam = isBoosting ? (isBothBoost ? 0.0f : 1.0f) : 0.0f;
