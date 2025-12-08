@@ -249,6 +249,9 @@
 		<property name="commandType">
 			<value>1</value>
 		</property>
+		<relationship name="triggerConditions">
+			<destination>{a3814f3f-ca5b-4baa-91f4-ae1d1817b0d1}</destination>
+		</relationship>
 		<relationship name="commandTarget">
 			<destination>{9cd36ba4-09ab-4ff5-a117-ece6eda7f460}</destination>
 		</relationship>
@@ -274,6 +277,9 @@
 		<property name="commandType">
 			<value>1</value>
 		</property>
+		<relationship name="triggerConditions">
+			<destination>{42fb3bc4-8fc2-4ffa-a8d4-f6af46ea92f6}</destination>
+		</relationship>
 		<relationship name="commandTarget">
 			<destination>{7db2b859-6ede-4ed2-b8bf-2df9a838aeb3}</destination>
 		</relationship>
@@ -370,12 +376,34 @@
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{3e21f6bc-0ceb-42e7-b25a-435534f44b18}" />
+	<object class="ParameterCondition" id="{a3814f3f-ca5b-4baa-91f4-ae1d1817b0d1}">
+		<property name="minimum">
+			<value>0</value>
+		</property>
+		<property name="maximum">
+			<value>0</value>
+		</property>
+		<relationship name="parameter">
+			<destination>{dd0ec574-b21b-424a-be07-20e64fcbd9c7}</destination>
+		</relationship>
+	</object>
 	<object class="MixerBusEffectChain" id="{d9f69890-2877-4bbc-b1cd-40a20d4454f1}">
 		<relationship name="effects">
 			<destination>{9392df08-8c86-43d2-b07e-fde040f63a88}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{914a77df-5e00-46a7-a945-bfeed6fdf0d3}" />
+	<object class="ParameterCondition" id="{42fb3bc4-8fc2-4ffa-a8d4-f6af46ea92f6}">
+		<property name="minimum">
+			<value>0</value>
+		</property>
+		<property name="maximum">
+			<value>0</value>
+		</property>
+		<relationship name="parameter">
+			<destination>{dd0ec574-b21b-424a-be07-20e64fcbd9c7}</destination>
+		</relationship>
+	</object>
 	<object class="MixerBusEffectChain" id="{2d7c7a0e-f359-46b9-8a2e-67baeb316524}">
 		<relationship name="effects">
 			<destination>{1eae76cb-ffcb-4173-a352-e82b9ef8bf18}</destination>

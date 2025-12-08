@@ -124,16 +124,17 @@ public class Player : MonoBehaviour
         if (!IsSoundPlaying(movingSound) && isActive)
             movingSound.start();
 
-        float boostParam = isBoosting ? 1.0f : 0.0f;
+        bool isBothBoost = isBoosting && otherPlayer.isBoosting && otherPlayer.actualOffset == actualOffset;
+        float boostParam = isBoosting ? (isBothBoost ? 0.0f : 1.0f) : 0.0f;
+        float isBothBoostParam = isBoosting ? 1.0f : 0.0f;
+
         FMODUnity.RuntimeManager.StudioSystem.setParameterByName(boostParamName, boostParam);
-        if (!IsSoundPlaying(boostingSound) && isBoosting)
+        if (!IsSoundPlaying(boostingSound) && isBoosting && !isBothBoost)
             boostingSound.start();
 
-        bool isBothBoost = isBoosting && otherPlayer.isBoosting && otherPlayer.actualOffset == actualOffset;
+        FMODUnity.RuntimeManager.StudioSystem.setParameterByName("is_bothboosting", isBothBoostParam);
         if (!IsSoundPlaying(boostingBothSound) && isBothBoost)
             boostingBothSound.start();
-        else if (IsSoundPlaying(boostingBothSound) && !isBothBoost)
-            boostingBothSound.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
     }
 
 
@@ -193,14 +194,12 @@ public class Player : MonoBehaviour
         if (Physics.CheckBox(transform.position, checkBoxExtents, transform.rotation, boostLayerChecked))
         {
             isBoosting = true;
-            Debug.Log($"Player{playerId} is boosting !");
             return;
         }
 
         if (Physics.CheckBox(transform.position, checkBoxExtents, transform.rotation, boostLayerBoth) && otherPlayer.actualOffset == actualOffset && otherPlayer.isBoostActionPressed)
         {
             isBoosting = true;
-            Debug.Log($"Players are boosting !");
             return;
         }
 
