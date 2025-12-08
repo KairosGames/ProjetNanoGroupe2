@@ -128,7 +128,7 @@ MonoBehaviour:
   textFinal: {fileID: 0}
   canvas: {fileID: 8194248156019481088}
   timerCanvas: {fileID: 0}
-  fadeSpeed: 1
+  fadeSpeed: 3
 --- !u!1 &1386610270682840518
 GameObject:
   m_ObjectHideFlags: 0

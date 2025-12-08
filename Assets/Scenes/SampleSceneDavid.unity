@@ -182,6 +182,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TimerUI
       objectReference: {fileID: 0}
+    - target: {fileID: 2332820128333753080, guid: 50ed28d60ffea04488d5aa19158cd86d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -803,6 +807,71 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
+--- !u!1001 &628439737
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 398966508424536672, guid: 3ad9bc20fc3e7be4d83f360157ad58ff, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 629.1752
+      objectReference: {fileID: 0}
+    - target: {fileID: 398966508424536672, guid: 3ad9bc20fc3e7be4d83f360157ad58ff, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 416.11957
+      objectReference: {fileID: 0}
+    - target: {fileID: 398966508424536672, guid: 3ad9bc20fc3e7be4d83f360157ad58ff, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 398966508424536672, guid: 3ad9bc20fc3e7be4d83f360157ad58ff, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 398966508424536672, guid: 3ad9bc20fc3e7be4d83f360157ad58ff, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 398966508424536672, guid: 3ad9bc20fc3e7be4d83f360157ad58ff, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 398966508424536672, guid: 3ad9bc20fc3e7be4d83f360157ad58ff, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 398966508424536672, guid: 3ad9bc20fc3e7be4d83f360157ad58ff, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 398966508424536672, guid: 3ad9bc20fc3e7be4d83f360157ad58ff, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 398966508424536672, guid: 3ad9bc20fc3e7be4d83f360157ad58ff, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3395761026100344169, guid: 3ad9bc20fc3e7be4d83f360157ad58ff, type: 3}
+      propertyPath: m_AdditionalShaderChannelsFlag
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 3440729506952443219, guid: 3ad9bc20fc3e7be4d83f360157ad58ff, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8241672044119708156, guid: 3ad9bc20fc3e7be4d83f360157ad58ff, type: 3}
+      propertyPath: m_Name
+      value: HUD_jauge_combo
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3ad9bc20fc3e7be4d83f360157ad58ff, type: 3}
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -2726,6 +2795,7 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1859999337}
+  - {fileID: 628439737}
   - {fileID: 246060060}
   - {fileID: 410087041}
   - {fileID: 832575519}
