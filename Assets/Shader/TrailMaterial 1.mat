@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: TrailMaterial
+  m_Name: TrailMaterial 1
   m_Shader: {fileID: -6465566751694194690, guid: 9999ff1f07b8acf4badcfa33ff0b7f73, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -60,9 +60,9 @@ Material:
     - _QueueControl: 0
     - _QueueOffset: 0
     m_Colors:
-    - _Color1: {r: 1, g: 0.98224723, b: 0, a: 1}
-    - _Color2: {r: 0.06427097, g: 0, b: 1, a: 1}
+    - _Color1: {r: 0.79607844, g: 0.5215686, b: 1, a: 1}
+    - _Color2: {r: 1, g: 0.76862746, b: 1, a: 1}
     - _DissolveSpeed: {r: -2, g: 0, b: 0, a: 0}
-    - _MainTexSpeed: {r: -2, g: 0, b: 0, a: 0}
+    - _MainTexSpeed: {r: -1.8, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
