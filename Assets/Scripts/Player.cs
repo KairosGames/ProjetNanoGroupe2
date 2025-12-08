@@ -90,7 +90,7 @@ public class Player : MonoBehaviour
         actualSpline.Evaluate(lastT, out var localPosFromSpline, out var dir, out var up);
         Vector3 globalPosTarget = actualSpline.transform.TransformPoint(localPosFromSpline);
         Vector3 localPosTarget = transform.parent.InverseTransformPoint(globalPosTarget);
-        transform.localPosition = Vector3.Lerp(transform.localPosition, localPosTarget, 0.05f);
+        transform.localPosition = Vector3.Lerp(transform.localPosition, localPosTarget, 0.2f);
     }
 
 
