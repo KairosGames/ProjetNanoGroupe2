@@ -52,6 +52,7 @@ MonoBehaviour:
   otherPlayer: {fileID: 0}
   activeOnTrack:
   - {fileID: 307758820255515652}
+  - {fileID: 4085705936071733226}
   childVisual: {fileID: 6207279594944648216}
   playerId: 0
   groundLayer:
@@ -369,5 +370,10 @@ PrefabInstance:
 --- !u!4 &2828837131674135997 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1328613432617470794, guid: 7fc98f0c2db1b0945a8259cb160988de, type: 3}
+  m_PrefabInstance: {fileID: 3833164176837388023}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4085705936071733226 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 973188068563978525, guid: 7fc98f0c2db1b0945a8259cb160988de, type: 3}
   m_PrefabInstance: {fileID: 3833164176837388023}
   m_PrefabAsset: {fileID: 0}
