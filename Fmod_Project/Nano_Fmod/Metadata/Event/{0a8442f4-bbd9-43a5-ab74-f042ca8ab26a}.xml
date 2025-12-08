@@ -103,6 +103,9 @@
 		<property name="length">
 			<value>26.215600907029479</value>
 		</property>
+		<property name="volume">
+			<value>8</value>
+		</property>
 		<relationship name="audioFile">
 			<destination>{43c162fb-b24d-4795-a689-4641e5074842}</destination>
 		</relationship>
@@ -141,6 +144,7 @@
 	<object class="MixerBusEffectChain" id="{bcf7b80f-53db-4d96-bfc5-a1622ec80715}">
 		<relationship name="effects">
 			<destination>{3b29cacc-7f86-4639-bf24-099c9c3acb31}</destination>
+			<destination>{d158111f-7330-42a9-a917-f85215da91eb}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{f750f96f-64ff-4543-8a45-d6aba39dbe89}" />
@@ -161,6 +165,11 @@
 	</object>
 	<object class="MixerBusPanner" id="{2369d14b-0e1d-4306-9a72-795aa839bd9e}" />
 	<object class="MixerBusFader" id="{3b29cacc-7f86-4639-bf24-099c9c3acb31}" />
+	<object class="CompressorEffect" id="{d158111f-7330-42a9-a917-f85215da91eb}">
+		<property name="gain">
+			<value>9</value>
+		</property>
+	</object>
 	<object class="AutomationCurve" id="{1df8fb28-af47-4b8d-8b3f-f2ea3b73944c}">
 		<relationship name="parameter">
 			<destination>{3ee34e59-4f02-4658-a435-2cc1ba712652}</destination>
