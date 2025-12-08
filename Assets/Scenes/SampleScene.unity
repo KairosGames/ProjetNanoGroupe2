@@ -246,6 +246,17 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_RenderingLayers: 1
   m_ShadowRenderingLayers: 1
+--- !u!114 &459578652 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4969903646772697973, guid: ca155248a8a370f4bbbfe0477ae3782d, type: 3}
+  m_PrefabInstance: {fileID: 843468860}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab92481eb1b52c74a9b93e4ca7cc09b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Player
 --- !u!1 &476047410
 GameObject:
   m_ObjectHideFlags: 0
@@ -856,7 +867,7 @@ PrefabInstance:
     - target: {fileID: 5778851161427359816, guid: ca155248a8a370f4bbbfe0477ae3782d, type: 3}
       propertyPath: player2
       value: 
-      objectReference: {fileID: 1139458247}
+      objectReference: {fileID: 459578652}
     - target: {fileID: 5778851161427359816, guid: ca155248a8a370f4bbbfe0477ae3782d, type: 3}
       propertyPath: topSpeed
       value: 10
@@ -864,6 +875,14 @@ PrefabInstance:
     - target: {fileID: 5778851161427359816, guid: ca155248a8a370f4bbbfe0477ae3782d, type: 3}
       propertyPath: baseSpeed
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5778851161427359816, guid: ca155248a8a370f4bbbfe0477ae3782d, type: 3}
+      propertyPath: acceleration
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5778851161427359816, guid: ca155248a8a370f4bbbfe0477ae3782d, type: 3}
+      propertyPath: deceleration
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5778851161427359816, guid: ca155248a8a370f4bbbfe0477ae3782d, type: 3}
       propertyPath: isDebugPosActive

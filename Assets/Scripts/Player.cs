@@ -197,12 +197,6 @@ public class Player : MonoBehaviour
             return;
         }
 
-        if (playerId == 0)
-            Debug.Log($"P1 : for other : {otherPlayer.isBoostActionPressed}");
-        else
-            Debug.Log($"P2 : for other : {otherPlayer.isBoostActionPressed}");
-
-
         if (Physics.CheckBox(transform.position, checkBoxExtents, transform.rotation, boostLayerBoth) && otherPlayer.actualOffset == actualOffset && otherPlayer.isBoostActionPressed)
         {
             isBoosting = true;
