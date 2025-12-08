@@ -28,7 +28,6 @@ public class Player : MonoBehaviour
     [HideInInspector] public bool isBoosting = false;
     [HideInInspector] public bool isBoostActionPressed = false;
 
-
     FollowingSpline carParent;
     LayerMask boostLayerChecked;
     Vector3 resettLocalPos;
@@ -46,6 +45,12 @@ public class Player : MonoBehaviour
     bool canChoose = false;
 
 
+    FMOD.Studio.EventInstance movingSound;
+    FMOD.Studio.EventInstance movingBoostSound;
+    FMOD.Studio.EventInstance boostingSound;
+    FMOD.Studio.EventInstance boostingBothSound;
+    string boostParamName;
+
     private void Awake()
     {
         carParent = transform.parent.GetComponent<FollowingSpline>();
@@ -53,6 +58,8 @@ public class Player : MonoBehaviour
         resettLocalPos = transform.localPosition;
         offsetLen = trackRenderer.offset;
         actualOffset = playerId == 0 ? -1 : 1;
+
+        LoadAllSounds();
         StartCoroutine(LauchReadyTimer());
     }
 
@@ -92,11 +99,39 @@ public class Player : MonoBehaviour
             LaunchJump(); 
     }
 
+    void LoadAllSounds()
+    {
+        movingSound = FMODUnity.RuntimeManager.CreateInstance("event:/Avatar/moving");
+        movingBoostSound = FMODUnity.RuntimeManager.CreateInstance("event:/Avatar/Boost");
+        string boostPath = playerId == 0 ? "event:/Avatar/Combot/Barre_combot_1" : "event:/Avatar/Combot/Barre_combot_2";
+        boostParamName = playerId == 0 ? "is_boosting_1" : "is_boosting_2";
+        boostingSound = FMODUnity.RuntimeManager.CreateInstance(boostPath);
+        boostingBothSound = FMODUnity.RuntimeManager.CreateInstance("event:/Avatar/Combot/Barre_combot_3");
+    }
+
 
     void SetActiveOnTrack()
     {
+        bool isActive = !isJumping && !isFalling && !isRespawning;
+        float movParam = isActive ? 1.0f : 0.0f;
+
         foreach (GameObject go in activeOnTrack)
-            go.SetActive(!isJumping && !isFalling && !isRespawning);
+            go.SetActive(isActive);
+
+        FMODUnity.RuntimeManager.StudioSystem.setParameterByName("is_moving", movParam);
+        if (!IsSoundPlaying(movingSound) && isActive)
+            movingSound.start();
+
+        float boostParam = isBoosting ? 1.0f : 0.0f;
+        FMODUnity.RuntimeManager.StudioSystem.setParameterByName(boostParamName, boostParam);
+        if (!IsSoundPlaying(boostingSound) && isBoosting)
+            boostingSound.start();
+
+        bool isBothBoost = isBoosting && otherPlayer.isBoosting && otherPlayer.actualOffset == actualOffset;
+        if (!IsSoundPlaying(boostingBothSound) && isBothBoost)
+            boostingBothSound.start();
+        else if (IsSoundPlaying(boostingBothSound) && !isBothBoost)
+            boostingBothSound.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
     }
 
 
@@ -137,6 +172,7 @@ public class Player : MonoBehaviour
             LaunchSideStep();
 
         isJumping = true;
+        FMODUnity.RuntimeManager.PlayOneShot("event:/Avatar/Jump");
 
         Tween.LocalPositionY(
             transform,
@@ -170,6 +206,8 @@ public class Player : MonoBehaviour
 
     void DownFromJump()
     {
+        FMODUnity.RuntimeManager.PlayOneShot("event:/Avatar/land");
+
         Tween.LocalPositionY(
             transform,
             transform.localPosition.y,
@@ -228,6 +266,13 @@ public class Player : MonoBehaviour
             jumpTime,
             ease: Ease.OutQuart).OnComplete(() => { canChoose = true; });
         }
+    }
+
+
+    bool IsSoundPlaying(FMOD.Studio.EventInstance fmodEventInstance)
+    {
+        fmodEventInstance.getPlaybackState(out var state);
+        return state == FMOD.Studio.PLAYBACK_STATE.PLAYING;
     }
 
 
