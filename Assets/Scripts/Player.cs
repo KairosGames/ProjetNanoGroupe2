@@ -1,10 +1,7 @@
 using PrimeTween;
 using System.Collections;
-using TreeEditor;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Splines;
-using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -27,35 +24,34 @@ public class Player : MonoBehaviour
     [SerializeField] float jumpTime = 0.25f;
     [SerializeField] float respawnTime = 1.0f;
 
-    [System.NonSerialized] public int maxOffset = 2;
+    [System.NonSerialized] public int maxOffset = 1;
     [HideInInspector] public bool isBoosting = false;
     
 
+    FollowingSpline carParent;
     LayerMask boostLayerChecked;
     Vector3 resettLocalPos;
     Vector3 checkBoxExtents = new Vector3(0.25f, 0.5f, 0.05f);
     float offsetLen;
     float inputDir = 0.0f;
+    float localYResetSpawn = 2.0f;
+    float lastT = 0.0f;
+    float tVel = 0.0f;
     int actualOffset = 0;
     bool isReady = false;
     bool isJumping = false;
     bool isFalling = false;
     bool isRespawning = false;
     bool canChoose = false;
-    float localYResetSpawn = 2.0f;
-
-
-    [Header("MovementSmoothness")]
-    [SerializeField] float tWeight = 0.08f;
-    float lastT = 0.0f;
-    float tVel = 0.0f;
 
 
     private void Awake()
     {
+        carParent = transform.parent.GetComponent<FollowingSpline>();
         boostLayerChecked = playerId == 0 ? boostLayer1 : boostLayer2;
         resettLocalPos = transform.localPosition;
         offsetLen = trackRenderer.offset;
+        actualOffset = playerId == 0 ? -1 : 1;
         StartCoroutine(LauchReadyTimer());
     }
 
@@ -110,7 +106,7 @@ public class Player : MonoBehaviour
         Vector3 carLocalPos = actualSpline.transform.InverseTransformPoint(carPos);
         SplineUtility.GetNearestPoint(actualSpline.Spline, carLocalPos, out var nearestLocal, out float t);
         if (lastT == 0.0f) lastT = t;
-        lastT = Mathf.SmoothDamp(lastT, t, ref tVel, tWeight);
+        lastT = Mathf.SmoothDamp(lastT, t, ref tVel, carParent.tSmooth);
         actualSpline.Evaluate(lastT, out var localPosFromSpline, out var dir, out var up);
         Vector3 globalPosTarget = actualSpline.transform.TransformPoint(localPosFromSpline);
         Vector3 localPosTarget = transform.parent.InverseTransformPoint(globalPosTarget);
