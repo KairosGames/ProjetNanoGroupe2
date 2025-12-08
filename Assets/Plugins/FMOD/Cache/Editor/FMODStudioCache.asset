@@ -351,7 +351,7 @@ MonoBehaviour:
   StringsBanks:
   - {fileID: 7165354384997087733}
   cacheVersion: 131857
-  cacheTime: 639007894705959835
+  cacheTime: 639007967710950324
   SerializableEventsDict:
   - key: event:/Avatar/mooving
     index: 0
@@ -418,10 +418,10 @@ MonoBehaviour:
   Path: Fmod_Project/Nano_Fmod/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639007894705959835
+  lastModified: 639007967710919763
   FileSizes:
   - Name: Desktop
-    Value: 6268160
+    Value: 6269312
   Exists: 1
 --- !u!114 &1786989775475216835
 MonoBehaviour:
@@ -589,7 +589,7 @@ MonoBehaviour:
   - {fileID: -1630421449379316009}
   MinDistance: 1
   MaxDistance: 20
-  Length: 162720
+  Length: 219669
 --- !u!114 &6256837047013209687
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -632,7 +632,7 @@ MonoBehaviour:
   Path: Fmod_Project/Nano_Fmod/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639005498252906429
+  lastModified: 639007967710950324
   FileSizes:
   - Name: Desktop
     Value: 1758
