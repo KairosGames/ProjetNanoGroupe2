@@ -11636,7 +11636,7 @@ MonoBehaviour:
   CollisionTag: 
   Parameter: Phase_musique
   TriggerEvent: 1
-  Value: 3
+  Value: 1
 --- !u!54 &1686917725
 Rigidbody:
   m_ObjectHideFlags: 0
