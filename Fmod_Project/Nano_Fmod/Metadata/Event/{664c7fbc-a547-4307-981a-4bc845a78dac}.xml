@@ -95,9 +95,6 @@
 		</relationship>
 	</object>
 	<object class="GroupTrack" id="{91975e92-3fd5-49fa-b265-751f9738fa51}">
-		<relationship name="modules">
-			<destination>{04c24390-b3f5-4122-b50d-b6de15266730}</destination>
-		</relationship>
 		<relationship name="mixerGroup">
 			<destination>{c9c535eb-4ddc-404c-bfbb-1cf64fa3121e}</destination>
 		</relationship>
@@ -108,7 +105,6 @@
 			<destination>{114da8c9-277d-478d-9589-fafdf7205875}</destination>
 			<destination>{534ab8c8-247b-436e-8e0c-70ead7782708}</destination>
 			<destination>{81050176-d170-4498-91ff-8fa6bb9d28a4}</destination>
-			<destination>{04c24390-b3f5-4122-b50d-b6de15266730}</destination>
 		</relationship>
 		<relationship name="markers">
 			<destination>{1dfe06b8-8749-4e86-96ef-3e73750be673}</destination>
@@ -240,20 +236,6 @@
 			<destination>{7eac1f02-0a89-444b-a4d0-272545cce331}</destination>
 		</relationship>
 	</object>
-	<object class="CommandSound" id="{04c24390-b3f5-4122-b50d-b6de15266730}">
-		<property name="length">
-			<value>2</value>
-		</property>
-		<property name="commandType">
-			<value>1</value>
-		</property>
-		<relationship name="triggerConditions">
-			<destination>{560884e8-36ed-4d46-92fe-fc33312dbe1a}</destination>
-		</relationship>
-		<relationship name="commandTarget">
-			<destination>{6821b60b-0986-49c7-bbdf-c4feff962ed2}</destination>
-		</relationship>
-	</object>
 	<object class="EventMixerGroup" id="{c9c535eb-4ddc-404c-bfbb-1cf64fa3121e}">
 		<property name="name">
 			<value>Audio 5</value>
@@ -324,17 +306,6 @@
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{9b5a1ea3-677d-4d6b-a13a-1f9f246bedd1}" />
-	<object class="ParameterCondition" id="{560884e8-36ed-4d46-92fe-fc33312dbe1a}">
-		<property name="minimum">
-			<value>1</value>
-		</property>
-		<property name="maximum">
-			<value>1</value>
-		</property>
-		<relationship name="parameter">
-			<destination>{584d2a35-0ce7-4954-9420-f0e72b165119}</destination>
-		</relationship>
-	</object>
 	<object class="MixerBusEffectChain" id="{91f8949d-138b-422b-a622-4be9b8992016}">
 		<relationship name="effects">
 			<destination>{7c467677-f89a-46b3-b42a-b516873b9499}</destination>

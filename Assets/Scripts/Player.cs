@@ -2,6 +2,7 @@ using PrimeTween;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Splines;
+using static UnityEngine.GraphicsBuffer;
 
 public class Player : MonoBehaviour
 {
@@ -30,8 +31,9 @@ public class Player : MonoBehaviour
 
     FollowingSpline carParent;
     LayerMask boostLayerChecked;
-    Vector3 resettLocalPos;
     Vector3 checkBoxExtents = new Vector3(0.25f, 0.5f, 0.05f);
+    Vector3 resetVisualScale;
+    Vector3 targetTryBoostScale;
     float offsetLen;
     float inputDir = 0.0f;
     float localYResetSpawn = 2.0f;
@@ -46,16 +48,17 @@ public class Player : MonoBehaviour
 
 
     FMOD.Studio.EventInstance movingSound;
-    FMOD.Studio.EventInstance movingBoostSound;
     FMOD.Studio.EventInstance boostingSound;
     FMOD.Studio.EventInstance boostingBothSound;
+    string movingParamName;
     string boostParamName;
 
     private void Awake()
     {
         carParent = transform.parent.GetComponent<FollowingSpline>();
+        resetVisualScale = childVisual.transform.localScale;
+        targetTryBoostScale = new Vector3(resetVisualScale.x * 1.4f, resetVisualScale.y * 0.6f, resetVisualScale.z * 1.2f);
         boostLayerChecked = playerId == 0 ? boostLayer1 : boostLayer2;
-        resettLocalPos = transform.localPosition;
         offsetLen = trackRenderer.offset;
         actualOffset = playerId == 0 ? -1 : 1;
 
@@ -86,6 +89,7 @@ public class Player : MonoBehaviour
         if (!isJumping && !isFalling)
         {
             SetPosition();
+            SetRotation();
             CheckGround();
         }
 
@@ -93,9 +97,15 @@ public class Player : MonoBehaviour
             Fall();
 
         if (isBoostActionPressed)
+        {
             CheckBooster();
+            TryBoostEffect();
+        }
         else
+        {
+            ResetTryBoostEffect();
             isBoosting = false;
+        }
 
         if (!isJumping && !isFalling && isJumpActionReleased)
             LaunchJump(); 
@@ -103,11 +113,14 @@ public class Player : MonoBehaviour
 
     void LoadAllSounds()
     {
-        movingSound = FMODUnity.RuntimeManager.CreateInstance("event:/Avatar/moving");
-        movingBoostSound = FMODUnity.RuntimeManager.CreateInstance("event:/Avatar/Boost");
+        string movingPath = playerId == 0 ? "event:/Avatar/moving_1" : "event:/Avatar/moving_2";
+        movingSound = FMODUnity.RuntimeManager.CreateInstance(movingPath);
+        movingParamName = playerId == 0 ? "is_moving_1" : "is_moving_2";
+
         string boostPath = playerId == 0 ? "event:/Avatar/Combot/Barre_combot_1" : "event:/Avatar/Combot/Barre_combot_2";
-        boostParamName = playerId == 0 ? "is_boosting_1" : "is_boosting_2";
         boostingSound = FMODUnity.RuntimeManager.CreateInstance(boostPath);
+        boostParamName = playerId == 0 ? "is_boosting_1" : "is_boosting_2";
+
         boostingBothSound = FMODUnity.RuntimeManager.CreateInstance("event:/Avatar/Combot/Barre_combot_3");
     }
 
@@ -120,21 +133,24 @@ public class Player : MonoBehaviour
         foreach (GameObject go in activeOnTrack)
             go.SetActive(isActive);
 
-        FMODUnity.RuntimeManager.StudioSystem.setParameterByName("is_moving", movParam);
+        FMODUnity.RuntimeManager.StudioSystem.setParameterByName(movingParamName, movParam);
         if (!IsSoundPlaying(movingSound) && isActive)
             movingSound.start();
 
         bool isBothBoost = isBoosting && otherPlayer.isBoosting && otherPlayer.actualOffset == actualOffset;
         float boostParam = isBoosting ? (isBothBoost ? 0.0f : 1.0f) : 0.0f;
-        float isBothBoostParam = isBoosting ? 1.0f : 0.0f;
+        float isBothBoostParam = isBothBoost ? 1.0f : 0.0f;
 
         FMODUnity.RuntimeManager.StudioSystem.setParameterByName(boostParamName, boostParam);
         if (!IsSoundPlaying(boostingSound) && isBoosting && !isBothBoost)
             boostingSound.start();
 
-        FMODUnity.RuntimeManager.StudioSystem.setParameterByName("is_bothboosting", isBothBoostParam);
-        if (!IsSoundPlaying(boostingBothSound) && isBothBoost)
-            boostingBothSound.start();
+        if (playerId == 0)
+        {
+            FMODUnity.RuntimeManager.StudioSystem.setParameterByName("is_bothboosting", isBothBoostParam);
+            if (!IsSoundPlaying(boostingBothSound) && isBothBoost)
+                boostingBothSound.start();
+        }
     }
 
 
@@ -153,6 +169,15 @@ public class Player : MonoBehaviour
     }
 
 
+    void SetRotation()
+    {
+        float targetZ = inputDir * -30.0f;
+        Vector3 eul = transform.localEulerAngles;
+        eul.z = Mathf.LerpAngle(eul.z, targetZ, 10f * Time.deltaTime);
+        transform.localEulerAngles = eul;
+    }
+
+
     void CheckGround()
     {
         if (Physics.CheckBox(transform.position, checkBoxExtents, transform.rotation, groundLayer))
@@ -166,6 +191,15 @@ public class Player : MonoBehaviour
     void Fall()
     {
         transform.localPosition -= new Vector3(0.0f, fallingSpeed, 0.0f) * Time.deltaTime;
+        GoToResetRotation();
+    }
+
+
+    void GoToResetRotation()
+    {
+        Vector3 eul = transform.localEulerAngles;
+        eul.z = Mathf.LerpAngle(eul.z, 0.0f, 10f * Time.deltaTime);
+        transform.localEulerAngles = eul;
     }
 
 
@@ -204,6 +238,18 @@ public class Player : MonoBehaviour
         }
 
         isBoosting = false;
+    }
+
+
+    void TryBoostEffect()
+    {
+        childVisual.transform.localScale = Vector3.Lerp(childVisual.transform.localScale, targetTryBoostScale, Time.deltaTime * 10.0f);
+    }
+
+
+    void ResetTryBoostEffect()
+    {
+        childVisual.transform.localScale = Vector3.Lerp(childVisual.transform.localScale, resetVisualScale, Time.deltaTime * 10.0f);
     }
 
 
@@ -294,7 +340,7 @@ public class Player : MonoBehaviour
         isRespawning = true;
         actualOffset = 0;
         lastT = 0.0f;
-        transform.localPosition = new Vector3(0.0f, 6.0f, 0.0f);
+        transform.localPosition = new Vector3(0.0f, 3.0f, 0.0f);
 
         Tween.LocalPositionY(
             transform,
