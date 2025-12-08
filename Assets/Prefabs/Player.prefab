@@ -322,6 +322,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: TrailFX
       objectReference: {fileID: 0}
+    - target: {fileID: 4807055952343316715, guid: e3ec782639b29d2498b5c8b012a1e063, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7949562454991697187, guid: e3ec782639b29d2498b5c8b012a1e063, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8466838519115201182, guid: e3ec782639b29d2498b5c8b012a1e063, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.03
