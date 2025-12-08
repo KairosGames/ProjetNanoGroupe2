@@ -57,7 +57,7 @@ public class Player : MonoBehaviour
     {
         carParent = transform.parent.GetComponent<FollowingSpline>();
         resetVisualScale = childVisual.transform.localScale;
-        targetTryBoostScale = resetVisualScale * 0.66f;
+        targetTryBoostScale = new Vector3(resetVisualScale.x * 1.4f, resetVisualScale.y * 0.6f, resetVisualScale.z * 1.2f);
         boostLayerChecked = playerId == 0 ? boostLayer1 : boostLayer2;
         offsetLen = trackRenderer.offset;
         actualOffset = playerId == 0 ? -1 : 1;
@@ -251,7 +251,6 @@ public class Player : MonoBehaviour
     {
         childVisual.transform.localScale = Vector3.Lerp(childVisual.transform.localScale, resetVisualScale, Time.deltaTime * 10.0f);
     }
-
 
 
     void DownFromJump()
