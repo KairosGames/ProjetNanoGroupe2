@@ -1,21 +1,58 @@
+using FMOD.Studio;
+using PrimeTween;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class CameraLerp : MonoBehaviour
 {
-    [SerializeField] Transform Anchor;
-    [SerializeField] float roughness = 100.0f;
+    [Header("Extern References")]
+    [SerializeField] GameManager manager;
 
+    [Header("Intern References")]
+    [SerializeField] Transform anchor;
+    [SerializeField] public ParticleSystem windParticles;
+    [SerializeField] public ParticleSystem starsParticles;
+
+    [Header("Settings")]
+    [SerializeField] float roughness = 1.0f;
+
+    [System.NonSerialized] public bool isFollowingAnchor = true;
+    FollowingSpline mainCar;
+    Camera mainCam;
+
+    void Awake()
+    {
+        mainCar = anchor.parent.GetComponent<FollowingSpline>();
+        mainCam = GetComponent<Camera>();
+
+        transform.SetParent(null, true);
+        transform.position = anchor.position;
+        transform.rotation = anchor.rotation;
+
+        starsParticles.gameObject.SetActive(false);
+    }
+    
     void Start()
     {
-        transform.position = Anchor.position;
-        transform.rotation = Anchor.rotation;
-        transform.localScale = Anchor.localScale;
+        LauchRoughnessTwean();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        transform.position = Vector3.Lerp(transform.position, Anchor.position, roughness*Time.deltaTime);
-        transform.rotation = Quaternion.Slerp(transform.rotation, Anchor.rotation, roughness*Time.deltaTime);
+        if (isFollowingAnchor)
+        {
+            
+            transform.position = Vector3.Lerp(transform.position, anchor.position, roughness * Time.deltaTime);
+            transform.rotation = Quaternion.Slerp(transform.rotation, anchor.rotation, roughness * Time.deltaTime);
+        }
+        else
+        {
+            windParticles.Stop();
+        }
+    }
+
+    void LauchRoughnessTwean()
+    {
+        Tween.Custom(roughness, 6.0f, duration : 5.0f, onValueChange: v => roughness = v);
     }
 }
