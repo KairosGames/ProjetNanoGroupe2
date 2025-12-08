@@ -134,6 +134,9 @@
 		<property name="length">
 			<value>8.4263945578231301</value>
 		</property>
+		<property name="startOffset">
+			<value>49.5</value>
+		</property>
 		<property name="looping">
 			<value>true</value>
 		</property>
@@ -165,6 +168,9 @@
 		<property name="length">
 			<value>8.3951927437641718</value>
 		</property>
+		<property name="startOffset">
+			<value>50</value>
+		</property>
 		<property name="looping">
 			<value>true</value>
 		</property>
@@ -195,6 +201,9 @@
 		</property>
 		<property name="length">
 			<value>1.0224036281179139</value>
+		</property>
+		<property name="startOffset">
+			<value>49.5</value>
 		</property>
 		<property name="playCount">
 			<value>1</value>
@@ -289,7 +298,7 @@
 			<value>startOffset</value>
 		</property>
 		<property name="amount">
-			<value>65.5</value>
+			<value>100</value>
 		</property>
 	</object>
 	<object class="MixerBusEffectChain" id="{18542c0e-baf3-42f9-a460-e38a5cdb24ea}">
@@ -303,7 +312,7 @@
 			<value>startOffset</value>
 		</property>
 		<property name="amount">
-			<value>84.5</value>
+			<value>100</value>
 		</property>
 	</object>
 	<object class="MixerBusEffectChain" id="{2085db17-6d8d-448a-948e-00b0c8743a55}">
@@ -317,7 +326,7 @@
 			<value>startOffset</value>
 		</property>
 		<property name="amount">
-			<value>15.5</value>
+			<value>100</value>
 		</property>
 	</object>
 	<object class="MixerBusEffectChain" id="{18e5fa67-69ac-45bf-9aea-2fa031a6733f}">
