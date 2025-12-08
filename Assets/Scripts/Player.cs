@@ -262,9 +262,20 @@ public class Player : MonoBehaviour
             transform.localPosition.y,
             transform.localPosition.y - 1.0f,
             jumpTime / 2.0f,
-            ease: Ease.InQuart).OnComplete(() => { isJumping = false; });
+            ease: Ease.InQuart).OnComplete(() => { isJumping = false; LaunchLandingEffect(); });
     }
+    void LaunchLandingEffect()
+    {
+        childVisual.transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
 
+        Tween.Scale(
+            childVisual.transform,
+            transform.localScale,
+            resetVisualScale,
+            0.3f,
+            ease: Ease.OutElastic
+            );
+    }
 
     void LaunchSideStep()
     {
