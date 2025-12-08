@@ -134,28 +134,23 @@ public class Player : MonoBehaviour
             go.SetActive(isActive);
 
         FMODUnity.RuntimeManager.StudioSystem.setParameterByName(movingParamName, movParam);
-        Debug.Log(movParam);
         if (!IsSoundPlaying(movingSound) && isActive)
-        {
             movingSound.start();
-            Debug.Log("OUUUI !");
-        }
 
         bool isBothBoost = isBoosting && otherPlayer.isBoosting && otherPlayer.actualOffset == actualOffset;
         float boostParam = isBoosting ? (isBothBoost ? 0.0f : 1.0f) : 0.0f;
         float isBothBoostParam = isBothBoost ? 1.0f : 0.0f;
 
-        /*FMODUnity.RuntimeManager.StudioSystem.setParameterByName(boostParamName, boostParam);
+        FMODUnity.RuntimeManager.StudioSystem.setParameterByName(boostParamName, boostParam);
         if (!IsSoundPlaying(boostingSound) && isBoosting && !isBothBoost)
-            boostingSound.start();*/
+            boostingSound.start();
 
-        /*FMODUnity.RuntimeManager.StudioSystem.setParameterByName("is_bothboosting", isBothBoostParam);
-        Debug.Log(isBothBoostParam);
-        if (!IsSoundPlaying(boostingBothSound) && isBothBoost)
+        if (playerId == 0)
         {
-            boostingBothSound.start();
-            Debug.Log("oui");
-        }*/
+            FMODUnity.RuntimeManager.StudioSystem.setParameterByName("is_bothboosting", isBothBoostParam);
+            if (!IsSoundPlaying(boostingBothSound) && isBothBoost)
+                boostingBothSound.start();
+        }
     }
 
 

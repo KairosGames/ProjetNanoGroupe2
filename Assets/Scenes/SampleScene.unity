@@ -885,8 +885,12 @@ PrefabInstance:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5778851161427359816, guid: ca155248a8a370f4bbbfe0477ae3782d, type: 3}
+      propertyPath: areFarsActives
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5778851161427359816, guid: ca155248a8a370f4bbbfe0477ae3782d, type: 3}
       propertyPath: isDebugPosActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6432719622235687024, guid: ca155248a8a370f4bbbfe0477ae3782d, type: 3}
       propertyPath: m_IsActive
@@ -943,8 +947,10 @@ MonoBehaviour:
   leftSplinesData: []
   middleSplinesData: []
   rightSplinesData:
-  - startingKnot: 3
+  - startingKnot: 1
     endingKnot: 14
+  - startingKnot: 15
+    endingKnot: 18
   farRightSplinesData: []
   layerName: BoostBoth
   offset: 1
