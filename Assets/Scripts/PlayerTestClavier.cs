@@ -3,11 +3,11 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Splines;
 
-public class Player : MonoBehaviour
+public class PlayerTestClavier : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] TrackRenderer trackRenderer;
-    [SerializeField] Player otherPlayer;
+    [SerializeField] PlayerTestClavier otherPlayer;
 
     [Header("InterReferences")]
     [SerializeField] GameObject[] activeOnTrack;
@@ -28,7 +28,7 @@ public class Player : MonoBehaviour
     [HideInInspector] public bool isBoosting = false;
     [HideInInspector] public bool isBoostActionPressed = false;
 
-    FollowingSpline carParent;
+    FollowingSplineClavier carParent;
     LayerMask boostLayerChecked;
     Vector3 resettLocalPos;
     Vector3 checkBoxExtents = new Vector3(0.25f, 0.5f, 0.05f);
@@ -53,7 +53,7 @@ public class Player : MonoBehaviour
 
     private void Awake()
     {
-        carParent = transform.parent.GetComponent<FollowingSpline>();
+        carParent = transform.parent.GetComponent<FollowingSplineClavier>();
         boostLayerChecked = playerId == 0 ? boostLayer1 : boostLayer2;
         resettLocalPos = transform.localPosition;
         offsetLen = trackRenderer.offset;
@@ -71,11 +71,18 @@ public class Player : MonoBehaviour
         if (!isReady)
             return;
 
-        isBoostActionPressed = playerId == 0 ? Input.GetKey(KeyCode.Joystick1Button0) : Input.GetKey(KeyCode.Joystick2Button0);
-        bool isChooseActionJustPressed = playerId == 0 ? Input.GetKeyDown(KeyCode.Joystick1Button0) : Input.GetKeyDown(KeyCode.Joystick2Button0);
-        bool isJumpActionReleased = playerId == 0 ? Input.GetKeyUp(KeyCode.Joystick1Button0) : Input.GetKeyUp(KeyCode.Joystick2Button0);
-        inputDir = Input.GetAxis($"Horizontal_P{playerId + 1}");
-        inputDir = Mathf.Abs(inputDir) >= 0.6f ? Mathf.Sign(inputDir) : 0.0f;
+        isBoostActionPressed = playerId == 0 ? Input.GetKey(KeyCode.W) : Input.GetKey(KeyCode.I);
+        bool isChooseActionJustPressed = playerId == 0 ? Input.GetKeyDown(KeyCode.W) : Input.GetKeyDown(KeyCode.I);
+        bool isJumpActionReleased = playerId == 0 ? Input.GetKeyUp(KeyCode.W) : Input.GetKeyUp(KeyCode.I);
+        inputDir = 0;
+        if (Input.GetKey(KeyCode.A))
+            inputDir = -1;
+        if (Input.GetKey(KeyCode.D))
+            inputDir = 1;
+        if (Input.GetKey(KeyCode.J))
+            inputDir = -1;
+        if (Input.GetKey(KeyCode.L))
+            inputDir = 1;
 
         if (isRespawning)
         {
@@ -98,7 +105,7 @@ public class Player : MonoBehaviour
             isBoosting = false;
 
         if (!isJumping && !isFalling && isJumpActionReleased)
-            LaunchJump(); 
+            LaunchJump();
     }
 
     void LoadAllSounds()
@@ -189,13 +196,19 @@ public class Player : MonoBehaviour
     {
         if (isFalling || isJumping)
             return;
-            
+
         if (Physics.CheckBox(transform.position, checkBoxExtents, transform.rotation, boostLayerChecked))
         {
             isBoosting = true;
             Debug.Log($"Player{playerId} is boosting !");
             return;
         }
+
+        if (playerId == 0)
+            Debug.Log($"P1 : for other : {otherPlayer.isBoostActionPressed}");
+        else
+            Debug.Log($"P2 : for other : {otherPlayer.isBoostActionPressed}");
+
 
         if (Physics.CheckBox(transform.position, checkBoxExtents, transform.rotation, boostLayerBoth) && otherPlayer.actualOffset == actualOffset && otherPlayer.isBoostActionPressed)
         {

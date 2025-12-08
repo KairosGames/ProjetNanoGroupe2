@@ -246,17 +246,6 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_RenderingLayers: 1
   m_ShadowRenderingLayers: 1
---- !u!114 &459578652 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4969903646772697973, guid: ca155248a8a370f4bbbfe0477ae3782d, type: 3}
-  m_PrefabInstance: {fileID: 843468860}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab92481eb1b52c74a9b93e4ca7cc09b2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Player
 --- !u!1 &476047410
 GameObject:
   m_ObjectHideFlags: 0
@@ -801,6 +790,10 @@ PrefabInstance:
       value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 545709394311971752, guid: ca155248a8a370f4bbbfe0477ae3782d, type: 3}
+      propertyPath: otherPlayer
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 545709394311971752, guid: ca155248a8a370f4bbbfe0477ae3782d, type: 3}
       propertyPath: fallingSpeed
       value: 10
       objectReference: {fileID: 0}
@@ -863,11 +856,11 @@ PrefabInstance:
     - target: {fileID: 5778851161427359816, guid: ca155248a8a370f4bbbfe0477ae3782d, type: 3}
       propertyPath: player1
       value: 
-      objectReference: {fileID: 1139458247}
+      objectReference: {fileID: 0}
     - target: {fileID: 5778851161427359816, guid: ca155248a8a370f4bbbfe0477ae3782d, type: 3}
       propertyPath: player2
       value: 
-      objectReference: {fileID: 459578652}
+      objectReference: {fileID: 0}
     - target: {fileID: 5778851161427359816, guid: ca155248a8a370f4bbbfe0477ae3782d, type: 3}
       propertyPath: topSpeed
       value: 10
@@ -875,14 +868,6 @@ PrefabInstance:
     - target: {fileID: 5778851161427359816, guid: ca155248a8a370f4bbbfe0477ae3782d, type: 3}
       propertyPath: baseSpeed
       value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 5778851161427359816, guid: ca155248a8a370f4bbbfe0477ae3782d, type: 3}
-      propertyPath: acceleration
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 5778851161427359816, guid: ca155248a8a370f4bbbfe0477ae3782d, type: 3}
-      propertyPath: deceleration
-      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5778851161427359816, guid: ca155248a8a370f4bbbfe0477ae3782d, type: 3}
       propertyPath: isDebugPosActive
@@ -904,11 +889,90 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -5.7
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4969903646772697973, guid: ca155248a8a370f4bbbfe0477ae3782d, type: 3}
+    - {fileID: 545709394311971752, guid: ca155248a8a370f4bbbfe0477ae3782d, type: 3}
+    - {fileID: 5778851161427359816, guid: ca155248a8a370f4bbbfe0477ae3782d, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3941548498504720322, guid: ca155248a8a370f4bbbfe0477ae3782d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2018258364}
+    - targetCorrespondingSourceObject: {fileID: 1886874856818610349, guid: ca155248a8a370f4bbbfe0477ae3782d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1139458248}
+    - targetCorrespondingSourceObject: {fileID: 6432719622235687024, guid: ca155248a8a370f4bbbfe0477ae3782d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 843468865}
   m_SourcePrefab: {fileID: 100100000, guid: ca155248a8a370f4bbbfe0477ae3782d, type: 3}
+--- !u!1 &843468861 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 322634925130360590, guid: ca155248a8a370f4bbbfe0477ae3782d, type: 3}
+  m_PrefabInstance: {fileID: 843468860}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &843468862 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1597276769392025497, guid: ca155248a8a370f4bbbfe0477ae3782d, type: 3}
+  m_PrefabInstance: {fileID: 843468860}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &843468863 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6432719622235687024, guid: ca155248a8a370f4bbbfe0477ae3782d, type: 3}
+  m_PrefabInstance: {fileID: 843468860}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &843468864 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1886874856818610349, guid: ca155248a8a370f4bbbfe0477ae3782d, type: 3}
+  m_PrefabInstance: {fileID: 843468860}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &843468865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 843468863}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55967db145b40de4fa428a522ad76e0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerTestClavier
+  trackRenderer: {fileID: 1197271600}
+  otherPlayer: {fileID: 1139458248}
+  activeOnTrack: []
+  childVisual: {fileID: 843468862}
+  playerId: 1
+  groundLayer:
+    m_Bits: 8
+  boostLayer1:
+    m_Bits: 64
+  boostLayer2:
+    m_Bits: 128
+  boostLayerBoth:
+    m_Bits: 256
+  fallingSpeed: 5
+  jumpTime: 0.25
+  respawnTime: 1
+  isBoosting: 0
+  isBoostActionPressed: 0
+  carParent: {fileID: 0}
+  boostLayerChecked:
+    m_Bits: 0
+  resettLocalPos: {x: 0, y: 0, z: 0}
+  checkBoxExtents: {x: 0.25, y: 0.5, z: 0.05}
+  offsetLen: 0
+  inputDir: 0
+  localYResetSpawn: 2
+  lastT: 0
+  tVel: 0
+  actualOffset: 0
+  isReady: 0
+  isJumping: 0
+  isFalling: 0
+  isRespawning: 0
+  canChoose: 0
+  boostParamName: 
 --- !u!1 &1074197560
 GameObject:
   m_ObjectHideFlags: 0
@@ -1387,17 +1451,53 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1139458247 stripped
+--- !u!114 &1139458248
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 545709394311971752, guid: ca155248a8a370f4bbbfe0477ae3782d, type: 3}
-  m_PrefabInstance: {fileID: 843468860}
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 843468864}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab92481eb1b52c74a9b93e4ca7cc09b2, type: 3}
+  m_Script: {fileID: 11500000, guid: 55967db145b40de4fa428a522ad76e0b, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Player
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerTestClavier
+  trackRenderer: {fileID: 1197271600}
+  otherPlayer: {fileID: 843468865}
+  activeOnTrack: []
+  childVisual: {fileID: 843468861}
+  playerId: 0
+  groundLayer:
+    m_Bits: 8
+  boostLayer1:
+    m_Bits: 64
+  boostLayer2:
+    m_Bits: 128
+  boostLayerBoth:
+    m_Bits: 256
+  fallingSpeed: 5
+  jumpTime: 0.25
+  respawnTime: 1
+  isBoosting: 0
+  isBoostActionPressed: 0
+  carParent: {fileID: 0}
+  boostLayerChecked:
+    m_Bits: 0
+  resettLocalPos: {x: 0, y: 0, z: 0}
+  checkBoxExtents: {x: 0.25, y: 0.5, z: 0.05}
+  offsetLen: 0
+  inputDir: 0
+  localYResetSpawn: 2
+  lastT: 0
+  tVel: 0
+  actualOffset: 0
+  isReady: 0
+  isJumping: 0
+  isFalling: 0
+  isRespawning: 0
+  canChoose: 0
+  boostParamName: 
 --- !u!1 &1197271599
 GameObject:
   m_ObjectHideFlags: 0
@@ -2370,6 +2470,41 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2018258361 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3941548498504720322, guid: ca155248a8a370f4bbbfe0477ae3782d, type: 3}
+  m_PrefabInstance: {fileID: 843468860}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2018258364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2018258361}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8987f55934187214da0318cea83bd65d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FollowingSplineClavier
+  spline: {fileID: 1197271601}
+  player1: {fileID: 1139458248}
+  player2: {fileID: 843468865}
+  tSmooth: 0.3
+  baseSpeed: 5
+  topSpeed: 10
+  acceleration: 10
+  deceleration: 84.09
+  isDebugPosActive: 0
+  startingNode: 0
+  areFarsActives: 0
+  speed: 0
+  currentPos: 0
+  currentLength: 0
+  accelerating: 0
+  accelerationTime: 0
+  decelerating: 1
+  decelerationTime: 1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

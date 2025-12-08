@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="ParameterPreset" id="{e5145749-edb4-4d8c-bec1-4b75a7d3e14f}">
+		<property name="name">
+			<value>is_bothboosting</value>
+		</property>
+		<relationship name="folder">
+			<destination>{bcd8ae77-6468-423e-ab3b-85a594e87da9}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{dd0ec574-b21b-424a-be07-20e64fcbd9c7}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{dd0ec574-b21b-424a-be07-20e64fcbd9c7}">
+		<property name="isGlobal">
+			<value>true</value>
+		</property>
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+		<property name="isExposedRecursively">
+			<value>false</value>
+		</property>
+	</object>
+</objects>
