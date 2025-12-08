@@ -84,7 +84,7 @@ MonoBehaviour:
   player2: {fileID: 0}
   tSmooth: 0.1
   baseSpeed: 10
-  topSpeed: 15
+  topSpeed: 20
   acceleration: 0.05
   deceleration: 0.05
   isDebugPosActive: 0
@@ -313,6 +313,10 @@ PrefabInstance:
     - target: {fileID: 1085387924605175972, guid: 8607f0d778a64144494f6e1cd3b9470a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5212726405928842661, guid: 8607f0d778a64144494f6e1cd3b9470a, type: 3}
+      propertyPath: simulationSpeed
+      value: 0.4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
