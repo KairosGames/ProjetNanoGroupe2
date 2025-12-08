@@ -23,7 +23,7 @@ public class Player : MonoBehaviour
     [SerializeField] float fallingSpeed = 5.0f;
     [SerializeField] float jumpTime = 0.25f;
 
-    [System.NonSerialized] public int maxOffset = 2;
+    [System.NonSerialized] public int maxOffset = 1;
     [HideInInspector] public bool isBoosting = false;
     
 
@@ -38,7 +38,7 @@ public class Player : MonoBehaviour
     bool isFalling = false;
 
 
-    [Header("MovmentSmoothness")]
+    [Header("MovementSmoothness")]
     [SerializeField] float tWeight = 0.08f;
     float lastT = 0.0f;
     float tVel = 0.0f;
@@ -157,7 +157,7 @@ public class Player : MonoBehaviour
             return;
 
         actualOffset += (int)inputDir;
-        //lastT = 0.0f;
+        lastT = 0.0f;
 
         /*Tween.LocalPositionX(
             transform,

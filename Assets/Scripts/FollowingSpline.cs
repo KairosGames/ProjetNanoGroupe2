@@ -101,7 +101,9 @@ public class FollowingSpline : MonoBehaviour
         currentPos = currentLength * t;
 
         if (areFarsActives)
-            player1.maxOffset++;
-            player2.maxOffset++;
+        {
+            player1.maxOffset = 2;
+            player2.maxOffset = 2;
+        }
     }
 }
