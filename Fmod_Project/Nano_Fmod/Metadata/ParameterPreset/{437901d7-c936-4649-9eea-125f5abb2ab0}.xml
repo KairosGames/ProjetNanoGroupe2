@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.03.00">
-	<object class="ParameterPreset" id="{0adc229f-af3f-4265-a902-9e311108c944}">
+	<object class="ParameterPreset" id="{437901d7-c936-4649-9eea-125f5abb2ab0}">
 		<property name="name">
-			<value>is_moving_1</value>
+			<value>is_moving_2</value>
 		</property>
 		<relationship name="folder">
 			<destination>{bcd8ae77-6468-423e-ab3b-85a594e87da9}</destination>
 		</relationship>
 		<relationship name="parameter">
-			<destination>{3fe988e7-314f-42df-b6be-b1bee8d6324e}</destination>
+			<destination>{8e0ec580-6cb4-4500-afc7-cb23b9c4b23b}</destination>
 		</relationship>
 	</object>
-	<object class="GameParameter" id="{3fe988e7-314f-42df-b6be-b1bee8d6324e}">
+	<object class="GameParameter" id="{8e0ec580-6cb4-4500-afc7-cb23b9c4b23b}">
 		<property name="isGlobal">
 			<value>true</value>
 		</property>
