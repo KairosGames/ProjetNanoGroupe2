@@ -137,6 +137,9 @@
 		<property name="looping">
 			<value>true</value>
 		</property>
+		<relationship name="modulators">
+			<destination>{159f0573-68bd-467e-a8ca-ad83ecc4a0a5}</destination>
+		</relationship>
 		<relationship name="audioFile">
 			<destination>{dbaed7e3-09b2-486d-82c0-07e430a50984}</destination>
 		</relationship>
@@ -165,6 +168,9 @@
 		<property name="looping">
 			<value>true</value>
 		</property>
+		<relationship name="modulators">
+			<destination>{abdbbf10-e0ec-4159-bd85-21862e691f70}</destination>
+		</relationship>
 		<relationship name="audioFile">
 			<destination>{a2465881-e031-4070-b06b-006da082919e}</destination>
 		</relationship>
@@ -193,6 +199,9 @@
 		<property name="playCount">
 			<value>1</value>
 		</property>
+		<relationship name="modulators">
+			<destination>{a314a203-a8d6-4412-bd5b-244b6f42d995}</destination>
+		</relationship>
 		<relationship name="audioFile">
 			<destination>{53b740c2-40de-4743-a9a1-de048046e51c}</destination>
 		</relationship>
@@ -275,18 +284,42 @@
 	</object>
 	<object class="MixerBusPanner" id="{d2d5ca5e-3789-48ab-ad1c-d3aae349705c}" />
 	<object class="MixerBusFader" id="{8a1932a5-b900-4ead-87e6-59e1a89ea02b}" />
+	<object class="RandomizerModulator" id="{159f0573-68bd-467e-a8ca-ad83ecc4a0a5}">
+		<property name="nameOfPropertyBeingModulated">
+			<value>startOffset</value>
+		</property>
+		<property name="amount">
+			<value>65.5</value>
+		</property>
+	</object>
 	<object class="MixerBusEffectChain" id="{18542c0e-baf3-42f9-a460-e38a5cdb24ea}">
 		<relationship name="effects">
 			<destination>{89fc7ba7-6e34-4013-86f2-10b81d687d94}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{db13efc8-af82-4f96-9a1c-bcc3498ac6cb}" />
+	<object class="RandomizerModulator" id="{abdbbf10-e0ec-4159-bd85-21862e691f70}">
+		<property name="nameOfPropertyBeingModulated">
+			<value>startOffset</value>
+		</property>
+		<property name="amount">
+			<value>84.5</value>
+		</property>
+	</object>
 	<object class="MixerBusEffectChain" id="{2085db17-6d8d-448a-948e-00b0c8743a55}">
 		<relationship name="effects">
 			<destination>{d0caad86-e551-4475-9717-d7e6a47a2d77}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{870c8755-c527-4336-b1c5-2dc9c1d1759d}" />
+	<object class="RandomizerModulator" id="{a314a203-a8d6-4412-bd5b-244b6f42d995}">
+		<property name="nameOfPropertyBeingModulated">
+			<value>startOffset</value>
+		</property>
+		<property name="amount">
+			<value>15.5</value>
+		</property>
+	</object>
 	<object class="MixerBusEffectChain" id="{18e5fa67-69ac-45bf-9aea-2fa031a6733f}">
 		<relationship name="effects">
 			<destination>{11e6906b-5fba-4af0-807c-6080d106b5cd}</destination>
