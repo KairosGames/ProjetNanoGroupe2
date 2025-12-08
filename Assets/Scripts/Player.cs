@@ -31,8 +31,9 @@ public class Player : MonoBehaviour
 
     FollowingSpline carParent;
     LayerMask boostLayerChecked;
-    Vector3 resettLocalPos;
     Vector3 checkBoxExtents = new Vector3(0.25f, 0.5f, 0.05f);
+    Vector3 resetVisualScale;
+    Vector3 targetTryBoostScale;
     float offsetLen;
     float inputDir = 0.0f;
     float localYResetSpawn = 2.0f;
@@ -55,8 +56,9 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         carParent = transform.parent.GetComponent<FollowingSpline>();
+        resetVisualScale = childVisual.transform.localScale;
+        targetTryBoostScale = resetVisualScale * 0.66f;
         boostLayerChecked = playerId == 0 ? boostLayer1 : boostLayer2;
-        resettLocalPos = transform.localPosition;
         offsetLen = trackRenderer.offset;
         actualOffset = playerId == 0 ? -1 : 1;
 
@@ -95,9 +97,15 @@ public class Player : MonoBehaviour
             Fall();
 
         if (isBoostActionPressed)
+        {
             CheckBooster();
+            TryBoostEffect();
+        }
         else
+        {
+            ResetTryBoostEffect();
             isBoosting = false;
+        }
 
         if (!isJumping && !isFalling && isJumpActionReleased)
             LaunchJump(); 
@@ -122,9 +130,13 @@ public class Player : MonoBehaviour
         foreach (GameObject go in activeOnTrack)
             go.SetActive(isActive);
 
-        FMODUnity.RuntimeManager.StudioSystem.setParameterByName("is_moving", movParam);
+        /*FMODUnity.RuntimeManager.StudioSystem.setParameterByName("is_moving", movParam);
+        Debug.Log(movParam);
         if (!IsSoundPlaying(movingSound) && isActive)
+        {
             movingSound.start();
+            Debug.Log("OUUUI !");
+        }*/
 
         bool isBothBoost = isBoosting && otherPlayer.isBoosting && otherPlayer.actualOffset == actualOffset;
         float boostParam = isBoosting ? (isBothBoost ? 0.0f : 1.0f) : 0.0f;
@@ -231,6 +243,19 @@ public class Player : MonoBehaviour
     }
 
 
+    void TryBoostEffect()
+    {
+        childVisual.transform.localScale = Vector3.Lerp(childVisual.transform.localScale, targetTryBoostScale, Time.deltaTime * 10.0f);
+    }
+
+
+    void ResetTryBoostEffect()
+    {
+        childVisual.transform.localScale = Vector3.Lerp(childVisual.transform.localScale, resetVisualScale, Time.deltaTime * 10.0f);
+    }
+
+
+
     void DownFromJump()
     {
         FMODUnity.RuntimeManager.PlayOneShot("event:/Avatar/land");
@@ -318,7 +343,7 @@ public class Player : MonoBehaviour
         isRespawning = true;
         actualOffset = 0;
         lastT = 0.0f;
-        transform.localPosition = new Vector3(0.0f, 6.0f, 0.0f);
+        transform.localPosition = new Vector3(0.0f, 3.0f, 0.0f);
 
         Tween.LocalPositionY(
             transform,
