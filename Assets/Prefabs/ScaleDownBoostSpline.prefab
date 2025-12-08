@@ -2636,5 +2636,5 @@ MonoBehaviour:
   offset: 1.3
   radius: 0.08
   segmentsPerUnit: 1
-  material: {fileID: 2100000, guid: e3fb3841a697f42f18609c8864d87886, type: 2}
+  material: {fileID: 2100000, guid: a2003ccad28939946beafe19a8f3cf33, type: 2}
   entireSplines: []
