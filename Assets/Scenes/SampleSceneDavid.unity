@@ -944,22 +944,35 @@ MonoBehaviour:
   childVisual: {fileID: 843468862}
   playerId: 1
   groundLayer:
-    serializedVersion: 2
     m_Bits: 8
   boostLayer1:
-    serializedVersion: 2
     m_Bits: 64
   boostLayer2:
-    serializedVersion: 2
     m_Bits: 128
   boostLayerBoth:
-    serializedVersion: 2
     m_Bits: 256
   fallingSpeed: 5
   jumpTime: 0.25
   respawnTime: 1
   isBoosting: 0
   isBoostActionPressed: 0
+  carParent: {fileID: 0}
+  boostLayerChecked:
+    m_Bits: 0
+  resettLocalPos: {x: 0, y: 0, z: 0}
+  checkBoxExtents: {x: 0.25, y: 0.5, z: 0.05}
+  offsetLen: 0
+  inputDir: 0
+  localYResetSpawn: 2
+  lastT: 0
+  tVel: 0
+  actualOffset: 0
+  isReady: 0
+  isJumping: 0
+  isFalling: 0
+  isRespawning: 0
+  canChoose: 0
+  boostParamName: 
 --- !u!1 &1074197560
 GameObject:
   m_ObjectHideFlags: 0
@@ -1456,22 +1469,35 @@ MonoBehaviour:
   childVisual: {fileID: 843468861}
   playerId: 0
   groundLayer:
-    serializedVersion: 2
     m_Bits: 8
   boostLayer1:
-    serializedVersion: 2
     m_Bits: 64
   boostLayer2:
-    serializedVersion: 2
     m_Bits: 128
   boostLayerBoth:
-    serializedVersion: 2
     m_Bits: 256
   fallingSpeed: 5
   jumpTime: 0.25
   respawnTime: 1
   isBoosting: 0
   isBoostActionPressed: 0
+  carParent: {fileID: 0}
+  boostLayerChecked:
+    m_Bits: 0
+  resettLocalPos: {x: 0, y: 0, z: 0}
+  checkBoxExtents: {x: 0.25, y: 0.5, z: 0.05}
+  offsetLen: 0
+  inputDir: 0
+  localYResetSpawn: 2
+  lastT: 0
+  tVel: 0
+  actualOffset: 0
+  isReady: 0
+  isJumping: 0
+  isFalling: 0
+  isRespawning: 0
+  canChoose: 0
+  boostParamName: 
 --- !u!1 &1197271599
 GameObject:
   m_ObjectHideFlags: 0
@@ -2468,10 +2494,17 @@ MonoBehaviour:
   baseSpeed: 5
   topSpeed: 10
   acceleration: 10
-  deceleration: 4.6
+  deceleration: 84.09
   isDebugPosActive: 0
   startingNode: 0
   areFarsActives: 0
+  speed: 0
+  currentPos: 0
+  currentLength: 0
+  accelerating: 0
+  accelerationTime: 0
+  decelerating: 1
+  decelerationTime: 1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
