@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Splines;
 
@@ -23,7 +20,7 @@ public class FollowingSpline : MonoBehaviour
     [SerializeField] int startingNode = 0;
     [SerializeField] bool areFarsActives = false;
 
-    private float speed;
+    [System.NonSerialized] public float speed;
     private float currentPos;
     private float currentLength;
     private bool accelerating = false;
