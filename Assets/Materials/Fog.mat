@@ -136,10 +136,10 @@ Material:
     - _XRMotionVectorsPass: 1
     - _ZWrite: 0
     m_Colors:
-    - _BaseColor: {r: 0.44499096, g: 0.59825706, b: 0.93962264, a: 0.8901961}
+    - _BaseColor: {r: 0.4762975, g: 0.38964036, b: 0.7509433, a: 0.8901961}
     - _BaseColorAddSubDiff: {r: 0, g: 0, b: 0, a: 0}
     - _CameraFadeParams: {r: 0, g: Infinity, b: 0, a: 0}
-    - _Color: {r: 0.44499093, g: 0.59825706, b: 0.93962264, a: 0.8901961}
+    - _Color: {r: 0.47629756, g: 0.38964033, b: 0.7509433, a: 0.8901961}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SoftParticleFadeParams: {r: 0, g: 0.08130081, b: 0, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
