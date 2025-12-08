@@ -1095,7 +1095,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5558965392875477237, guid: afd1eb710ffae224f8e4652dd158bec3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -97.8
+      value: -146.3
       objectReference: {fileID: 0}
     - target: {fileID: 5558965392875477237, guid: afd1eb710ffae224f8e4652dd158bec3, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1133,7 +1133,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2668754062161515241, guid: afd1eb710ffae224f8e4652dd158bec3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -9784,39 +9785,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: afd1eb710ffae224f8e4652dd158bec3, type: 3}
---- !u!1 &893521175 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3312854360502650359, guid: afd1eb710ffae224f8e4652dd158bec3, type: 3}
-  m_PrefabInstance: {fileID: 1083842638522753394}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &893521180
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 893521175}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b0e04e2572f9a940a47465f6f3c2f00, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: FMODUnity::FMODUnity.StudioGlobalParameterTrigger
-  CollisionTag: Player
-  Parameter: Phase_musique
-  TriggerEvent: 3
-  Value: 1
---- !u!114 &893521181
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 893521175}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ffc4cbe4e8af3a4fb636630bfbbb73f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DebugScript
 --- !u!1 &902361198
 GameObject:
   m_ObjectHideFlags: 0
@@ -10693,6 +10661,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2668754062161515241, guid: afd1eb710ffae224f8e4652dd158bec3, type: 3}
+      propertyPath: Value
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 3312854360502650359, guid: afd1eb710ffae224f8e4652dd158bec3, type: 3}
       propertyPath: m_Name
       value: CONCLUSION
@@ -11269,7 +11241,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5778851161427359816, guid: ca155248a8a370f4bbbfe0477ae3782d, type: 3}
       propertyPath: startingNode
-      value: 1
+      value: 46
       objectReference: {fileID: 0}
     - target: {fileID: 5778851161427359816, guid: ca155248a8a370f4bbbfe0477ae3782d, type: 3}
       propertyPath: currentLength
@@ -11627,13 +11599,71 @@ MonoBehaviour:
   m_GameObject: {fileID: 1686917719}
   m_Enabled: 1
   m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: FMODUnity::FMODUnity.StudioEventEmitter
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -1899512784
+      Data2: 1078576619
+      Data3: -116018037
+      Data4: 46090918
+    Path: event:/Music/Music_main
+  Event: 
+  EventPlayTrigger: 1
+  EventStopTrigger: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
+--- !u!114 &1686917724
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1686917719}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9b0e04e2572f9a940a47465f6f3c2f00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: FMODUnity::FMODUnity.StudioGlobalParameterTrigger
-  CollisionTag: Trigger
+  CollisionTag: 
   Parameter: Phase_musique
-  TriggerEvent: 3
-  Value: 1
+  TriggerEvent: 1
+  Value: 3
+--- !u!54 &1686917725
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1686917719}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1706754368
 GameObject:
   m_ObjectHideFlags: 0
@@ -11753,6 +11783,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2668754062161515241, guid: afd1eb710ffae224f8e4652dd158bec3, type: 3}
+      propertyPath: Value
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3312854360502650359, guid: afd1eb710ffae224f8e4652dd158bec3, type: 3}
       propertyPath: m_Name
       value: TWIST
@@ -12271,29 +12305,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2668754062161515241, guid: afd1eb710ffae224f8e4652dd158bec3, type: 3}
+      propertyPath: Value
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3312854360502650359, guid: afd1eb710ffae224f8e4652dd158bec3, type: 3}
       propertyPath: m_Name
       value: DEVELOPPEMENT
-      objectReference: {fileID: 0}
-    - target: {fileID: 3312854360502650359, guid: afd1eb710ffae224f8e4652dd158bec3, type: 3}
-      propertyPath: m_Layer
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 3312854360502650359, guid: afd1eb710ffae224f8e4652dd158bec3, type: 3}
-      propertyPath: m_TagString
-      value: Trigger
-      objectReference: {fileID: 0}
-    - target: {fileID: 5558965392875477237, guid: afd1eb710ffae224f8e4652dd158bec3, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 5558965392875477237, guid: afd1eb710ffae224f8e4652dd158bec3, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 5558965392875477237, guid: afd1eb710ffae224f8e4652dd158bec3, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5558965392875477237, guid: afd1eb710ffae224f8e4652dd158bec3, type: 3}
       propertyPath: m_LocalPosition.x
@@ -12335,32 +12353,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8656540090966237026, guid: afd1eb710ffae224f8e4652dd158bec3, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8656540090966237026, guid: afd1eb710ffae224f8e4652dd158bec3, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8656540090966237026, guid: afd1eb710ffae224f8e4652dd158bec3, type: 3}
-      propertyPath: m_ProvidesContacts
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8656540090966237026, guid: afd1eb710ffae224f8e4652dd158bec3, type: 3}
-      propertyPath: m_IncludeLayers.m_Bits
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 3312854360502650359, guid: afd1eb710ffae224f8e4652dd158bec3, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 893521180}
-    - targetCorrespondingSourceObject: {fileID: 3312854360502650359, guid: afd1eb710ffae224f8e4652dd158bec3, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 893521181}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: afd1eb710ffae224f8e4652dd158bec3, type: 3}
 --- !u!1001 &2808961358694531622
 PrefabInstance:
@@ -12436,7 +12432,13 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 8202865283044467995, guid: 34c2c33779fc5e24284286f52eb5114f, type: 3}
       insertIndex: -1
+      addedObject: {fileID: 1686917724}
+    - targetCorrespondingSourceObject: {fileID: 8202865283044467995, guid: 34c2c33779fc5e24284286f52eb5114f, type: 3}
+      insertIndex: -1
       addedObject: {fileID: 1686917723}
+    - targetCorrespondingSourceObject: {fileID: 8202865283044467995, guid: 34c2c33779fc5e24284286f52eb5114f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1686917725}
   m_SourcePrefab: {fileID: 100100000, guid: 34c2c33779fc5e24284286f52eb5114f, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
