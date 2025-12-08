@@ -2,6 +2,7 @@ using PrimeTween;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Splines;
+using static UnityEngine.GraphicsBuffer;
 
 public class Player : MonoBehaviour
 {
@@ -86,6 +87,7 @@ public class Player : MonoBehaviour
         if (!isJumping && !isFalling)
         {
             SetPosition();
+            SetRotation();
             CheckGround();
         }
 
@@ -126,15 +128,19 @@ public class Player : MonoBehaviour
 
         bool isBothBoost = isBoosting && otherPlayer.isBoosting && otherPlayer.actualOffset == actualOffset;
         float boostParam = isBoosting ? (isBothBoost ? 0.0f : 1.0f) : 0.0f;
-        float isBothBoostParam = isBoosting ? 1.0f : 0.0f;
+        float isBothBoostParam = isBothBoost ? 1.0f : 0.0f;
 
-        FMODUnity.RuntimeManager.StudioSystem.setParameterByName(boostParamName, boostParam);
+        /*FMODUnity.RuntimeManager.StudioSystem.setParameterByName(boostParamName, boostParam);
         if (!IsSoundPlaying(boostingSound) && isBoosting && !isBothBoost)
-            boostingSound.start();
+            boostingSound.start();*/
 
-        FMODUnity.RuntimeManager.StudioSystem.setParameterByName("is_bothboosting", isBothBoostParam);
+        /*FMODUnity.RuntimeManager.StudioSystem.setParameterByName("is_bothboosting", isBothBoostParam);
+        Debug.Log(isBothBoostParam);
         if (!IsSoundPlaying(boostingBothSound) && isBothBoost)
+        {
             boostingBothSound.start();
+            Debug.Log("oui");
+        }*/
     }
 
 
@@ -153,6 +159,15 @@ public class Player : MonoBehaviour
     }
 
 
+    void SetRotation()
+    {
+        float targetZ = inputDir * -30.0f;
+        Vector3 eul = transform.localEulerAngles;
+        eul.z = Mathf.LerpAngle(eul.z, targetZ, 10f * Time.deltaTime);
+        transform.localEulerAngles = eul;
+    }
+
+
     void CheckGround()
     {
         if (Physics.CheckBox(transform.position, checkBoxExtents, transform.rotation, groundLayer))
@@ -166,6 +181,15 @@ public class Player : MonoBehaviour
     void Fall()
     {
         transform.localPosition -= new Vector3(0.0f, fallingSpeed, 0.0f) * Time.deltaTime;
+        GoToResetRotation();
+    }
+
+
+    void GoToResetRotation()
+    {
+        Vector3 eul = transform.localEulerAngles;
+        eul.z = Mathf.LerpAngle(eul.z, 0.0f, 10f * Time.deltaTime);
+        transform.localEulerAngles = eul;
     }
 
 

@@ -269,7 +269,7 @@ GameObject:
   - component: {fileID: 476047412}
   - component: {fileID: 476047411}
   m_Layer: 0
-  m_Name: Spline (1)
+  m_Name: SplineBoost1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -921,7 +921,7 @@ GameObject:
   - component: {fileID: 1074197562}
   - component: {fileID: 1074197561}
   m_Layer: 0
-  m_Name: Spline (3)
+  m_Name: SplineBoostBoth
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1410,7 +1410,7 @@ GameObject:
   - component: {fileID: 1197271601}
   - component: {fileID: 1197271600}
   m_Layer: 0
-  m_Name: Spline
+  m_Name: SplineMain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1904,7 +1904,7 @@ GameObject:
   - component: {fileID: 1289419173}
   - component: {fileID: 1289419172}
   m_Layer: 0
-  m_Name: Spline (2)
+  m_Name: SplineBoost2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
