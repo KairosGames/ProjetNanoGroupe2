@@ -49,6 +49,7 @@ public class Player : MonoBehaviour
     FMOD.Studio.EventInstance movingBoostSound;
     FMOD.Studio.EventInstance boostingSound;
     FMOD.Studio.EventInstance boostingBothSound;
+    string boostParamName;
 
     private void Awake()
     {
@@ -103,6 +104,7 @@ public class Player : MonoBehaviour
         movingSound = FMODUnity.RuntimeManager.CreateInstance("event:/Avatar/moving");
         movingBoostSound = FMODUnity.RuntimeManager.CreateInstance("event:/Avatar/Boost");
         string boostPath = playerId == 0 ? "event:/Avatar/Combot/Barre_combot_1" : "event:/Avatar/Combot/Barre_combot_2";
+        boostParamName = playerId == 0 ? "is_boosting_1" : "is_boosting_2";
         boostingSound = FMODUnity.RuntimeManager.CreateInstance(boostPath);
         boostingBothSound = FMODUnity.RuntimeManager.CreateInstance("event:/Avatar/Combot/Barre_combot_3");
     }
@@ -121,7 +123,7 @@ public class Player : MonoBehaviour
             movingSound.start();
 
         float boostParam = isBoosting ? 1.0f : 0.0f;
-        FMODUnity.RuntimeManager.StudioSystem.setParameterByName("is_boosting", boostParam);
+        FMODUnity.RuntimeManager.StudioSystem.setParameterByName(boostParamName, boostParam);
         if (!IsSoundPlaying(boostingSound) && isBoosting)
             boostingSound.start();
 
