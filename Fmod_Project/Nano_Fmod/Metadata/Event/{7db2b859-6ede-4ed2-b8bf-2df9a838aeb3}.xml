@@ -140,10 +140,10 @@
 			<value>1</value>
 		</property>
 		<relationship name="triggerConditions">
-			<destination>{a599ccff-6777-4bd8-9d35-10d26d416049}</destination>
+			<destination>{b8483869-1521-479c-8767-aaf1cef674e7}</destination>
 		</relationship>
 		<relationship name="commandTarget">
-			<destination>{664c7fbc-a547-4307-981a-4bc845a78dac}</destination>
+			<destination>{7db2b859-6ede-4ed2-b8bf-2df9a838aeb3}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{d9e36089-fa5d-42f8-a886-2a19caf1d888}">
@@ -204,7 +204,7 @@
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{66810d85-5528-41f1-8855-01901696fd9b}" />
-	<object class="ParameterCondition" id="{a599ccff-6777-4bd8-9d35-10d26d416049}">
+	<object class="ParameterCondition" id="{b8483869-1521-479c-8767-aaf1cef674e7}">
 		<property name="minimum">
 			<value>0</value>
 		</property>
@@ -212,7 +212,7 @@
 			<value>0</value>
 		</property>
 		<relationship name="parameter">
-			<destination>{584d2a35-0ce7-4954-9420-f0e72b165119}</destination>
+			<destination>{7ccb7952-4b23-42e2-b706-fcd7477769ee}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusEffectChain" id="{e48cc850-74ac-492f-a317-a64e4152c612}">
