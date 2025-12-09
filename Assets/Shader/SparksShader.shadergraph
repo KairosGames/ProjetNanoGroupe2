@@ -5,6 +5,9 @@
     "m_Properties": [
         {
             "m_Id": "889416dd857547f8883cfb4fd4eae81e"
+        },
+        {
+            "m_Id": "d487ffe53826431f9163f7371e7b6042"
         }
     ],
     "m_Keywords": [],
@@ -293,8 +296,8 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -513.3333129882813,
-            "y": -312.6666564941406,
+            "x": -831.3333129882813,
+            "y": -416.0000305175781,
             "width": 116.6666259765625,
             "height": 36.0
         }
@@ -841,6 +844,9 @@
     "m_ChildObjectList": [
         {
             "m_Id": "889416dd857547f8883cfb4fd4eae81e"
+        },
+        {
+            "m_Id": "d487ffe53826431f9163f7371e7b6042"
         }
     ]
 }
@@ -1085,15 +1091,15 @@
     "m_Value": {
         "serializedVersion": "2",
         "key0": {
-            "r": 0.3081759810447693,
-            "g": 0.04360976442694664,
-            "b": 0.15365402400493623,
+            "r": 0.08499997854232788,
+            "g": 1.0,
+            "b": 0.10276701301336289,
             "a": 1.0
         },
         "key1": {
-            "r": 0.9383163452148438,
+            "r": 1.0,
             "g": 1.0,
-            "b": 0.0,
+            "b": 1.0,
             "a": 1.0
         },
         "key2": {
@@ -1411,6 +1417,31 @@
     "m_Value": 0.0,
     "m_DefaultValue": 0.0,
     "m_Labels": []
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.Internal.BooleanShaderProperty",
+    "m_ObjectId": "d487ffe53826431f9163f7371e7b6042",
+    "m_Guid": {
+        "m_GuidSerialized": "b8c005b4-6c13-4914-9d62-b0c07f0c6588"
+    },
+    "m_Name": "Player1",
+    "m_DefaultRefNameVersion": 1,
+    "m_RefNameGeneratedByDisplayName": "Player1",
+    "m_DefaultReferenceName": "_Player1",
+    "m_OverrideReferenceName": "",
+    "m_GeneratePropertyBlock": true,
+    "m_UseCustomSlotLabel": false,
+    "m_CustomSlotLabel": "",
+    "m_DismissedVersion": 0,
+    "m_Precision": 0,
+    "overrideHLSLDeclaration": false,
+    "hlslDeclarationOverride": 0,
+    "m_Hidden": false,
+    "m_PerRendererData": false,
+    "m_customAttributes": [],
+    "m_Value": false
 }
 
 {

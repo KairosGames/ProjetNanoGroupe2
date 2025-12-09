@@ -66,8 +66,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -134.8, y: -57.100006}
-  m_SizeDelta: {x: 185.1838, y: 50}
+  m_AnchoredPosition: {x: -92.56622, y: -42.110138}
+  m_SizeDelta: {x: 136.5685, y: 36.8738}
   m_Pivot: {x: 0.49999997, y: 0.5}
 --- !u!222 &782880131835000596
 CanvasRenderer:
@@ -124,8 +124,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 28.28
+  m_fontSizeBase: 28.28
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -180,8 +180,9 @@ GameObject:
   - component: {fileID: 3616663023047320033}
   - component: {fileID: 593912099992741350}
   - component: {fileID: 3955308816262869757}
+  - component: {fileID: 5287205337923240273}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: TimerCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -243,7 +244,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.CanvasScaler
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -271,6 +272,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!225 &5287205337923240273
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5487154584505865633}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &7887173901421819453
 GameObject:
   m_ObjectHideFlags: 0
@@ -305,8 +318,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -153.11804, y: -64.54944}
-  m_SizeDelta: {x: 306.2426, y: 85.099}
+  m_AnchoredPosition: {x: -99.27521, y: -42.539932}
+  m_SizeDelta: {x: 250.7018, y: 85.0779}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5269895555008389713
 CanvasRenderer:
@@ -336,7 +349,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 1970064160, guid: 90b1834bf49028f4ca5466443feddb78, type: 3}
+  m_Sprite: {fileID: 794311405, guid: 6a72e6565ed44a14bbefa8c41f450de8, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

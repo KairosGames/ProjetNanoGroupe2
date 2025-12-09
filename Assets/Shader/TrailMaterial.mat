@@ -56,6 +56,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _DissolveScale: 35
+    - _Player1: 0
     - _QueueControl: 0
     - _QueueOffset: 0
     m_Colors:
