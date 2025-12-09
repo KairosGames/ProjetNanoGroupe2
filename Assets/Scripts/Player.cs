@@ -34,6 +34,7 @@ public class Player : MonoBehaviour
     Vector3 checkBoxExtents = new Vector3(0.25f, 0.5f, 0.05f);
     Vector3 resetVisualScale;
     Vector3 targetTryBoostScale;
+    Vector3 targertInJumpScale;
     float offsetLen;
     float inputDir = 0.0f;
     float localYResetSpawn = 2.0f;
@@ -58,6 +59,7 @@ public class Player : MonoBehaviour
         carParent = transform.parent.GetComponent<FollowingSpline>();
         resetVisualScale = childVisual.transform.localScale;
         targetTryBoostScale = (playerId == 0) ? new Vector3(resetVisualScale.x * 1.4f, resetVisualScale.y * 1.2f, resetVisualScale.z * 0.6f) : new Vector3(resetVisualScale.x * 1.4f, resetVisualScale.y * 0.6f, resetVisualScale.z * 1.2f);
+        targertInJumpScale = (playerId == 0) ? new Vector3(resetVisualScale.x * 0.4f, resetVisualScale.y * 0.6f, resetVisualScale.z * 1.4f) : new Vector3(resetVisualScale.x * 0.4f, resetVisualScale.y * 1.4f, resetVisualScale.z * 0.6f);
         boostLayerChecked = playerId == 0 ? boostLayer1 : boostLayer2;
         offsetLen = trackRenderer.offset;
         actualOffset = playerId == 0 ? -1 : 1;
@@ -80,6 +82,8 @@ public class Player : MonoBehaviour
 
             if (playerId == 0)
                 FMODUnity.RuntimeManager.StudioSystem.setParameterByName("is_bothboosting", 0.0f);
+
+            ResetScale();
 
             return;
         }
@@ -213,6 +217,12 @@ public class Player : MonoBehaviour
     }
 
 
+    void ResetScale()
+    {
+        childVisual.transform.localScale = Vector3.Lerp(childVisual.transform.localScale, resetVisualScale, 10.0f * Time.deltaTime);
+    }
+
+
     void LaunchJump()
     {
         if (inputDir != 0)
@@ -220,6 +230,7 @@ public class Player : MonoBehaviour
 
         isJumping = true;
         FMODUnity.RuntimeManager.PlayOneShot("event:/Avatar/Jump");
+        LaunchJumpEffect();
 
         Tween.LocalPositionY(
             transform,
@@ -280,10 +291,21 @@ public class Player : MonoBehaviour
 
         Tween.Scale(
             childVisual.transform,
-            transform.localScale,
+            childVisual.transform.localScale,
             resetVisualScale,
             0.5f,
             ease: Ease.OutElastic
+            );
+    }
+
+    void LaunchJumpEffect()
+    {
+        Tween.Scale(
+            childVisual.transform,
+            childVisual.transform.localScale,
+            targertInJumpScale,
+            jumpTime/2.0f,
+            ease: Ease.OutQuad
             );
     }
 
