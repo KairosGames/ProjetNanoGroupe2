@@ -81,9 +81,6 @@
 		</relationship>
 	</object>
 	<object class="EventMixerMaster" id="{9908464d-5e72-40ea-8317-f9b3c6680903}">
-		<relationship name="modulators">
-			<destination>{e63f8f38-4c86-4196-a1f5-bbb884a50e45}</destination>
-		</relationship>
 		<relationship name="effectChain">
 			<destination>{eb60857d-835a-4268-8392-72fef7b2dc4e}</destination>
 		</relationship>
@@ -171,22 +168,9 @@
 			<destination>{bcbbefee-a3fc-4d98-841b-63717cebfc85}</destination>
 		</relationship>
 	</object>
-	<object class="ADSRModulator" id="{e63f8f38-4c86-4196-a1f5-bbb884a50e45}">
-		<property name="nameOfPropertyBeingModulated">
-			<value>volume</value>
-		</property>
-		<property name="initialValue">
-			<value>-80</value>
-		</property>
-		<property name="attackShape">
-			<value>-0.379229963</value>
-		</property>
-		<property name="finalValue">
-			<value>-80</value>
-		</property>
-	</object>
 	<object class="MixerBusEffectChain" id="{eb60857d-835a-4268-8392-72fef7b2dc4e}">
 		<relationship name="effects">
+			<destination>{1e45aca8-f428-4ec0-9504-de7f4cf1916c}</destination>
 			<destination>{54cd7f4f-4199-4c69-9307-0c3efc022aa1}</destination>
 			<destination>{6f60af91-325f-4d81-b1b3-d8a337526ebb}</destination>
 			<destination>{f0904954-d12e-4d44-b160-b7db11f881ad}</destination>
@@ -215,6 +199,11 @@
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{b623903a-845f-457e-ba0d-7b934a60a3ff}" />
+	<object class="CompressorEffect" id="{1e45aca8-f428-4ec0-9504-de7f4cf1916c}">
+		<property name="gain">
+			<value>14</value>
+		</property>
+	</object>
 	<object class="MixerBusFader" id="{54cd7f4f-4199-4c69-9307-0c3efc022aa1}" />
 	<object class="MultibandEqEffect" id="{6f60af91-325f-4d81-b1b3-d8a337526ebb}">
 		<property name="filterTypeA">
