@@ -138,6 +138,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 210017916695743862, guid: afd1eb710ffae224f8e4652dd158bec3, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3312854360502650359, guid: afd1eb710ffae224f8e4652dd158bec3, type: 3}
       propertyPath: m_Name
       value: CALME DEV
@@ -1008,6 +1012,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 210017916695743862, guid: afd1eb710ffae224f8e4652dd158bec3, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2668754062161515241, guid: afd1eb710ffae224f8e4652dd158bec3, type: 3}
       propertyPath: Value
       value: 1
@@ -1406,6 +1414,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 210017916695743862, guid: afd1eb710ffae224f8e4652dd158bec3, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2668754062161515241, guid: afd1eb710ffae224f8e4652dd158bec3, type: 3}
       propertyPath: Value
       value: 2
@@ -1567,7 +1579,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 210017916695743862, guid: afd1eb710ffae224f8e4652dd158bec3, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 210017916695743862, guid: afd1eb710ffae224f8e4652dd158bec3, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
