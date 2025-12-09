@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
     [Header("InterReferences")]
     [SerializeField] GameObject[] activeOnTrack;
     [SerializeField] GameObject childVisual;
+    [SerializeField] GameObject respawnIndicator;
 
     [Header("Settings")]
     [Tooltip("Must be 0 or 1")]
@@ -37,7 +38,7 @@ public class Player : MonoBehaviour
     Vector3 targertInJumpScale;
     float offsetLen;
     float inputDir = 0.0f;
-    float localYResetSpawn = 2.0f;
+    float localYResetSpawn = 1.0f;
     float lastT = 0.0f;
     float tVel = 0.0f;
     int actualOffset = 0;
@@ -355,7 +356,7 @@ public class Player : MonoBehaviour
             transform,
             transform.localPosition.x,
             transform.localPosition.x + (offsetLen * inputDir),
-            jumpTime,
+            0.2f,
             ease: Ease.OutQuart).OnComplete(() => { canChoose = true; });
         }
     }
@@ -383,7 +384,7 @@ public class Player : MonoBehaviour
         isRespawning = true;
         actualOffset = 0;
         lastT = 0.0f;
-        transform.localPosition = new Vector3(0.0f, 3.0f, 0.0f);
+        transform.localPosition = new Vector3(0.0f, 5.0f, 0.0f);
 
         Tween.LocalPositionY(
             transform,

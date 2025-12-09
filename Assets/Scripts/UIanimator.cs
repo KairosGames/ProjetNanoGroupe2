@@ -15,6 +15,7 @@ public class UISpriteAnimator : MonoBehaviour
         timer += Time.deltaTime;
         if (timer >= frameRate)
         {
+            if (frames.Length == 0) return;
             currentFrame = (currentFrame + 1) % frames.Length;
             targetImage.sprite = frames[currentFrame];
             timer = 0f;

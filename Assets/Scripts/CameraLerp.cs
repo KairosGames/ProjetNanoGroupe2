@@ -21,7 +21,9 @@ public class CameraLerp : MonoBehaviour
     Camera mainCam;
 
     FMOD.Studio.EventInstance speedSound;
+    FMOD.Studio.EventInstance starSound;
     string speedSoundParam;
+    float speedSoundVolume;
     bool isDelerpLaunched = false;
 
     void Awake()
@@ -29,16 +31,24 @@ public class CameraLerp : MonoBehaviour
         mainCar = anchor.parent.GetComponent<FollowingSpline>();
         mainCam = GetComponent<Camera>();
 
-        speedSound = FMODUnity.RuntimeManager.CreateInstance("event:/Avatar/Speed_Sound");
-        speedSoundParam = "Speed_player";
-        FMODUnity.RuntimeManager.StudioSystem.setParameterByName(speedSoundParam, 0.0f);
-        speedSound.start();
+        LoadAllSounds();
 
         transform.SetParent(null, true);
         transform.position = anchor.position;
         transform.rotation = anchor.rotation;
 
         starsParticles.gameObject.SetActive(false);
+    }
+
+
+    void LoadAllSounds()
+    {
+        speedSound = FMODUnity.RuntimeManager.CreateInstance("event:/Avatar/Speed_Sound");
+        speedSoundParam = "Speed_player";
+        FMODUnity.RuntimeManager.StudioSystem.setParameterByName(speedSoundParam, 0.0f);
+        speedSound.start();
+
+        starSound = FMODUnity.RuntimeManager.CreateInstance("event:/Atmo/SFX étoile");
     }
     
 
@@ -53,7 +63,11 @@ public class CameraLerp : MonoBehaviour
         isFollowingAnchor = !GameManager.finished;
 
         
-        SetSpeedEfect();
+        if (isFollowingAnchor)
+        {
+            SetSpeedEfect();
+        }
+
         transform.position = Vector3.Lerp(transform.position, anchor.position, roughness * Time.deltaTime);
         transform.rotation = Quaternion.Slerp(transform.rotation, anchor.rotation, roughness * Time.deltaTime);
 
@@ -62,10 +76,13 @@ public class CameraLerp : MonoBehaviour
             windParticles.Stop();
             starsParticles.gameObject.SetActive(true);
 
+            FMODUnity.RuntimeManager.StudioSystem.setParameterByName(speedSoundParam, speedSoundVolume);
+
             if (!isDelerpLaunched)
             {
                 isDelerpLaunched = true;
                 DeLaunchRoughnessTween();
+                starSound.start();
             }
         }
     }
@@ -80,6 +97,7 @@ public class CameraLerp : MonoBehaviour
     void DeLaunchRoughnessTween()
     {
         Tween.Custom(roughness, 0.001f, duration: 4.0f, onValueChange: v => roughness = v);
+        Tween.Custom(speedSoundVolume, 0.2f, duration: 3.0f, onValueChange: v => speedSoundVolume = v);
     }
 
 
@@ -90,6 +108,7 @@ public class CameraLerp : MonoBehaviour
         windParticles.startSpeed= Mathf.Lerp(30.0f, 60.0f, t);
         var main = windParticles.main;
         main.simulationSpeed = Mathf.Lerp(0.4f, 2.0f, t);
-        FMODUnity.RuntimeManager.StudioSystem.setParameterByName(speedSoundParam, t + 0.4f);
+        speedSoundVolume = t + 0.4f;
+        FMODUnity.RuntimeManager.StudioSystem.setParameterByName(speedSoundParam, speedSoundVolume);
     }
 }
