@@ -6,7 +6,7 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI timerText;
     public float timer = 0.0f;
-    public bool finished = false;
+    static public bool finished = false;
 
     void Update()
     {

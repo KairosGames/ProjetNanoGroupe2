@@ -24,7 +24,7 @@ public class EndScreenFade : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (gameManager.finished)
+        if (GameManager.finished)
         {
             canvasGroup.alpha = Mathf.Lerp(canvasGroup.alpha, 1.0f, (fadeSpeed * Time.deltaTime)/2);
             timerCanvasGroup.alpha = Mathf.Lerp(timerCanvasGroup.alpha, 0.0f, fadeSpeed * Time.deltaTime*2);
@@ -34,6 +34,6 @@ public class EndScreenFade : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         textFinal.text = TimeSpan.FromSeconds(gameManager.timer).ToString("mm\\:ss\\:ff");
-        gameManager.finished = true;
+        GameManager.finished = true;
     }
 }

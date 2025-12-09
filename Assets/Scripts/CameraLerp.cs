@@ -22,6 +22,7 @@ public class CameraLerp : MonoBehaviour
 
     FMOD.Studio.EventInstance speedSound;
     string speedSoundParam;
+    bool isDelerpLaunched = false;
 
     void Awake()
     {
@@ -43,31 +44,42 @@ public class CameraLerp : MonoBehaviour
 
     void Start()
     {
-        LauchRoughnessTwean();
+        LauchRoughnessTween();
     }
 
 
     void Update()
     {
-        isFollowingAnchor = !manager.finished;
+        isFollowingAnchor = !GameManager.finished;
 
-        if (isFollowingAnchor)
-        {
-            SetSpeedEfect();
-            transform.position = Vector3.Lerp(transform.position, anchor.position, roughness * Time.deltaTime);
-            transform.rotation = Quaternion.Slerp(transform.rotation, anchor.rotation, roughness * Time.deltaTime);
-        }
-        else
+        
+        SetSpeedEfect();
+        transform.position = Vector3.Lerp(transform.position, anchor.position, roughness * Time.deltaTime);
+        transform.rotation = Quaternion.Slerp(transform.rotation, anchor.rotation, roughness * Time.deltaTime);
+
+        if (!isFollowingAnchor)
         {
             windParticles.Stop();
             starsParticles.gameObject.SetActive(true);
+
+            if (!isDelerpLaunched)
+            {
+                isDelerpLaunched = true;
+                DeLaunchRoughnessTween();
+            }
         }
     }
 
 
-    void LauchRoughnessTwean()
+    void LauchRoughnessTween()
     {
         Tween.Custom(roughness, 6.0f, duration : 5.0f, onValueChange: v => roughness = v);
+    }
+
+
+    void DeLaunchRoughnessTween()
+    {
+        Tween.Custom(roughness, 0.001f, duration: 4.0f, onValueChange: v => roughness = v);
     }
 
 

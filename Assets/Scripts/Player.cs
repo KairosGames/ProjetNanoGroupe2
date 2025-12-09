@@ -74,6 +74,16 @@ public class Player : MonoBehaviour
         if (!isReady)
             return;
 
+        if (GameManager.finished)
+        {
+            FMODUnity.RuntimeManager.StudioSystem.setParameterByName(boostParamName, 0.0f);
+
+            if (playerId == 0)
+                FMODUnity.RuntimeManager.StudioSystem.setParameterByName("is_bothboosting", 0.0f);
+
+            return;
+        }
+
         isBoostActionPressed = playerId == 0 ? Input.GetKey(KeyCode.Joystick1Button0) : Input.GetKey(KeyCode.Joystick2Button0);
         bool isChooseActionJustPressed = playerId == 0 ? Input.GetKeyDown(KeyCode.Joystick1Button0) : Input.GetKeyDown(KeyCode.Joystick2Button0);
         bool isJumpActionReleased = playerId == 0 ? Input.GetKeyUp(KeyCode.Joystick1Button0) : Input.GetKeyUp(KeyCode.Joystick2Button0);
