@@ -139,7 +139,7 @@ public class Player : MonoBehaviour
     void SetInputDir()
     {
         inputDir = Input.GetAxis($"Horizontal_P{playerId + 1}");
-        inputDir = Mathf.Abs(inputDir) >= 0.5f ? Mathf.Sign(inputDir) : 0.0f;
+        inputDir = Mathf.Abs(inputDir) >= 0.6f ? Mathf.Sign(inputDir) : 0.0f;
 
         if (inputDir != 0.0f)
             return;
@@ -372,7 +372,7 @@ public class Player : MonoBehaviour
             transform,
             transform.localPosition.x,
             transform.localPosition.x + (offsetLen * inputDir),
-            0.2f,
+            0.3f,
             ease: Ease.OutQuart).OnComplete(() => { canChoose = true; });
         }
     }

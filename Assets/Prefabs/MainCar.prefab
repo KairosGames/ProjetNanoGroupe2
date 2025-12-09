@@ -81,8 +81,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SplineMoving
   spline: {fileID: 0}
+  starEffect: {fileID: 5848129579867954519}
   player1: {fileID: 545709394311971752}
-  player2: {fileID: 0}
+  player2: {fileID: 4969903646772697973}
   tSmooth: 0.1
   baseSpeed: 10
   topSpeed: 17.5
@@ -398,6 +399,11 @@ PrefabInstance:
 --- !u!4 &3427261925489622597 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 788213269489567360, guid: c00f382751c03d44ba676c665092de4b, type: 3}
+  m_PrefabInstance: {fileID: 2693257420711098565}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &5848129579867954519 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 8379199464141792658, guid: c00f382751c03d44ba676c665092de4b, type: 3}
   m_PrefabInstance: {fileID: 2693257420711098565}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4367500751568677590

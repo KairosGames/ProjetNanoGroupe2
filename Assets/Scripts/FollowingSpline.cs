@@ -5,6 +5,9 @@ public class FollowingSpline : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private SplineContainer spline;
+
+    [Header("InternReferences")]
+    [SerializeField] public ParticleSystem starEffect;
     [SerializeField] private Player player1;
     [SerializeField] private Player player2;
 
