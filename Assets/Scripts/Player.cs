@@ -86,9 +86,9 @@ public class Player : MonoBehaviour
             return;
         }
 
-        isBoostActionPressed = playerId == 0 ? Input.GetKey(KeyCode.Joystick1Button0) : Input.GetKey(KeyCode.Joystick2Button0);
-        bool isChooseActionJustPressed = playerId == 0 ? Input.GetKeyDown(KeyCode.Joystick1Button0) : Input.GetKeyDown(KeyCode.Joystick2Button0);
-        bool isJumpActionReleased = playerId == 0 ? Input.GetKeyUp(KeyCode.Joystick1Button0) : Input.GetKeyUp(KeyCode.Joystick2Button0);
+        isBoostActionPressed = playerId == 0 ? (Input.GetKey(KeyCode.Joystick1Button0) || Input.GetKey(KeyCode.W)) : (Input.GetKey(KeyCode.Joystick2Button0) || Input.GetKey(KeyCode.UpArrow));
+        bool isChooseActionJustPressed = playerId == 0 ? (Input.GetKeyDown(KeyCode.Joystick1Button0) || Input.GetKeyDown(KeyCode.W)) : (Input.GetKeyDown(KeyCode.Joystick2Button0) || Input.GetKeyDown(KeyCode.UpArrow));
+        bool isJumpActionReleased = playerId == 0 ? (Input.GetKeyUp(KeyCode.Joystick1Button0) || Input.GetKeyUp(KeyCode.W)) :(Input.GetKeyUp(KeyCode.Joystick2Button0) || Input.GetKeyUp(KeyCode.UpArrow));
         SetInputDir();
 
         if (isRespawning)
@@ -140,6 +140,18 @@ public class Player : MonoBehaviour
     {
         inputDir = Input.GetAxis($"Horizontal_P{playerId + 1}");
         inputDir = Mathf.Abs(inputDir) >= 0.5f ? Mathf.Sign(inputDir) : 0.0f;
+
+        if (inputDir != 0.0f)
+            return;
+
+        inputDir = Input.GetAxis($"Horizontal_P{playerId + 1}_2");
+
+        if (inputDir != 0.0f)
+            return;
+
+        float left = ((playerId == 0) ? Input.GetKey(KeyCode.A) : Input.GetKey(KeyCode.LeftArrow)) ? -1.0f : 0.0f;
+        float right = ((playerId == 0) ? Input.GetKey(KeyCode.D) : Input.GetKey(KeyCode.RightArrow)) ? 1.0f : 0.0f;
+        inputDir += left + right;
     }
 
 

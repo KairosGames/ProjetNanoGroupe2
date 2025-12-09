@@ -3,9 +3,9 @@ using UnityEngine.UI;
 
 public class UISpriteAnimator : MonoBehaviour
 {
-    public Image targetImage;       // L’UI Image à animer
-    public Sprite[] frames;         // Les sprites de l’animation
-    public float frameRate = 0.1f;  // Temps entre frames
+    public Image targetImage;
+    public Sprite[] frames;
+    public float frameRate = 0.1f;
 
     private int currentFrame;
     private float timer;
