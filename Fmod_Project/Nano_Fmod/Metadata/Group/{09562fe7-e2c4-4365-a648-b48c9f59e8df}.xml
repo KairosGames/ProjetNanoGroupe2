@@ -42,7 +42,7 @@
 	</object>
 	<object class="CompressorEffect" id="{9d118964-9bf7-4ee7-ab5a-d1b0e1bc1813}">
 		<property name="threshold">
-			<value>-48.5</value>
+			<value>-25.5</value>
 		</property>
 		<property name="ratio">
 			<value>8.19999981</value>

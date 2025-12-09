@@ -31,6 +31,7 @@ public class CameraLerp : MonoBehaviour
         speedSound = FMODUnity.RuntimeManager.CreateInstance("event:/Avatar/Speed_Sound");
         speedSoundParam = "Speed_player";
         FMODUnity.RuntimeManager.StudioSystem.setParameterByName(speedSoundParam, 0.0f);
+        speedSound.start();
 
         transform.SetParent(null, true);
         transform.position = anchor.position;
@@ -77,6 +78,6 @@ public class CameraLerp : MonoBehaviour
         windParticles.startSpeed= Mathf.Lerp(30.0f, 60.0f, t);
         var main = windParticles.main;
         main.simulationSpeed = Mathf.Lerp(0.4f, 2.0f, t);
-        FMODUnity.RuntimeManager.StudioSystem.setParameterByName(speedSoundParam, t);
+        FMODUnity.RuntimeManager.StudioSystem.setParameterByName(speedSoundParam, t + 0.4f);
     }
 }

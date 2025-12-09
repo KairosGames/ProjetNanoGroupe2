@@ -57,7 +57,7 @@ public class Player : MonoBehaviour
     {
         carParent = transform.parent.GetComponent<FollowingSpline>();
         resetVisualScale = childVisual.transform.localScale;
-        targetTryBoostScale = new Vector3(resetVisualScale.x * 1.4f, resetVisualScale.y * 0.6f, resetVisualScale.z * 1.2f);
+        targetTryBoostScale = (playerId == 0) ? new Vector3(resetVisualScale.x * 1.4f, resetVisualScale.y * 1.2f, resetVisualScale.z * 0.6f) : new Vector3(resetVisualScale.x * 1.4f, resetVisualScale.y * 0.6f, resetVisualScale.z * 1.2f);
         boostLayerChecked = playerId == 0 ? boostLayer1 : boostLayer2;
         offsetLen = trackRenderer.offset;
         actualOffset = playerId == 0 ? -1 : 1;
