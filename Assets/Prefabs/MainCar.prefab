@@ -84,7 +84,7 @@ MonoBehaviour:
   player2: {fileID: 0}
   tSmooth: 0.1
   baseSpeed: 10
-  topSpeed: 20
+  topSpeed: 17.5
   acceleration: 0.05
   deceleration: 0.05
   isDebugPosActive: 0
