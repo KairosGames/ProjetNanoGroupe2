@@ -1,6 +1,7 @@
 using PrimeTween;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem.LowLevel;
 using UnityEngine.Splines;
 using static UnityEngine.GraphicsBuffer;
 
@@ -80,20 +81,15 @@ public class Player : MonoBehaviour
         if (GameManager.finished)
         {
             FMODUnity.RuntimeManager.StudioSystem.setParameterByName(boostParamName, 0.0f);
-
-            if (playerId == 0)
-                FMODUnity.RuntimeManager.StudioSystem.setParameterByName("is_bothboosting", 0.0f);
-
+            if (playerId == 0) FMODUnity.RuntimeManager.StudioSystem.setParameterByName("is_bothboosting", 0.0f);
             ResetScale();
-
             return;
         }
 
         isBoostActionPressed = playerId == 0 ? Input.GetKey(KeyCode.Joystick1Button0) : Input.GetKey(KeyCode.Joystick2Button0);
         bool isChooseActionJustPressed = playerId == 0 ? Input.GetKeyDown(KeyCode.Joystick1Button0) : Input.GetKeyDown(KeyCode.Joystick2Button0);
         bool isJumpActionReleased = playerId == 0 ? Input.GetKeyUp(KeyCode.Joystick1Button0) : Input.GetKeyUp(KeyCode.Joystick2Button0);
-        inputDir = Input.GetAxis($"Horizontal_P{playerId + 1}");
-        inputDir = Mathf.Abs(inputDir) >= 0.6f ? Mathf.Sign(inputDir) : 0.0f;
+        SetInputDir();
 
         if (isRespawning)
         {
@@ -137,6 +133,13 @@ public class Player : MonoBehaviour
         boostParamName = playerId == 0 ? "is_boosting_1" : "is_boosting_2";
 
         boostingBothSound = FMODUnity.RuntimeManager.CreateInstance("event:/Avatar/Combot/Barre_combot_3");
+    }
+
+
+    void SetInputDir()
+    {
+        inputDir = Input.GetAxis($"Horizontal_P{playerId + 1}");
+        inputDir = Mathf.Abs(inputDir) >= 0.5f ? Mathf.Sign(inputDir) : 0.0f;
     }
 
 
