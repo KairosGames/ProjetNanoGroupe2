@@ -332,6 +332,7 @@ public class Player : MonoBehaviour
         if (isChooseActionJustPressed && canChoose)
         {
             canChoose = false;
+            respawnIndicator.SetActive(false);
 
             Tween.LocalPositionY(
             transform,
@@ -392,6 +393,6 @@ public class Player : MonoBehaviour
             localYResetSpawn,
             0.5f,
             ease: Ease.OutQuint
-            ).OnComplete(() => { canChoose = true; });
+            ).OnComplete(() => { canChoose = true; respawnIndicator.SetActive(true); });
     }
 }
