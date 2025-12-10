@@ -1,9 +1,7 @@
 using PrimeTween;
 using System.Collections;
 using UnityEngine;
-using UnityEngine.InputSystem.LowLevel;
 using UnityEngine.Splines;
-using static UnityEngine.GraphicsBuffer;
 
 public class Player : MonoBehaviour
 {
