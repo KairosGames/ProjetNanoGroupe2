@@ -48,6 +48,12 @@ public class GameManager : MonoBehaviour
                 started = 0;
                 timer = 0;
                 restartTimer = 0.0f;
+                FMODUnity.RuntimeManager.GetBus("bus:/").stopAllEvents(FMOD.Studio.STOP_MODE.IMMEDIATE);
+                FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Fin_musique", 0.0f);
+                FMODUnity.RuntimeManager.StudioSystem.setParameterByNameWithLabel("Phase_musique","Tuto");
+                FMODUnity.RuntimeManager.StudioSystem.setParameterByName("is_boosting_1", 0.0f);
+                FMODUnity.RuntimeManager.StudioSystem.setParameterByName("is_boosting_2", 0.0f);
+                FMODUnity.RuntimeManager.StudioSystem.setParameterByName("is_bothboosting", 0.0f);
             }
         }
     }

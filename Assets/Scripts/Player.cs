@@ -81,6 +81,8 @@ public class Player : MonoBehaviour
         if (GameManager.finished)
         {
             FMODUnity.RuntimeManager.StudioSystem.setParameterByName(boostParamName, 0.0f);
+            inputDir = 0.0f;
+            isBoostActionPressed = false;
             if (playerId == 0) FMODUnity.RuntimeManager.StudioSystem.setParameterByName("is_bothboosting", 0.0f);
             ResetTryBoostEffect();
             return;
