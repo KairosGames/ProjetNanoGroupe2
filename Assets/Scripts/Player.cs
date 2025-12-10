@@ -28,10 +28,12 @@ public class Player : MonoBehaviour
     [SerializeField] float respawnTime = 1.0f;
 
     [System.NonSerialized] public int maxOffset = 1;
+    [System.NonSerialized] public int actualOffset = 0;
     [HideInInspector] public bool isBoosting = false;
     [HideInInspector] public bool isBoostActionPressed = false;
 
     FollowingSpline carParent;
+    Tween bounceTween;
     LayerMask boostLayerChecked;
     Vector3 checkBoxExtents = new Vector3(0.25f, 0.5f, 0.05f);
     Vector3 resetVisualScale;
@@ -42,7 +44,6 @@ public class Player : MonoBehaviour
     float localYResetSpawn = 1.0f;
     float lastT = 0.0f;
     float tVel = 0.0f;
-    int actualOffset = 0;
     bool isReady = false;
     bool isJumping = false;
     bool isFalling = false;
@@ -214,6 +215,7 @@ public class Player : MonoBehaviour
             return;
 
         isFalling = true;
+        //isBoosting = false;
         StartCoroutine(LaunchRespawnTimer());
     }
 
@@ -222,6 +224,7 @@ public class Player : MonoBehaviour
     {
         transform.localPosition -= new Vector3(0.0f, fallingSpeed, 0.0f) * Time.deltaTime;
         GoToResetRotation();
+        //ResetScale();
     }
 
 
@@ -280,6 +283,8 @@ public class Player : MonoBehaviour
 
     void TryBoostEffect()
     {
+        if (bounceTween.isAlive)
+            bounceTween.Stop();
         childVisual.transform.localScale = Vector3.Lerp(childVisual.transform.localScale, targetTryBoostScale, Time.deltaTime * 10.0f);
     }
 
@@ -305,7 +310,7 @@ public class Player : MonoBehaviour
     {
         childVisual.transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
 
-        Tween.Scale(
+        bounceTween = Tween.Scale(
             childVisual.transform,
             childVisual.transform.localScale,
             resetVisualScale,
