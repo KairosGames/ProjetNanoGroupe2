@@ -26,6 +26,7 @@ public class CameraLerp : MonoBehaviour
     float speedSoundVolume;
     bool isDelerpLaunched = false;
 
+
     void Awake()
     {
         mainCar = anchor.parent.GetComponent<FollowingSpline>();

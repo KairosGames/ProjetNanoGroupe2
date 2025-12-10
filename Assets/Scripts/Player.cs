@@ -34,6 +34,7 @@ public class Player : MonoBehaviour
 
     FollowingSpline carParent;
     Tween bounceTween;
+    Tween jumpTween;
     LayerMask boostLayerChecked;
     Vector3 checkBoxExtents = new Vector3(0.25f, 0.5f, 0.05f);
     Vector3 resetVisualScale;
@@ -83,7 +84,7 @@ public class Player : MonoBehaviour
         {
             FMODUnity.RuntimeManager.StudioSystem.setParameterByName(boostParamName, 0.0f);
             if (playerId == 0) FMODUnity.RuntimeManager.StudioSystem.setParameterByName("is_bothboosting", 0.0f);
-            ResetScale();
+            ResetTryBoostEffect();
             return;
         }
 
@@ -108,7 +109,7 @@ public class Player : MonoBehaviour
         if (isFalling)
             Fall();
 
-        if (isBoostActionPressed)
+        if (isBoostActionPressed && !isFalling)
         {
             CheckBooster();
             TryBoostEffect();
@@ -215,7 +216,7 @@ public class Player : MonoBehaviour
             return;
 
         isFalling = true;
-        //isBoosting = false;
+        isBoosting = false;
         StartCoroutine(LaunchRespawnTimer());
     }
 
@@ -224,7 +225,7 @@ public class Player : MonoBehaviour
     {
         transform.localPosition -= new Vector3(0.0f, fallingSpeed, 0.0f) * Time.deltaTime;
         GoToResetRotation();
-        //ResetScale();
+        ResetTryBoostEffect();
     }
 
 
@@ -233,12 +234,6 @@ public class Player : MonoBehaviour
         Vector3 eul = transform.localEulerAngles;
         eul.z = Mathf.LerpAngle(eul.z, 0.0f, 10f * Time.deltaTime);
         transform.localEulerAngles = eul;
-    }
-
-
-    void ResetScale()
-    {
-        childVisual.transform.localScale = Vector3.Lerp(childVisual.transform.localScale, resetVisualScale, 10.0f * Time.deltaTime);
     }
 
 
@@ -295,11 +290,12 @@ public class Player : MonoBehaviour
     }
 
 
+
     void DownFromJump()
     {
         FMODUnity.RuntimeManager.PlayOneShot("event:/Avatar/land");
 
-        Tween.LocalPositionY(
+        jumpTween = Tween.LocalPositionY(
             transform,
             transform.localPosition.y,
             transform.localPosition.y - 1.0f,
