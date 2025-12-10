@@ -18,8 +18,6 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(finished);
-
         if (started == 0)
         {
             if (Input.anyKeyDown) started = 1;
@@ -29,7 +27,6 @@ public class GameManager : MonoBehaviour
         {
             if (Input.anyKeyDown) started = 2;
         }
-
         if (!finished && started == 2)
         {
             timer += Time.deltaTime;
