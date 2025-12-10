@@ -46,6 +46,11 @@ public class FollowingSpline : MonoBehaviour
 
     private void Update()
     {
+        if (GameManager.started != 2) return;
+
+        player1.gameObject.SetActive(true);
+        player2.gameObject.SetActive(true);
+
         UpdateSpeed();
         UpdatePosOnSpline();
     }

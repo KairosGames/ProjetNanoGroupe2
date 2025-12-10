@@ -75,7 +75,7 @@ public class Player : MonoBehaviour
     {
         SetActiveOnTrack();
 
-        if (!isReady)
+        if (!isReady || GameManager.started != 2)
             return;
 
         if (GameManager.finished)

@@ -25,6 +25,7 @@ public class CameraLerp : MonoBehaviour
     string speedSoundParam;
     float speedSoundVolume;
     bool isDelerpLaunched = false;
+    bool flag = false;
 
 
     void Awake()
@@ -51,16 +52,17 @@ public class CameraLerp : MonoBehaviour
 
         starSound = FMODUnity.RuntimeManager.CreateInstance("event:/Atmo/SFX étoile");
     }
-    
-
-    void Start()
-    {
-        LauchRoughnessTween();
-    }
 
 
     void Update()
     {
+
+        if (GameManager.started == 2 && !flag) 
+        {
+            LauchRoughnessTween();
+            flag = true;
+        }
+
         isFollowingAnchor = !GameManager.finished;
 
         
