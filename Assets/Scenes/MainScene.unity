@@ -862,14 +862,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Boost1
       objectReference: {fileID: 0}
-    - target: {fileID: 5560670203733588002, guid: a0998bcc3180cb3448335891f2ead785, type: 3}
-      propertyPath: material
-      value: 
-      objectReference: {fileID: 2100000, guid: a78e7812eb27fc843a42928c45659228, type: 2}
-    - target: {fileID: 5560670203733588002, guid: a0998bcc3180cb3448335891f2ead785, type: 3}
-      propertyPath: layerName
-      value: Boost1
-      objectReference: {fileID: 0}
     - target: {fileID: 8598287062996236851, guid: a0998bcc3180cb3448335891f2ead785, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
