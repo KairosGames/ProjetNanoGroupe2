@@ -283,6 +283,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   timerText: {fileID: 632044787}
+  player1: {fileID: 0}
+  player2: {fileID: 0}
   timer: 0
 --- !u!4 &304195379
 Transform:
@@ -485,6 +487,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eb8409aa12be8c04d82ce13950b80d2d, type: 3}
+--- !u!225 &361287587 stripped
+CanvasGroup:
+  m_CorrespondingSourceObject: {fileID: 7281604948217126281, guid: eb8409aa12be8c04d82ce13950b80d2d, type: 3}
+  m_PrefabInstance: {fileID: 361287586}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -1237,6 +1244,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UIManager
   TitleCanvas: {fileID: 1107301344}
   HUDCanvas: {fileID: 1525796250}
+  TutoCanvas: {fileID: 361287587}
 --- !u!4 &1510468556
 Transform:
   m_ObjectHideFlags: 0

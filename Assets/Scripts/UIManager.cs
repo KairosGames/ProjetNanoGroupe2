@@ -6,6 +6,7 @@ public class UIManager : MonoBehaviour
 {
     public CanvasGroup TitleCanvas;
     public CanvasGroup HUDCanvas;
+    public CanvasGroup TutoCanvas;
 
     //public GameObject ColliderCanvas;
 
