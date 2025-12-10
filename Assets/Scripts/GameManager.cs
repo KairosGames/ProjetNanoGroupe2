@@ -1,6 +1,7 @@
 using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class GameManager : MonoBehaviour
     static public int scorePlayer2;
 
     static public float timer = 0.0f;
+    private float restartTimer = 0.0f;
     static public bool finished = false;
     static public int started = 0; //started == 0 is titleScreen, stared == 1 is tuto, started == 2 is starting the game
 
@@ -33,6 +35,20 @@ public class GameManager : MonoBehaviour
 
             if (player1.isBoosting) scorePlayer1 += 1;
             if (player2.isBoosting) scorePlayer2 += 1;
+        }
+
+        if (finished)
+        {
+            restartTimer += Time.deltaTime;
+
+            if (Input.anyKeyDown && restartTimer >3f)
+            {
+                SceneManager.LoadScene("MainScene");
+                finished = false;
+                started = 0;
+                timer = 0;
+                restartTimer = 0.0f;
+            }
         }
     }
 }

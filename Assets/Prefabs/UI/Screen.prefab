@@ -1367,6 +1367,7 @@ GameObject:
   - component: {fileID: 2603861989766358929}
   - component: {fileID: 8529118990519727908}
   - component: {fileID: 3148046154817815459}
+  - component: {fileID: 1533219756552105260}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -1392,7 +1393,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -158}
-  m_SizeDelta: {x: 107.33, y: 30}
+  m_SizeDelta: {x: 469.96, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8507880705587199370
 CanvasRenderer:
@@ -1415,7 +1416,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1500,6 +1501,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28166c2dd4c7da644984b2ad72a11a38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Restart
+--- !u!225 &1533219756552105260
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7210644545604805824}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &7985680020461265167
 GameObject:
   m_ObjectHideFlags: 0
@@ -1565,7 +1578,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Restart
+  m_text: press any button to restart
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5579f7f04b6387a4b8a6056c231ee115, type: 2}
   m_sharedMaterial: {fileID: -6012712809417951390, guid: 5579f7f04b6387a4b8a6056c231ee115, type: 2}
@@ -1574,8 +1587,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294672537
-  m_fontColor: {r: 0.6, g: 0.5019608, b: 0.9843137, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1598,7 +1611,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 1
+  m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
