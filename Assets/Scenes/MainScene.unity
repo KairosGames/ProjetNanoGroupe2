@@ -452,6 +452,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EndZone+UI
       objectReference: {fileID: 0}
+    - target: {fileID: 3738703447290947037, guid: eb8409aa12be8c04d82ce13950b80d2d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5319987503448888223, guid: eb8409aa12be8c04d82ce13950b80d2d, type: 3}
       propertyPath: speed
       value: 3
@@ -1617,7 +1621,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5778851161427359816, guid: ca155248a8a370f4bbbfe0477ae3782d, type: 3}
       propertyPath: startingNode
-      value: 85
+      value: 44
       objectReference: {fileID: 0}
     - target: {fileID: 5778851161427359816, guid: ca155248a8a370f4bbbfe0477ae3782d, type: 3}
       propertyPath: currentLength
@@ -1801,6 +1805,18 @@ PrefabInstance:
     - target: {fileID: 5413421062461785654, guid: 1000b0602d41e0848887d422a6c56fb9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7118523769169196678, guid: 1000b0602d41e0848887d422a6c56fb9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -186
+      objectReference: {fileID: 0}
+    - target: {fileID: 7118523769169196678, guid: 1000b0602d41e0848887d422a6c56fb9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 46
+      objectReference: {fileID: 0}
+    - target: {fileID: 7118523769169196678, guid: 1000b0602d41e0848887d422a6c56fb9, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 46
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

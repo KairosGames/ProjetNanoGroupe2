@@ -2591,14 +2591,10 @@ MonoBehaviour:
     endingKnot: 115
   middleSplinesData:
   - startingKnot: 0
-    endingKnot: 25
-  - startingKnot: 29
     endingKnot: 32
   - startingKnot: 34
     endingKnot: 41
   - startingKnot: 44
-    endingKnot: 62
-  - startingKnot: 66
     endingKnot: 104
   - startingKnot: 106
     endingKnot: 111
