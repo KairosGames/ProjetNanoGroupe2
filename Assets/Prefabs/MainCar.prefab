@@ -88,7 +88,7 @@ MonoBehaviour:
   baseSpeed: 10
   oneSpeed: 17.5
   twoSpeed: 17.5
-  topSpeed: 19
+  topSpeed: 17.5
   accelerationT: 3.5
   decelerationT: 0.4
   isDebugPosActive: 0
