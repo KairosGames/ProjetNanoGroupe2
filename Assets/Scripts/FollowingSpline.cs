@@ -14,9 +14,11 @@ public class FollowingSpline : MonoBehaviour
     [Header("Settings")]
     [SerializeField] public float tSmooth = 0.3f;
     [SerializeField] public float baseSpeed = 10.0f;
-    [SerializeField] public float topSpeed = 20.0f;
-    [SerializeField] float acceleration = 0.05f;
-    [SerializeField] float deceleration = 0.05f;
+    [SerializeField] float oneSpeed = 12.5f;
+    [SerializeField] float twoSpeed = 15.0f;
+    [SerializeField] public float topSpeed = 17.5f;
+    [SerializeField] float accelerationT = 1.5f;
+    [SerializeField] float decelerationT = 0.5f;
 
     [Header("Debugging")]
     [SerializeField] bool isDebugPosActive = false;
@@ -26,9 +28,7 @@ public class FollowingSpline : MonoBehaviour
     [System.NonSerialized] public float speed;
     private float currentPos;
     private float currentLength;
-    private bool accelerating = false;
     private float accelerationTime = 0.0f;
-    private bool decelerating = true;
     private float decelerationTime = 1.0f;
 
     [HideInInspector] static public float actualRatio = 0.0f;
@@ -46,39 +46,20 @@ public class FollowingSpline : MonoBehaviour
 
     private void Update()
     {
+        UpdateSpeed();
         UpdatePosOnSpline();
+    }
 
+
+    void UpdateSpeed()
+    {
+        float targetSpeed = baseSpeed;
         if (player1.isBoosting || player2.isBoosting)
-        {
-            
-            if (!accelerating)
-            {
-                if (decelerationTime < 1.0f)
-                    accelerationTime = 1 - decelerationTime;
-                else
-                    accelerationTime = 0.0f;
+            targetSpeed = oneSpeed;
+        if (player1.isBoosting && player2.isBoosting)
+            targetSpeed = (player1.actualOffset == player2.actualOffset) ? topSpeed : twoSpeed;
 
-                accelerating = true;
-                decelerating = false;
-            }
-            speed = Mathf.Lerp(baseSpeed, topSpeed, accelerationTime);
-            accelerationTime += Time.deltaTime * acceleration;
-        }
-        else
-        {
-            if (!decelerating)
-            {
-                if (accelerationTime < 1.0f)
-                    decelerationTime = 1 - accelerationTime;
-                else
-                    decelerationTime = 0.0f;
-
-                accelerating = false;
-                decelerating = true;
-            }
-            speed = Mathf.Lerp(topSpeed, baseSpeed, decelerationTime);
-            decelerationTime += Time.deltaTime * deceleration;
-        }
+        speed = Mathf.Lerp(speed, targetSpeed, ((speed < targetSpeed) ? accelerationT : decelerationT) * Time.deltaTime);
     }
 
 

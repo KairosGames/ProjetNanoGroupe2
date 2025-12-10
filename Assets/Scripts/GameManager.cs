@@ -11,17 +11,28 @@ public class GameManager : MonoBehaviour
     static public int scorePlayer1;
     static public int scorePlayer2;
 
-    public float timer = 0.0f;
+    static public float timer = 0.0f;
     static public bool finished = false;
-    static public bool started = true;
+    static public int started = 0; //started == 0 is titleScreen, stared == 1 is tuto, started == 2 is starting the game
 
 
     void Update()
     {
-        if (!finished && started)
+        Debug.Log(finished);
+
+        if (started == 0)
+        {
+            if (Input.anyKeyDown) started = 1;
+            return;
+        }
+        if (started == 1)
+        {
+            if (Input.anyKeyDown) started = 2;
+        }
+
+        if (!finished && started == 2)
         {
             timer += Time.deltaTime;
-            timerText.text = TimeSpan.FromSeconds(timer).ToString("mm\\:ss\\:ff");
 
             if (player1.isBoosting) scorePlayer1 += 1;
             if (player2.isBoosting) scorePlayer2 += 1;
