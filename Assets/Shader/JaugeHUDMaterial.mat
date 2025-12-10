@@ -59,9 +59,10 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _FillJauge: 2.38
+    - _FillJauge: 9.99979
     - _QueueControl: 0
     - _QueueOffset: 0
+    - _testfloat: 0.74
     m_Colors: []
   m_BuildTextureStacks: []
   m_AllowLocking: 1

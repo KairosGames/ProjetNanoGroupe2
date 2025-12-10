@@ -187,6 +187,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab92481eb1b52c74a9b93e4ca7cc09b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
+--- !u!1 &78299101 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7404994217834255803, guid: 3ad9bc20fc3e7be4d83f360157ad58ff, type: 3}
+  m_PrefabInstance: {fileID: 482353307}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &78299105
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 78299101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62085526d1d34534898ff06abd403f98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ReactiveJauge
+  maincar: {fileID: 1510537164}
 --- !u!1 &262162639 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7135925578798192091, guid: 3ad9bc20fc3e7be4d83f360157ad58ff, type: 3}
@@ -726,7 +744,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8241672044119708156, guid: 3ad9bc20fc3e7be4d83f360157ad58ff, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -738,6 +756,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7135925578798192091, guid: 3ad9bc20fc3e7be4d83f360157ad58ff, type: 3}
       insertIndex: -1
       addedObject: {fileID: 262162641}
+    - targetCorrespondingSourceObject: {fileID: 7404994217834255803, guid: 3ad9bc20fc3e7be4d83f360157ad58ff, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 78299105}
   m_SourcePrefab: {fileID: 100100000, guid: 3ad9bc20fc3e7be4d83f360157ad58ff, type: 3}
 --- !u!225 &510015794 stripped
 CanvasGroup:
@@ -1260,6 +1281,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1510537164 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5778851161427359816, guid: ca155248a8a370f4bbbfe0477ae3782d, type: 3}
+  m_PrefabInstance: {fileID: 1540265021}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4027954e944153d4696a35ae90e24cde, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SplineMoving
 --- !u!1 &1525796249
 GameObject:
   m_ObjectHideFlags: 0
